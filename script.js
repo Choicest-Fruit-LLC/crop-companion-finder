@@ -1,4 +1,4 @@
- const cropData = {
+const cropData = {
       tomato: {
         companions: ["Basil", "Marigold", "Carrot"],
         foes: ["Corn", "Potato"],
@@ -19,7 +19,6 @@
         foes: ["Rue"],
         details: "Basil enhances the flavor of tomatoes and repels insects."
       },
-      // Add more crops as needed
     };
 
     function getInputCrop() {
@@ -57,4 +56,10 @@
       } else {
         alert("Crop not found in database.");
       }
+    }
+
+    function closeModal() {
+      document.getElementById('descriptionModal').style.display = 'none';
+      document.getElementById('appContainer').style.display = 'block';
+      document.getElementById('mainTitle').style.display = 'block';
     }

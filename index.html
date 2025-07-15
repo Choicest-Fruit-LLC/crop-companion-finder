@@ -13,8 +13,23 @@
 </head>
 
 <body>
-  <h1>Crop Companion Finder</h1>
-  <div class="app-container">
+  <div class="modal" id="descriptionModal">
+    <div class="modal-content">
+      <h2>Crop Companion Finder</h2>
+      <p><strong>Crop Companion Finder</strong> is a simple, mobile-friendly web app designed to help gardeners, students, and eco-tech enthusiasts explore <strong>plant companion relationships</strong>.</p>
+      <ul>
+        <li>Enter a main crop (e.g., Tomato)</li>
+        <li>Discover <strong>companion crops</strong></li>
+        <li>Identify <strong>foe crops</strong></li>
+        <li>View <strong>benefits and details</strong> of each crop</li>
+      </ul>
+      <p>Perfect for planning gardens or learning sustainable planting patterns, all data is stored locally and works offline.</p>
+      <button class="close-btn" onclick="closeModal()">Start Using</button>
+    </div>
+  </div>
+
+  <h1 id="mainTitle" style="display:none;">Crop Companion Finder</h1>
+  <div class="app-container" id="appContainer" style="display:none;">
     <input type="text" id="cropInput" placeholder="Enter Crop Name (e.g., Tomato)" />
     <button onclick="findCompanions()">Find Companion Crops</button>
     <button onclick="findFoes()">Find Foe Crops</button>
@@ -24,7 +39,6 @@
   </div>
 
   <script src="script.js"></script>
-
 </body>
 
 </html>
