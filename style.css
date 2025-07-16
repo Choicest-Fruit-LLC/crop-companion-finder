@@ -137,6 +137,7 @@
       font-family: Arial, sans-serif;
       font-size: 16px;
       resize: vertical;
+    }
 
     /* Dark theme overrides */
     .dark-theme {
@@ -148,4 +149,47 @@
       --text: #f0f8f5;
       --thumb-border: #40916c;
 
+    }
+    .dark-theme, .dark-theme body, .dark-theme html {
+      background-color: var(--bg) !important;
+      color: var(--text) !important;
+    }
+
+    .dark-theme .app-container {
+      background-color: var(--container-bg) !important;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .dark-theme h1, .dark-theme .result-section h3 {
+      color: var(--primary) !important;
+    }
+
+    .dark-theme button {
+      background-color: var(--secondary) !important;
+      color: white !important;
+    }
+
+    .dark-theme button:hover {
+      background-color: var(--primary) !important;
+    }
+
+    .dark-theme .results {
+      margin-top: 20px;
+    }
+
+    .dark-theme .result-section {
+      background-color: var(--accent) !important;
+    }
+
+    .dark-theme textarea#user-notes {
+      background-color: #2c2c2c !important;
+      color: #f0f8f5 !important;
+      border-color: #444 !important;
+    }
+
+    /* Add dark theme for modal */
+    .dark-theme .modal-content {
+      background-color: var(--container-bg) !important;
+      color: var(--text) !important;
+      border-color: #444 !important;
     }
