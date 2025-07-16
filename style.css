@@ -3,27 +3,41 @@
       font-family: Arial, sans-serif;
     }
 
+    :root {
+      --bg: #f0f8f5;
+      --container-bg: #fff;
+      --primary: #2d6a4f;
+      --secondary: #40916c;
+      --accent: #e6f2ed;
+      --text: #222;
+      --thumb-border: #b7e4c7;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      background-color: #f0f8f5;
+      background-color: var(--bg);
+      color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 20px;
+      transition: background 0.4s, color 0.4s;
     }
 
-    h1 {
-      color: #2d6a4f;
+    h1, .result-section h3 {
+      color: var(--primary);
+      transition: color 0.4s;
     }
 
     .app-container {
       max-width: 500px;
       width: 100%;
-      background-color: #ffffff;
+      background-color: var(--container-bg);
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: background 0.4s, box-shadow 0.4s;
     }
 
     input[type="text"] {
@@ -38,16 +52,17 @@
       width: 100%;
       padding: 12px;
       margin-bottom: 10px;
-      background-color: #40916c;
+      background-color: var(--secondary);
       color: white;
       border: none;
       border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
+      transition: background 0.4s, color 0.4s;
     }
 
     button:hover {
-      background-color: #2d6a4f;
+      background-color: var(--primary);
     }
 
     .results {
@@ -56,15 +71,30 @@
 
     .result-section {
       margin-bottom: 20px;
-      background-color: #e6f2ed;
+      background-color: var(--accent);
       padding: 10px;
       border-radius: 10px;
+      transition: background 0.4s;
     }
 
-    .result-section h3 {
-      margin-top: 0;
-      color: #1b4332;
+
+    .crop-thumb {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      margin-right: 10px;
+      border: 2px solid var(--thumb-border);
+      background: #fff;
+      transition: border-color 0.3s, transform 0.2s;
     }
+
+    .crop-thumb:hover {
+      transform: scale(1.08);
+      border-color: #40916c;
+    }
+
 
     @media (max-width: 600px) {
       .app-container {
@@ -76,6 +106,7 @@
         margin-right: 7px;
       }
     }
+
 
     .history-section, .favorites-section {
       margin-top: 20px;
@@ -106,4 +137,15 @@
       font-family: Arial, sans-serif;
       font-size: 16px;
       resize: vertical;
+
+    /* Dark theme overrides */
+    .dark-theme {
+      --bg: #1a1a1a;
+      --container-bg: #23272f;
+      --primary: #b7e4c7;
+      --secondary: #40916c;
+      --accent: #2d6a4f;
+      --text: #f0f8f5;
+      --thumb-border: #40916c;
+
     }
