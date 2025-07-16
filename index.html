@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
-  <!-- <link rel="icon" href="favicon.ico" type="image/x-icon" /> add favicon here-->
+  <!-- <link rel="icon" href="favicon.ico" type="image/x-icon" /> -->
   <title>Crop Companion Finder</title>
   <style>
    
@@ -30,13 +30,34 @@
 
   <h1 id="mainTitle" style="display:none;">Crop Companion Finder</h1>
   <div class="app-container" id="appContainer" style="display:none;">
-    <input type="text" id="cropInput" placeholder="Enter Crop Name (e.g., Tomato)" />
+    <input type="text" id="cropInput" list="cropList" placeholder="Enter crop name..." />
+    <datalist id="cropList">
+      <option value="Tomato">
+      <option value="Corn">
+      <option value="Carrot">
+      <option value="Basil">
+      <!-- Add more crops as needed -->
+    </datalist>
     <button onclick="findCompanions()">Find Companion Crops</button>
     <button onclick="findFoes()">Find Foe Crops</button>
     <button onclick="showDetails()">Show Crop Details</button>
     <button id="themeToggle" style="margin-bottom:18px;">🌙 Switch to Dark Mode</button>
 
     <div class="results" id="results"></div>
+    <label for="user-notes">User Notes:</label>
+    <textarea id="user-notes" rows="4" placeholder="Enter your notes here..."></textarea>
+    <button id="save-notes-btn" type="button">Save Notes</button>
+
+    <!-- New sections for crop history and favorite crops -->
+    <div class="history-section">
+      <h3>Crop History</h3>
+      <ul id="crop-history"></ul>
+    </div>
+
+    <div class="favorites-section">
+      <h3>Favorite Crops</h3>
+      <ul id="favorite-crops"></ul>
+    </div>
   </div>
 
   <script src="script.js"></script>
