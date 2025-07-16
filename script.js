@@ -92,8 +92,11 @@ const cropData = {
       const crop = getInputCrop();
       if (cropData[crop]) {
         displayResults("Companion Crops", cropData[crop].companions);
+        addToHistory(crop);
+        loadNotesForCrop();
       } else {
-        alert("Crop not found in database.");
+        showError("Crop not found in database.");
+        loadNotesForCrop();
       }
     }
 
@@ -101,8 +104,11 @@ const cropData = {
       const crop = getInputCrop();
       if (cropData[crop]) {
         displayResults("Foe Crops", cropData[crop].foes);
+        addToHistory(crop);
+        loadNotesForCrop();
       } else {
         alert("Crop not found in database.");
+        loadNotesForCrop();
       }
     }
 
@@ -111,8 +117,11 @@ const cropData = {
       const resultsDiv = document.getElementById("results");
       if (cropData[crop]) {
         resultsDiv.innerHTML = `<div class='result-section'><h3>Main Crop Details</h3><p>${cropData[crop].details}</p></div>`;
+        addToHistory(crop);
+        loadNotesForCrop();
       } else {
         alert("Crop not found in database.");
+        loadNotesForCrop();
       }
     }
 
@@ -135,6 +144,35 @@ const cropData = {
         alert('Notes saved!');
       };
     }
+
+    function getCurrentCropKey() {
+      // Get the normalized crop name from input
+      return document.getElementById("cropInput").value.toLowerCase().trim();
+    }
+
+    // Load notes when a crop is selected/searched
+    function loadNotesForCrop() {
+      const crop = getCurrentCropKey();
+      const notesTextarea = document.getElementById('user-notes');
+      if (crop && cropData[crop]) {
+        notesTextarea.value = localStorage.getItem('notes_' + crop) || '';
+        notesTextarea.disabled = false;
+        document.getElementById('save-notes-btn').disabled = false;
+      } else {
+        notesTextarea.value = '';
+        notesTextarea.disabled = true;
+        document.getElementById('save-notes-btn').disabled = true;
+      }
+    }
+
+    // Save notes for the current crop
+    document.getElementById('save-notes-btn').onclick = function() {
+      const crop = getCurrentCropKey();
+      if (crop && cropData[crop]) {
+        localStorage.setItem('notes_' + crop, document.getElementById('user-notes').value);
+        alert('Notes saved!');
+      }
+    };
 
     // Load from localStorage
     let cropHistory = JSON.parse(localStorage.getItem('cropHistory')) || [];
@@ -203,6 +241,18 @@ const cropData = {
       document.getElementById("showDetailsBtn").disabled = !crop;
     }
 
+    function showError(message) {
+      const resultsDiv = document.getElementById("results");
+      // Suggest valid crops
+      const suggestions = Object.keys(cropData)
+        .map(crop => crop.charAt(0).toUpperCase() + crop.slice(1))
+        .join(', ');
+      resultsDiv.innerHTML = `<div class='result-section' style="color:red;">
+        <strong>${message}</strong><br>
+        <small>Try: ${suggestions}</small>
+      </div>`;
+    }
+
     // Call these after a search
     // addToHistory(searchedCrop);
 
@@ -212,7 +262,7 @@ const cropData = {
       renderFavorites();
       populateCropDatalist();
       document.getElementById("cropInput").focus();
-      toggleActionButtons();
+      loadNotesForCrop();
     };
 
     document.getElementById("cropInput").addEventListener("input", function() {
@@ -223,3 +273,4 @@ const cropData = {
     });
 
     document.getElementById("cropInput").addEventListener("input", toggleActionButtons);
+    document.getElementById('cropInput').addEventListener('input', loadNotesForCrop);
