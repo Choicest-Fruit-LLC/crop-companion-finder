@@ -145,3 +145,32 @@ function showDetails() {
       document.getElementById('appContainer').style.display = 'block';
       document.getElementById('mainTitle').style.display = 'block';
     }
+
+    // Theme switching logic
+const themeToggle = document.getElementById('themeToggle');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const savedTheme = localStorage.getItem('theme');
+const root = document.documentElement;
+
+function setTheme(dark) {
+  if (dark) {
+    document.body.classList.add('dark-theme');
+    themeToggle.textContent = '☀️ Switch to Light Mode';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.body.classList.remove('dark-theme');
+    themeToggle.textContent = '🌙 Switch to Dark Mode';
+    localStorage.setItem('theme', 'light');
+  }
+}
+
+themeToggle.addEventListener('click', () => {
+  setTheme(!document.body.classList.contains('dark-theme'));
+});
+
+// On load: set theme from localStorage or system preference
+if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+  setTheme(true);
+} else {
+  setTheme(false);
+}
