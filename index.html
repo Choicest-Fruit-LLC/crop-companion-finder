@@ -30,14 +30,7 @@
 
   <h1 id="mainTitle" style="display:none;">Crop Companion Finder</h1>
   <div class="app-container" id="appContainer" style="display:none;">
-    <input type="text" id="cropInput" list="cropList" placeholder="Enter crop name..." />
-    <datalist id="cropList">
-      <option value="Tomato">
-      <option value="Corn">
-      <option value="Carrot">
-      <option value="Basil">
-      <!-- Add more crops as needed -->
-    </datalist>
+    <input type="text" id="cropInput" placeholder="Enter Crop Name (e.g., Tomato)" />
     <button onclick="findCompanions()">Find Companion Crops</button>
     <button onclick="findFoes()">Find Foe Crops</button>
     <button onclick="showDetails()">Show Crop Details</button>
@@ -57,6 +50,25 @@
     <div class="favorites-section">
       <h3>Favorite Crops</h3>
       <ul id="favorite-crops"></ul>
+    </div>
+
+    <div class="crop-browser" id="cropBrowser" style="margin-top:32px;">
+      <h3>Browse All Crops</h3>
+      <div class="crop-filters">
+        <label>
+          <input type="checkbox" id="filterAll" checked />
+          Show All Crops
+        </label>
+        <label>
+          <input type="checkbox" id="filterCompanions" />
+          More than 2 companions
+        </label>
+        <label>
+          <input type="checkbox" id="filterPollinators" />
+          Benefits pollinators
+        </label>
+      </div>
+      <div id="cropList" style="margin-top:18px;"></div>
     </div>
   </div>
 

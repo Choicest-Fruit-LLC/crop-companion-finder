@@ -314,6 +314,71 @@ function showDetails() {
       </div>`;
     }
 
+    function updateFilterVisibility() {
+      const filterCompanions = document.getElementById('filterCompanions').checked;
+      const filterPollinators = document.getElementById('filterPollinators').checked;
+      const cropBrowser = document.getElementById('cropBrowser');
+      if (!filterCompanions && !filterPollinators) {
+        cropBrowser.classList.add('hide-filters');
+        document.getElementById('cropList').innerHTML = "";
+      } else {
+        cropBrowser.classList.remove('hide-filters');
+      }
+    }
+
+    // Add a simple pollinator benefit flag to cropData for demonstration
+// (You can expand this as needed)
+const pollinatorCrops = ["marigold", "squash", "sunflower", "tomato"]; // Example list
+
+function renderCropList() {
+  const showAll = document.getElementById('filterAll').checked;
+  const showCompanions = document.getElementById('filterCompanions').checked;
+  const showPollinators = document.getElementById('filterPollinators').checked;
+  const cropListDiv = document.getElementById('cropList');
+  const cropBrowser = document.getElementById('cropBrowser');
+  let crops = Object.keys(cropData);
+
+  // If none selected, hide list but keep filters visible
+  if (!showAll && !showCompanions && !showPollinators) {
+    cropBrowser.classList.add('hide-list');
+    cropListDiv.innerHTML = "";
+    return;
+  } else {
+    cropBrowser.classList.remove('hide-list');
+  }
+
+  // Filtering logic
+  if (!showAll) {
+    if (showCompanions) {
+      crops = crops.filter(crop => cropData[crop].companions && cropData[crop].companions.length > 2);
+    }
+    if (showPollinators) {
+      crops = crops.filter(crop => pollinatorCrops.includes(crop));
+    }
+  }
+
+  if (crops.length === 0) {
+    cropListDiv.innerHTML = "<em>No crops match your filters.</em>";
+    return;
+  }
+
+  // Styled list output
+  cropListDiv.innerHTML = `<ul class="styled-crop-list">${crops.map(crop =>
+    `<li class="styled-crop-item">
+      <span class="styled-crop-name">${crop.charAt(0).toUpperCase() + crop.slice(1)}</span>
+      <span class="styled-crop-desc">${cropData[crop].details}</span>
+    </li>`
+  ).join('')}</ul>`;
+}
+
+// Attach listeners
+document.getElementById('filterAll').addEventListener('change', renderCropList);
+document.getElementById('filterCompanions').addEventListener('change', renderCropList);
+document.getElementById('filterPollinators').addEventListener('change', renderCropList);
+
+// Initial render
+renderCropList();
+
     // Call these after a search
     // addToHistory(searchedCrop);
 
@@ -383,4 +448,5 @@ const gardeningTips = [
 function getRandomTip() {
   return gardeningTips[Math.floor(Math.random() * gardeningTips.length)];
 }
+
 
