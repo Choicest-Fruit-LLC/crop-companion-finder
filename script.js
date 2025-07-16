@@ -12,7 +12,7 @@ const cropData = {
     companions: ["Basil", "Onion", "Carrot"],
     foes: ["Fennel"],
     details: "Bell peppers benefit from basil and onions. Avoid fennel.",
-    img: "assets/img/bell_pepper.jpg"
+    img: "assets/img/different types of peper.png"
   },
   chili_pepper: {
     category: "Fruiting Vegetables",
@@ -47,7 +47,7 @@ const cropData = {
     companions: ["Corn", "Beans", "Nasturtium"],
     foes: [],
     details: "Squash grows well with corn and beans.",
-    img: "assets/img/squash.jpg"
+    img: "assets/img/squash.png"
   },
   okra: {
     category: "Fruiting Vegetables",
@@ -62,7 +62,7 @@ const cropData = {
     companions: ["Beans", "Squash", "Sunflower"],
     foes: ["Tomato"],
     details: "Corn grows well with beans and squash.",
-    img: "assets/img/corn.jpg"
+    img: "assets/img/corn.png"
   },
   sorghum: {
     category: "Grains & Tall Plants",
@@ -84,7 +84,7 @@ const cropData = {
     companions: ["Lettuce", "Onion", "Tomato", "Peas"],
     foes: ["Dill"],
     details: "Carrots benefit from onions and peas.",
-    img: "assets/img/carrot.jpg"
+    img: "assets/img/carrot.png"
   },
   radish: {
     category: "Root Vegetables",
@@ -112,7 +112,7 @@ const cropData = {
     companions: ["Beans", "Corn"],
     foes: ["Tomato", "Cucumber"],
     details: "Potatoes benefit from beans and corn. Avoid tomatoes and cucumbers.",
-    img: "assets/img/potato.jpg"
+    img: "assets/img/potato.png"
   },
   sweet_potato: {
     category: "Root Vegetables",
@@ -126,7 +126,7 @@ const cropData = {
     companions: ["Carrot", "Lettuce", "Strawberry"],
     foes: ["Peas"],
     details: "Onions deter pests for carrots. Avoid peas.",
-    img: "assets/img/onion.jpg"
+    img: "assets/img/onion.png"
   },
   garlic: {
     category: "Root Vegetables",
@@ -170,35 +170,35 @@ const cropData = {
     companions: ["Tomato", "Peppers"],
     foes: ["Rue"],
     details: "Basil enhances the flavor of tomatoes.",
-    img: "assets/img/basil.jpg"
+    img: "assets/img/basil.png"
   },
   mint: {
     category: "Herbs",
     companions: ["Cabbage", "Tomato"],
     foes: [],
     details: "Mint helps deter pests for cabbage and tomato.",
-    img: "assets/img/mint.jpg"
+    img: "assets/img/mint.png"
   },
   parsley: {
     category: "Herbs",
     companions: ["Tomato", "Carrot"],
     foes: [],
     details: "Parsley benefits tomatoes and carrots.",
-    img: "assets/img/parsley.jpg"
+    img: "assets/img/parsley.png"
   },
   cilantro: {
     category: "Herbs",
     companions: ["Tomato", "Spinach"],
     foes: [],
     details: "Cilantro grows well with tomatoes and spinach.",
-    img: "assets/img/cilantro.jpg"
+    img: "assets/img/cilantro.png"
   },
   dill: {
     category: "Herbs",
     companions: ["Cabbage", "Lettuce"],
     foes: ["Carrot"],
     details: "Dill can stunt carrot growth.",
-    img: "assets/img/dill.jpg"
+    img: "assets/img/dill.png"
   },
   thyme: {
     category: "Herbs",
@@ -270,7 +270,7 @@ const cropData = {
     companions: ["Tomato", "Squash", "Sweet Potato"],
     foes: [],
     details: "Marigolds help repel nematodes and other pests.",
-    img: "assets/img/marigold.jpg"
+    img: "assets/img/different types and colors of marigold.png"
   },
   nasturtium: {
     category: "Companion Flowers",
