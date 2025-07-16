@@ -196,3 +196,9 @@
       display: inline-block;
       margin: 0 0.5rem;
     }
+
+    .app-container,
+    .dark-toggle,
+    .app-footer {
+      display: none;
+    }

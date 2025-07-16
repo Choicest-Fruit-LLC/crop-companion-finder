@@ -1,4 +1,4 @@
-  const cropData = {
+const cropData = {
     // Fruiting Vegetables
   tomato: {
     category: "Fruiting Vegetables",
@@ -452,6 +452,9 @@ window.addEventListener("DOMContentLoaded", showDailyTip);
 
 document.getElementById("start-btn").addEventListener("click", function() {
   document.getElementById("intro-modal").style.display = "none";
+  document.querySelector(".app-container").style.display = "block";
+  document.querySelector(".dark-toggle").style.display = "inline-block";
+  document.querySelector(".app-footer").style.display = "block";
 });
 
 function showIntroModal() {
