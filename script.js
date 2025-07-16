@@ -344,10 +344,12 @@ const root = document.documentElement;
 
 function setTheme(dark) {
   if (dark) {
+    document.documentElement.classList.add('dark-theme');
     document.body.classList.add('dark-theme');
     themeToggle.textContent = '☀️ Switch to Light Mode';
     localStorage.setItem('theme', 'dark');
   } else {
+    document.documentElement.classList.remove('dark-theme');
     document.body.classList.remove('dark-theme');
     themeToggle.textContent = '🌙 Switch to Dark Mode';
     localStorage.setItem('theme', 'light');
