@@ -30,12 +30,36 @@
 
   <h1 id="mainTitle" style="display:none;">Crop Companion Finder</h1>
   <div class="app-container" id="appContainer" style="display:none;">
-    <input type="text" id="cropInput" placeholder="Enter Crop Name (e.g., Tomato)" />
+    <input type="text" id="cropInput" list="cropList" placeholder="Start typing a crop name..." />
+    <datalist id="cropList">
+      <option value="Tomato">
+      <option value="Corn">
+      <option value="Carrot">
+      <option value="Basil">
+      <!-- Add more crops as needed -->
+    </datalist>
     <button onclick="findCompanions()">Find Companion Crops</button>
     <button onclick="findFoes()">Find Foe Crops</button>
     <button onclick="showDetails()">Show Crop Details</button>
 
     <div class="results" id="results"></div>
+
+    <!-- New sections for crop history and favorite crops -->
+    <div class="history-section">
+      <h3>Crop History</h3>
+      <ul id="crop-history"></ul>
+    </div>
+
+    <div class="favorites-section">
+      <h3>Favorite Crops</h3>
+      <ul id="favorite-crops"></ul>
+    </div>
+
+    <div id="notes-section" style="display:none;">
+      <label for="user-notes">Your Notes:</label>
+      <textarea id="user-notes" rows="4" placeholder="Write notes about this crop..."></textarea>
+      <button id="save-notes-btn">Save Notes</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
