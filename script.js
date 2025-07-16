@@ -556,58 +556,11 @@ function showDetails() {
 
     // Add a simple pollinator benefit flag to cropData for demonstration
 // (You can expand this as needed)
-const pollinatorCrops = ["marigold", "squash", "sunflower", "tomato"]; // Example list
+const pollinatorCrops = [
+  "marigold", "squash", "sunflower", "tomato", "borage", "nasturtium", "melon", "watermelon"
+];
 
-function renderCropList() {
-  const showAll = document.getElementById('filterAll').checked;
-  const showCompanions = document.getElementById('filterCompanions').checked;
-  const showPollinators = document.getElementById('filterPollinators').checked;
-  const cropListDiv = document.getElementById('cropList');
-  const cropBrowser = document.getElementById('cropBrowser');
-  let crops = Object.keys(cropData);
-
-  // If none selected, hide list but keep filters visible
-  if (!showAll && !showCompanions && !showPollinators) {
-    cropBrowser.classList.add('hide-list');
-    cropListDiv.innerHTML = "";
-    return;
-  } else {
-    cropBrowser.classList.remove('hide-list');
-  }
-
-  // Filtering logic
-  if (!showAll) {
-    if (showCompanions) {
-      crops = crops.filter(crop => cropData[crop].companions && cropData[crop].companions.length > 2);
-    }
-    if (showPollinators) {
-      crops = crops.filter(crop => pollinatorCrops.includes(crop));
-    }
-  }
-
-  if (crops.length === 0) {
-    cropListDiv.innerHTML = "<em>No crops match your filters.</em>";
-    return;
-  }
-
-  // Styled list output
-  cropListDiv.innerHTML = `<ul class="styled-crop-list">${crops.map(crop =>
-    `<li class="styled-crop-item">
-      <span class="styled-crop-name">${crop.charAt(0).toUpperCase() + crop.slice(1)}</span>
-      <span class="styled-crop-desc">${cropData[crop].details}</span>
-    </li>`
-  ).join('')}</ul>`;
-}
-
-// Attach listeners
-document.getElementById('filterAll').addEventListener('change', renderCropList);
-document.getElementById('filterCompanions').addEventListener('change', renderCropList);
-document.getElementById('filterPollinators').addEventListener('change', renderCropList);
-
-// Initial render
-renderCropList();
-
-// --- Add category filter logic ---
+// List of categories
 const cropCategories = [
   "Fruiting Vegetables",
   "Grains & Tall Plants",
@@ -619,7 +572,7 @@ const cropCategories = [
   "Ula"
 ];
 
-// --- Dynamically create category checkboxes ---
+// Dynamically render category checkboxes (unchecked by default)
 function renderCategoryFilters() {
   const filterDiv = document.getElementById('categoryFilters');
   filterDiv.innerHTML = cropCategories.map(cat =>
@@ -627,16 +580,25 @@ function renderCategoryFilters() {
   ).join('');
 }
 
-// --- Update renderCropList to use category filters ---
+// Attach listeners for category checkboxes
+function attachCategoryListeners() {
+  document.querySelectorAll('.category-filter').forEach(cb => {
+    cb.addEventListener('change', renderCropList);
+  });
+}
+
+// Update renderCropList to include category filtering
 function renderCropList() {
   const cropListDiv = document.getElementById('cropList');
   const cropBrowser = document.getElementById('cropBrowser');
   const checkedCategories = Array.from(document.querySelectorAll('.category-filter:checked')).map(cb => cb.value);
+  const showCompanions = document.getElementById('filterCompanions').checked;
+  const showPollinators = document.getElementById('filterPollinators').checked;
 
   let crops = Object.keys(cropData);
 
-  // If none selected, hide list but keep filters visible
-  if (checkedCategories.length === 0) {
+  // If no filters are selected, hide list
+  if (checkedCategories.length === 0 && !showCompanions && !showPollinators) {
     cropBrowser.classList.add('hide-list');
     cropListDiv.innerHTML = "";
     return;
@@ -644,30 +606,36 @@ function renderCropList() {
     cropBrowser.classList.remove('hide-list');
   }
 
-  // Filter crops by selected categories
-  crops = crops.filter(crop => checkedCategories.includes(cropData[crop].category));
+  // Filter by category if any selected
+  if (checkedCategories.length > 0) {
+    crops = crops.filter(crop => checkedCategories.includes(cropData[crop].category));
+  }
+
+  // If companions or pollinators are checked, further filter the crops
+  if (showCompanions) {
+    crops = crops.filter(crop => cropData[crop].companions && cropData[crop].companions.length > 2);
+  }
+  if (showPollinators) {
+    crops = crops.filter(crop => pollinatorCrops.includes(crop));
+  }
 
   if (crops.length === 0) {
     cropListDiv.innerHTML = "<em>No crops match your filters.</em>";
     return;
   }
 
-  // Styled list output
   cropListDiv.innerHTML = `<ul class="styled-crop-list">${crops.map(crop =>
     `<li class="styled-crop-item">
       <span class="styled-crop-name">${crop.charAt(0).toUpperCase() + crop.slice(1).replace(/_/g, ' ')}</span>
       <span class="styled-crop-desc">${cropData[crop].details}</span>
+      <span class="styled-crop-category">${cropData[crop].category}</span>
     </li>`
   ).join('')}</ul>`;
 }
 
-// Attach listeners for category filters (after rendering them)
-function attachCategoryListeners() {
-  document.querySelectorAll('.category-filter').forEach(cb => {
-    cb.addEventListener('change', renderCropList);
-  });
-}
-
+// Attach listeners for all filters
+document.getElementById('filterCompanions').addEventListener('change', renderCropList);
+document.getElementById('filterPollinators').addEventListener('change', renderCropList);
 // On page load, render category filters and crop list
 window.addEventListener('DOMContentLoaded', () => {
   renderCategoryFilters();
