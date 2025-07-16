@@ -97,7 +97,8 @@ function displayResults(title, list) {
   resultsDiv.innerHTML = `<div class='result-section'><h3>${title}</h3><ul>${list.map(item => {
     const thumb = getCropThumbnail(item);
     return `<li style='display:flex;align-items:center;'>${thumb}<span>${item}</span></li>`;
-  }).join('')}</ul></div>`;
+  }).join('')}</ul></div>
+  <div class="gardening-tip" style="margin-top:18px;font-style:italic;color:#40916c;">${getRandomTip()}</div>`;
 }
 
 function findCompanions() {
@@ -134,7 +135,8 @@ function showDetails() {
   if (cropData[crop]) {
     const mainThumb = getCropThumbnail(crop);
     resultsDiv.innerHTML = `<div style='display:flex;align-items:center;margin-bottom:10px;'>${mainThumb}<span style='font-size:1.2em;font-weight:bold;'>${crop.charAt(0).toUpperCase() + crop.slice(1)}</span></div>` +
-      `<div class='result-section'><h3>Main Crop Details</h3><p>${cropData[crop].details}</p></div>`;
+      `<div class='result-section'><h3>Main Crop Details</h3><p>${cropData[crop].details}</p></div>
+      <div class="gardening-tip" style="margin-top:18px;font-style:italic;color:#40916c;">${getRandomTip()}</div>`;
   } else {
     alert("Crop not found in database.");
   }
@@ -173,4 +175,21 @@ if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
   setTheme(true);
 } else {
   setTheme(false);
+}
+
+const gardeningTips = [
+  "🌿 Did you know? Marigolds can deter nematodes in the soil.",
+  "🌱 Rotate your crops each year to prevent soil-borne diseases.",
+  "🌻 Sunflowers can attract pollinators to your garden.",
+  "🥕 Carrots love loose, sandy soil for best growth.",
+  "🪴 Mulching helps retain soil moisture and suppress weeds.",
+  "🍅 Basil planted near tomatoes can improve their flavor.",
+  "🌾 Beans fix nitrogen in the soil, benefiting neighboring plants.",
+  "🌼 Companion planting can naturally reduce pests and boost yields.",
+  "🌧️ Water early in the morning to reduce evaporation.",
+  "🌿 Healthy soil is the foundation of a thriving garden."
+];
+
+function getRandomTip() {
+  return gardeningTips[Math.floor(Math.random() * gardeningTips.length)];
 }
