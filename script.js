@@ -1,5 +1,5 @@
 const cropData = {
-  // Fruiting Vegetables
+    // Fruiting Vegetables
   tomato: {
     category: "Fruiting Vegetables",
     companions: ["Basil", "Marigold", "Carrot", "Onion", "Collard Greens"],
@@ -301,156 +301,126 @@ const cropData = {
     details: "Collard greens grow well with tomato, onion, and mint.",
     img: "assets/img/collard_greens.jpg"
   }
-};
 
-    // Helper to normalize crop names for lookup (handles spaces and underscores)
-function normalizeCropKey(input) {
-  return input.toLowerCase().replace(/\s+/g, "_").trim();
-}
+    };
 
-// Update getInputCrop and getCurrentCropKey to use normalization
-function getInputCrop() {
-  return normalizeCropKey(document.getElementById("cropInput").value);
-}
-function getCurrentCropKey() {
-  return normalizeCropKey(document.getElementById("cropInput").value);
-}
-
-    function displayResults(title, list) {
-      const resultsDiv = document.getElementById("results");
-      resultsDiv.innerHTML = `<div class='result-section'><h3>${title}</h3><ul>${list.map(item => `<li>${item}</li>`).join('')}</ul></div>`;
+    const cropInput = document.getElementById("cropInput");
+    const cropList = document.getElementById("cropList");
+    for (let crop in cropData) {
+      const opt = document.createElement("option");
+      opt.value = crop.charAt(0).toUpperCase() + crop.slice(1);
+      cropList.appendChild(opt);
     }
 
-    function findCompanions() {
-      const crop = getInputCrop();
-      if (cropData[crop]) {
-        displayResults("Companion Crops", cropData[crop].companions);
-        addToHistory(crop); // <-- Save to history
-        loadNotesForCrop();
-      } else {
-        showError("Crop not found in database.");
-        loadNotesForCrop();
-      }
+    cropInput.addEventListener("input", function () {
+      const input = this.value.toLowerCase().trim();
+      const suggestions = Object.keys(cropData).filter(crop => crop.includes(input));
+      cropList.innerHTML = "";
+      suggestions.forEach(crop => {
+        const option = document.createElement("option");
+        option.value = crop.charAt(0).toUpperCase() + crop.slice(1);
+        cropList.appendChild(option);
+      });
+    });
+
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
     }
 
+    function getInputCrop() {
+      return cropInput.value.toLowerCase().trim();
+    }
+
+    function clearResults() {
+      document.getElementById("results").innerHTML = "";
+    }
+
+    function displayResultCard(title, array, showImages = false, main = "") {
+      const resultDiv = document.getElementById("results");
+      const list = array.map(item => {
+        const crop = cropData[item.toLowerCase()];
+        // FIX: use crop.img instead of crop.image
+        const img = (showImages && crop && crop.img) ? `<img src='${crop.img}' class='crop-image'/>` : "";
+        const score = cropData[main]?.companions?.includes(item) ? "⭐️⭐️⭐️⭐️⭐️" : "⭐️⭐️⭐️";
+        return `<li>${img} ${item} (${score})</li>`;
+      }).join('');
+      resultDiv.innerHTML += `<div class='result-card'><strong>${title}</strong><ul>${list}</ul></div>`;
+    }
+
+    function showMessage(title, msg) {
+      const div = document.getElementById("results");
+      div.innerHTML += `<div class='result-card'><strong>${title}</strong><p>${msg}</p></div>`;
+    }
+
+    function saveToHistory(crop) {
+      if (!crop) return;
+      let history = JSON.parse(localStorage.getItem("cropHistory")) || [];
+      history = history.filter(item => item !== crop);
+      history.unshift(crop);
+      if (history.length > 5) history = history.slice(0, 5);
+      localStorage.setItem("cropHistory", JSON.stringify(history));
+      updateHistoryDisplay();
+    }
+
+    function updateHistoryDisplay() {
+      const history = JSON.parse(localStorage.getItem("cropHistory")) || [];
+      const div = document.getElementById("results");
+      if (!history.length) return;
+      const html = history.map(item => `<li onclick='prefillCrop("${item}")'>${item}</li>`).join('');
+      div.innerHTML += `<div class='result-card'><strong>🕘 Recent Searches</strong><ul>${html}</ul></div>`;
+    }
+
+    function prefillCrop(name) {
+      cropInput.value = name;
+      showDetails();
+    }
+
+function findCompanions() {
+  clearResults();
+  const crop = getInputCrop();
+  saveToHistory(crop);
+  if (cropData[crop]) {
+    displayResultCard("✅ Companion Crops", cropData[crop].companions, true, crop);
+  } else {
+    showMessage("Not Found", "Crop not found in database.");
+  }
+}
 
     function findFoes() {
+      clearResults();
       const crop = getInputCrop();
+      saveToHistory(crop);
       if (cropData[crop]) {
-        displayResults("Foe Crops", cropData[crop].foes);
-        addToHistory(crop);
-        loadNotesForCrop();
+        displayResultCard("⚠️ Foe Crops", cropData[crop].foes, true, crop);
       } else {
-        alert("Crop not found in database.");
-        loadNotesForCrop();
+        showMessage("Not Found", "Crop not found in database.");
       }
     }
 
     function showDetails() {
+      clearResults();
       const crop = getInputCrop();
-      const resultsDiv = document.getElementById("results");
+      saveToHistory(crop);
       if (cropData[crop]) {
-        resultsDiv.innerHTML = `<div class='result-section'><h3>Main Crop Details</h3><p>${cropData[crop].details}</p></div>`;
-        addToHistory(crop);
-        loadNotesForCrop();
+        const cat = cropData[crop].category;
+        const img = `<img src='${cropData[crop].image}' class='crop-image'/>`;
+        const badge = `<span class='category-badge'>${cat}</span>`;
+        showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details);
       } else {
-        alert("Crop not found in database.");
-        loadNotesForCrop();
+        showMessage("Not Found", "Crop not found in database.");
       }
     }
 
-function getCropThumbnail(cropName) {
-  const crop = cropData[cropName.toLowerCase()];
-  if (crop && crop.img) {
-    return `<img src='${crop.img}' alt='${cropName}' class='crop-thumb' style='width:40px;height:40px;object-fit:cover;border-radius:6px;margin-right:8px;'>`;
-  }
-  return "";
-}
-
-function displayResults(title, list) {
-  const resultsDiv = document.getElementById("results");
-  resultsDiv.innerHTML = `<div class='result-section'><h3>${title}</h3><ul>${list.map(item => {
-    const thumb = getCropThumbnail(item);
-    return `<li style='display:flex;align-items:center;'>${thumb}<span>${item}</span></li>`;
-  }).join('')}</ul></div>
-  <div class="gardening-tip" style="margin-top:18px;font-style:italic;color:#40916c;">${getRandomTip()}</div>`;
-}
-
-function findCompanions() {
-  const crop = getInputCrop();
-  const resultsDiv = document.getElementById("results");
-  if (cropData[crop]) {
-    // Show main crop thumbnail
-    const mainThumb = getCropThumbnail(crop);
-    resultsDiv.innerHTML = `<div style='display:flex;align-items:center;margin-bottom:10px;'>${mainThumb}<span style='font-size:1.2em;font-weight:bold;'>${crop.charAt(0).toUpperCase() + crop.slice(1)}</span></div>`;
-    // Show companions
-    displayResults("Companion Crops", cropData[crop].companions);
-  } else {
-    alert("Crop not found in database.");
-  }
-}
-
-function findFoes() {
-  const crop = getInputCrop();
-  const resultsDiv = document.getElementById("results");
-  if (cropData[crop]) {
-    // Show main crop thumbnail
-    const mainThumb = getCropThumbnail(crop);
-    resultsDiv.innerHTML = `<div style='display:flex;align-items:center;margin-bottom:10px;'>${mainThumb}<span style='font-size:1.2em;font-weight:bold;'>${crop.charAt(0).toUpperCase() + crop.slice(1)}</span></div>`;
-    // Show foes
-    displayResults("Foe Crops", cropData[crop].foes);
-  } else {
-    alert("Crop not found in database.");
-  }
-}
-
-function showDetails() {
-  const crop = getInputCrop();
-  const resultsDiv = document.getElementById("results");
-  if (cropData[crop]) {
-    const mainThumb = getCropThumbnail(crop);
-    resultsDiv.innerHTML = `<div style='display:flex;align-items:center;margin-bottom:10px;'>${mainThumb}<span style='font-size:1.2em;font-weight:bold;'>${crop.charAt(0).toUpperCase() + crop.slice(1)}</span></div>` +
-      `<div class='result-section'><h3>Main Crop Details</h3><p>${cropData[crop].details}</p></div>
-      <div class="gardening-tip" style="margin-top:18px;font-style:italic;color:#40916c;">${getRandomTip()}</div>`;
-  } else {
-    alert("Crop not found in database.");
-  }
-}
-
-
-    function closeModal() {
-      document.getElementById('descriptionModal').style.display = 'none';
-      document.getElementById('appContainer').style.display = 'block';
-      document.getElementById('mainTitle').style.display = 'block';
-    }
-
-
-    function showNotesSection(crop) {
-      const notesSection = document.getElementById('notes-section');
-      const notesTextarea = document.getElementById('user-notes');
-      notesSection.style.display = 'block';
-      // Load saved note for this crop
-      const savedNotes = localStorage.getItem('notes_' + crop) || '';
-      notesTextarea.value = savedNotes;
-      // Save button event
-      document.getElementById('save-notes-btn').onclick = function() {
-        localStorage.setItem('notes_' + crop, notesTextarea.value);
-        alert('Notes saved!');
-      };
-    }
-
-    // Load notes when a crop is selected/searched
-    function loadNotesForCrop() {
-      const crop = getCurrentCropKey();
-      const notesTextarea = document.getElementById('user-notes');
-      if (crop && cropData[crop]) {
-        notesTextarea.value = localStorage.getItem('notes_' + crop) || '';
-        notesTextarea.disabled = false;
-        document.getElementById('save-notes-btn').disabled = false;
-      } else {
-        notesTextarea.value = '';
-        notesTextarea.disabled = true;
-        document.getElementById('save-notes-btn').disabled = true;
+    function filterByCategory() {
+      const selected = document.getElementById("categorySelect").value;
+      cropList.innerHTML = "";
+      for (let crop in cropData) {
+        if (!selected || cropData[crop].category === selected) {
+          const opt = document.createElement("option");
+          opt.value = crop.charAt(0).toUpperCase() + crop.slice(1);
+          cropList.appendChild(opt);
+        }
       }
     }
 
@@ -694,22 +664,60 @@ if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
 } else {
   setTheme(false);
 }
-
+// --- Daily Gardening Tip ---
 const gardeningTips = [
-  "🌿 Did you know? Marigolds can deter nematodes in the soil.",
-  "🌱 Rotate your crops each year to prevent soil-borne diseases.",
-  "🌻 Sunflowers can attract pollinators to your garden.",
-  "🥕 Carrots love loose, sandy soil for best growth.",
-  "🪴 Mulching helps retain soil moisture and suppress weeds.",
-  "🍅 Basil planted near tomatoes can improve their flavor.",
-  "🌾 Beans fix nitrogen in the soil, benefiting neighboring plants.",
-  "🌼 Companion planting can naturally reduce pests and boost yields.",
-  "🌧️ Water early in the morning to reduce evaporation.",
-  "🌿 Healthy soil is the foundation of a thriving garden."
+  "Water your plants early in the morning to reduce evaporation.",
+  "Rotate your crops each season to prevent soil depletion.",
+  "Mulch your garden beds to retain moisture and suppress weeds.",
+  "Encourage pollinators by planting flowers like marigold and borage.",
+  "Remove weeds regularly to give your crops more nutrients.",
+  "Compost kitchen scraps to enrich your garden soil.",
+  "Check the underside of leaves for pests each week.",
+  "Use companion planting to naturally deter pests.",
+  "Harvest vegetables regularly to encourage more production.",
+  "Test your soil pH for optimal plant health."
 ];
 
-function getRandomTip() {
-  return gardeningTips[Math.floor(Math.random() * gardeningTips.length)];
+function showDailyTip() {
+  const tipDiv = document.getElementById("daily-tip");
+  // Use the current date as a seed for the tip of the day
+  const today = new Date();
+  const seed = today.getFullYear() * 1000 + today.getMonth() * 50 + today.getDate();
+  const tipIndex = seed % gardeningTips.length;
+  tipDiv.textContent = "🌱 Tip of the Day: " + gardeningTips[tipIndex];
 }
 
+window.addEventListener("DOMContentLoaded", showDailyTip);
 
+document.getElementById("start-btn").addEventListener("click", function() {
+  document.getElementById("intro-modal").style.display = "none";
+  document.querySelector(".app-container").style.display = "block";
+  document.querySelector(".dark-toggle").style.display = "inline-block";
+  document.querySelector(".app-footer").style.display = "block";
+});
+
+function showIntroModal() {
+  const modal = document.getElementById("intro-modal");
+  const app = document.querySelector(".app-container");
+  if (modal && app) {
+    modal.style.display = "flex";
+    app.classList.add("app-blur");
+  }
+}
+
+function hideIntroModal() {
+  const modal = document.getElementById("intro-modal");
+  const app = document.querySelector(".app-container");
+  if (modal && app) {
+    modal.style.display = "none";
+    app.classList.remove("app-blur");
+  }
+}
+
+window.addEventListener("DOMContentLoaded", function() {
+  showIntroModal();
+  const startBtn = document.getElementById("start-btn");
+  if (startBtn) {
+    startBtn.onclick = hideIntroModal;
+  }
+});

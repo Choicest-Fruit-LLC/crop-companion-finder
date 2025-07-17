@@ -1,289 +1,216 @@
-* {
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+:root {
+      --bg-light: #e8f5e9;
+      --bg-dark: #1b1b1b;
+      --text-light: #1b4332;
+      --text-dark: #e0f2f1;
+      --card-light: #f1fdf6;
+      --card-dark: #263238;
     }
 
-    :root {
-      --bg: #f0f8f5;
-      --container-bg: #fff;
-      --primary: #2d6a4f;
-      --secondary: #40916c;
-      --accent: #e6f2ed;
-      --text: #222;
-      --thumb-border: #b7e4c7;
+    [data-theme="dark"] {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
     }
 
     body {
+      font-family: 'Arial', sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      transition: background 0.4s, color 0.4s;
+      padding: 1rem;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    h1, .result-section h3 {
-      color: var(--primary);
-      transition: color 0.4s;
+    /* Add this for full-page dark mode */
+    [data-theme="dark"] body {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
     }
 
     .app-container {
-      max-width: 500px;
-      width: 100%;
-      background-color: var(--container-bg);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: background 0.4s, box-shadow 0.4s;
+      max-width: 600px;
+      margin: auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
 
-    input[type="text"] {
+    /* Already present, but keep for card dark mode */
+    [data-theme="dark"] .app-container {
+      background: var(--card-dark);
+      color: var(--text-dark);
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input, select, button {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      padding: 10px;
+      margin: 0.5rem 0;
+      border-radius: 10px;
+    }
+
+    #cropInput {
+      max-width: 300px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     button {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 10px;
-      background-color: var(--secondary);
+      background: #2d6a4f;
       color: white;
       border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.4s, color 0.4s;
     }
 
-    button:hover {
-      background-color: var(--primary);
-    }
-
-    .results {
-      margin-top: 20px;
-    }
-
-    .result-section {
-      margin-bottom: 20px;
-      background-color: var(--accent);
-      padding: 10px;
-      border-radius: 10px;
-      transition: background 0.4s;
-    }
-
-
-    .crop-thumb {
+    .dark-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #2d6a4f;
+      color: white;
+      border: none;
+      border-radius: 50%;
       width: 40px;
       height: 40px;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-      margin-right: 10px;
-      border: 2px solid var(--thumb-border);
-      background: #fff;
-      transition: border-color 0.3s, transform 0.2s;
+      font-size: 1.2rem;
+      cursor: pointer;
     }
 
-    .crop-thumb:hover {
-      transform: scale(1.08);
-      border-color: #40916c;
-    }
-
-
-    @media (max-width: 600px) {
-      .app-container {
-        padding: 15px;
-      }
-      .crop-thumb {
-        width: 32px;
-        height: 32px;
-        margin-right: 7px;
-      }
-    }
-
-
-    .history-section, .favorites-section {
-      margin-top: 20px;
-      background-color: #f8fafc;
-      padding: 10px;
+    .result-card {
+      background-color: var(--card-light);
+      padding: 1rem;
+      margin: 1rem 0;
       border-radius: 10px;
     }
 
-    .history-section h3, .favorites-section h3 {
-      margin-top: 0;
+    [data-theme="dark"] .result-card {
+      background-color: var(--card-dark);
+    }
+
+    .crop-image {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      background: #f1fdf6;
+      border: 2px solid #d8f3dc;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    [data-theme="dark"] .crop-image {
+      background: #263238;
+      border: 2px solid #40916c;
+    }
+
+    .category-badge {
+      display: inline-block;
+      background: #d8f3dc;
       color: #1b4332;
-    }
-
-    #crop-history button {
-      margin-left: 10px;
-      background: none;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    textarea#user-notes {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      resize: vertical;
-    }
-
-    /* Dark theme overrides */
-    .dark-theme {
-      --bg: #1a1a1a;
-      --container-bg: #23272f;
-      --primary: #b7e4c7;
-      --secondary: #40916c;
-      --accent: #2d6a4f;
-      --text: #f0f8f5;
-      --thumb-border: #40916c;
-
-    }
-    .dark-theme, .dark-theme body, .dark-theme html {
-      background-color: var(--bg) !important;
-      color: var(--text) !important;
-    }
-
-    .dark-theme .app-container {
-      background-color: var(--container-bg) !important;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .dark-theme h1, .dark-theme .result-section h3 {
-      color: var(--primary) !important;
-    }
-
-    .dark-theme button {
-      background-color: var(--secondary) !important;
-      color: white !important;
-    }
-
-    .dark-theme button:hover {
-      background-color: var(--primary) !important;
-    }
-
-    .dark-theme .results {
-      margin-top: 20px;
-    }
-
-    .dark-theme .result-section {
-      background-color: var(--accent) !important;
-    }
-
-    .dark-theme textarea#user-notes {
-      background-color: #2c2c2c !important;
-      color: #f0f8f5 !important;
-      border-color: #444 !important;
-    }
-
-    /* Add dark theme for modal */
-    .dark-theme .modal-content {
-      background-color: var(--container-bg) !important;
-      color: var(--text) !important;
-      border-color: #444 !important;
-    }
-
-    .crop-browser {
-      background: var(--accent);
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      margin-bottom: 24px;
-      transition: background 0.4s;
-    }
-
-    .crop-browser h3 {
-      margin-top: 0;
-      color: var(--primary);
-    }
-
-    .crop-filters {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-
-    .crop-filters label {
-      background: var(--container-bg);
+      padding: 4px 8px;
       border-radius: 6px;
-      padding: 6px 12px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-      cursor: pointer;
-      font-size: 15px;
-      color: var(--secondary);
-      transition: background 0.3s, color 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .daily-tip {
+      background: #d8f3dc;
+      color: #1b4332;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      font-size: 1.1rem;
+      text-align: center;
+      font-style: italic;
+    }
+    [data-theme="dark"] .daily-tip {
+      background: #263238;
+      color: #b7efc5;
+    }
+
+    /* Modal styles */
+    .modal-overlay {
+      position: fixed;
+      z-index: 1000;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+      transition: opacity 0.3s;
     }
 
-    .crop-filters input[type="checkbox"] {
-      accent-color: var(--secondary);
-      margin-right: 4px;
-      width: 18px;
-      height: 18px;
+    .modal-content {
+      background: #fff;
+      color: #1b4332;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      max-width: 95vw;
+      width: 370px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      text-align: left;
+      font-size: 1.05rem;
     }
 
-    #cropList {
-      margin-top: 18px;
+    [data-theme="dark"] .modal-content {
+      background: #263238;
+      color: #e0f2f1;
     }
 
-    .crop-browser.hide-list #cropList {
-      display: none;
+    #start-btn {
+      margin-top: 1.5rem;
+      width: 100%;
+      background: #2d6a4f;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 1.1rem;
+      cursor: pointer;
     }
 
-    .styled-crop-list {
+    .app-blur {
+      filter: blur(6px) brightness(0.7);
+      pointer-events: none;
+      user-select: none;
+      transition: filter 0.3s;
+      /* Optionally add opacity for extra faintness */
+      opacity: 0.3;
+    }
+
+    .app-footer {
+      max-width: 600px;
+      margin: 2rem auto 0 auto;
+      padding: 1rem;
+      background: #f1fdf6;
+      color: #1b4332;
+      border-radius: 0 0 1rem 1rem;
+      text-align: center;
+      font-size: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    [data-theme="dark"] .app-footer {
+      background: #263238;
+      color: #e0f2f1;
+    }
+    .app-footer ul {
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 0.5rem 0 0 0;
+    }
+    .app-footer li {
+      display: inline-block;
+      margin: 0 0.5rem;
     }
 
-    .styled-crop-item {
-      background: var(--container-bg);
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-      margin-bottom: 12px;
-      padding: 12px 16px;
-      display: flex;
-      flex-direction: column;
-      transition: background 0.3s;
-    }
-
-    .styled-crop-name {
-      font-weight: bold;
-      color: var(--primary);
-      font-size: 1.08em;
-      margin-bottom: 4px;
-    }
-
-    .styled-crop-desc {
-      color: var(--secondary);
-      font-size: 0.98em;
-    }
-
-    /* Dark theme for crop list */
-    .dark-theme .styled-crop-item {
-      background: #222e26;
-      color: #e6f2ed;
-    }
-
-    .dark-theme .styled-crop-name {
-      color: #b7e4c7;
-    }
-
-    .dark-theme .styled-crop-desc {
-      color: #95d5b2;
+    .app-container,
+    .dark-toggle,
+    .app-footer {
+      display: none;
     }
