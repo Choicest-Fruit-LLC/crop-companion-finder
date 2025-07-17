@@ -474,6 +474,7 @@ function highlightCompanions(mainCropKey) {
     function showSpinner() {
       document.getElementById("loading-spinner").style.display = "flex";
     }
+
 function hideSpinner() {
   document.getElementById("loading-spinner").style.display = "none";
 }
@@ -482,6 +483,7 @@ function showSuccess() {
   el.style.display = "flex";
   setTimeout(() => { el.style.display = "none"; }, 1200);
 }
+
 
 // Example usage: wrap main actions
 function findCompanions() {
@@ -625,5 +627,16 @@ window.addEventListener("DOMContentLoaded", function() {
   const startBtn = document.getElementById("start-btn");
   if (startBtn) {
     startBtn.onclick = hideIntroModal;
+  }
+
+  const saveNotesBtn = document.getElementById('save-notes-btn');
+  if (saveNotesBtn) {
+    saveNotesBtn.onclick = function() {
+      const crop = getCurrentCropKey();
+      if (crop && cropData[crop]) {
+        localStorage.setItem('notes_' + crop, document.getElementById('user-notes').value);
+        alert('Notes saved!');
+      }
+    };
   }
 });
