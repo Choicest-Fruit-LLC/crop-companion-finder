@@ -567,25 +567,23 @@ function findFoes() {
   }, 700);
 }
 
-function showDetails() {
-  clearResults();
-  showSpinner();
-  setTimeout(() => {
-    hideSpinner();
-    showSuccess();
-    const crop = getInputCrop();
-    saveToHistory(crop);
-    if (cropData[crop]) {
-      const cat = cropData[crop].category;
-      const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
-      const badge = `<span class='category-badge'>${cat}</span>`;
-      const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
-      showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details + `<div class="crop-tags">${tags}</div>`);
-    } else {
-      showMessage("Not Found", "Crop not found in database.");
+    function showDetails() {
+      clearResults();
+      const crop = getInputCrop();
+      saveToHistory(crop);
+      if (cropData[crop]) {
+        const cat = cropData[crop].category;
+        const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
+        const badge = `<span class='category-badge'>${cat}</span>`;
+        const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
+        showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details + `<div class="crop-tags">${tags}</div>`);
+      } else {
+        showMessage("Not Found", "Crop not found in database.");
+      }
     }
   }, 700);
 }
+
 
 function showBenefits() {
   clearResults();
@@ -688,4 +686,11 @@ window.addEventListener("DOMContentLoaded", function() {
       }
     };
   }
+
 });
+
+function loadNotesForCrop(crop) {
+  if (!crop) return;
+  const notes = localStorage.getItem('notes_' + crop) || '';
+  document.getElementById('user-notes').value = notes;
+}

@@ -65,6 +65,48 @@
       background: #2d6a4f;
       color: white;
       border: none;
+      border-radius: 10px;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Button hover animation */
+    button:hover, button:focus {
+      background: #40916c;
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 6px 18px rgba(44, 62, 80, 0.18);
+    }
+
+    /* Button click animation */
+    button:active {
+      transform: scale(0.97);
+      background: #1b4332;
+    }
+
+    /* Ripple effect on click */
+    button::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s ease, height 0.4s ease, opacity 0.4s;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    button:active::after {
+      width: 120px;
+      height: 120px;
+      opacity: 1;
+      transition: 0s;
     }
 
     .dark-toggle {
@@ -299,4 +341,75 @@
       color: #b7efc5;
     }
 
+    .crop-tags {
+      margin-top: 8px;
+    }
+    .crop-tag {
+      display: inline-block;
+      background: #ffe066;
+      color: #1b4332;
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 0.95em;
+      margin: 2px 4px 2px 0;
+      font-weight: 500;
+    }
+    [data-theme="dark"] .crop-tag {
+      background: #ffd60a;
+      color: #263238;
+    }
+
     /* --- End crop card styles --- */
+
+
+    .spinner-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .spinner {
+      width: 54px;
+      height: 54px;
+      border: 6px solid #d8f3dc;
+      border-top: 6px solid #2d6a4f;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .success-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2100;
+      animation: fadeIn 0.4s;
+    }
+    .success-checkmark {
+      font-size: 4rem;
+      color: #2d6a4f;
+      background: #d8f3dc;
+      border-radius: 50%;
+      padding: 24px;
+      box-shadow: 0 2px 18px rgba(44,62,80,0.18);
+      animation: popIn 0.5s;
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      80% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+
+    }

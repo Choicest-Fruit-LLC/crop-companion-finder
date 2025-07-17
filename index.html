@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crop Companion Finder</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2d6a4f">
+    <link rel="icon" href="assets/img/CropCompanion_Favi.png" type="image/x-icon">
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("service-worker.js");
+      }
+    </script>
 </head>
 <body>
   <div id="intro-modal" class="modal-overlay">
@@ -51,6 +59,13 @@
     <button onclick="showBenefits()">Show Crop Benefits</button>
 
     <div class="results" id="results"></div>
+
+
+  <div id="loading-spinner" class="spinner-overlay" style="display:none;">
+    <div class="spinner"></div>
+  </div>
+  <div id="success-animation" class="success-overlay" style="display:none;">
+    <div class="success-checkmark">✔️</div>
   </div>
 
   <footer class="app-footer">
@@ -65,7 +80,9 @@
     </ul>
   </footer>
 
-  <script src="./script.js"></script>
+ 
   
+   <script src="./script.js"></script>
   </body>
+
 </html>
