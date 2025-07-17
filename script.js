@@ -393,9 +393,19 @@ const cropData = {
 const cropInput = document.getElementById("cropInput");
 const cropList = document.getElementById("cropList");
 
-// Helper: Normalize crop key for lookup
+// Helper: Normalize crop key for lookup, handling plurals
 function normalizeCropKey(input) {
-  return input.toLowerCase().replace(/\s+/g, "_").trim();
+  let key = input.toLowerCase().replace(/\s+/g, "_").trim();
+  // Handle simple English plurals
+  if (!cropData[key]) {
+    // Remove trailing 'es' or 's' if present and try again
+    if (key.endsWith("es") && cropData[key.slice(0, -2)]) {
+      key = key.slice(0, -2);
+    } else if (key.endsWith("s") && cropData[key.slice(0, -1)]) {
+      key = key.slice(0, -1);
+    }
+  }
+  return key;
 }
 
 // Autocomplete suggestions as user types
@@ -440,7 +450,7 @@ function highlightCompanions(mainCropKey) {
     }
 
     function getInputCrop() {
-      return cropInput.value.toLowerCase().trim();
+      return normalizeCropKey(cropInput.value);
     }
 
     function clearResults() {
