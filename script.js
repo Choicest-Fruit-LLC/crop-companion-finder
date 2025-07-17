@@ -720,4 +720,15 @@ window.addEventListener("DOMContentLoaded", function() {
   if (startBtn) {
     startBtn.onclick = hideIntroModal;
   }
+
+  const saveNotesBtn = document.getElementById('save-notes-btn');
+  if (saveNotesBtn) {
+    saveNotesBtn.onclick = function() {
+      const crop = getCurrentCropKey();
+      if (crop && cropData[crop]) {
+        localStorage.setItem('notes_' + crop, document.getElementById('user-notes').value);
+        alert('Notes saved!');
+      }
+    };
+  }
 });
