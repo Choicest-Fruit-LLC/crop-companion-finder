@@ -6,7 +6,8 @@ const cropData = {
     foes: ["Corn", "Potato", "Cucumber"],
     details: "Tomatoes grow well with basil, marigold, and carrots. Avoid planting near corn and potatoes.",
     img: "assets/img/tomato.jpg",
-    benefits: "These nutrients can contribute to heart health, cancer prevention, improved vision, and skin health."
+    benefits: "These nutrients can contribute to heart health, cancer prevention, improved vision, and skin health.",
+    tags: ["☀️ Full Sun", "🧪 Neutral pH Soil"]
   },
   bell_pepper: {
     category: "Fruiting Vegetables",
@@ -14,7 +15,8 @@ const cropData = {
     foes: ["Fennel"],
     details: "Bell peppers benefit from basil and onions. Avoid fennel.",
     img: "assets/img/different types of peper.png",
-    benefits: "These nutrients can contribute to heart health, cancer prevention, improved vision, and skin health."
+    benefits: "These nutrients can contribute to heart health, cancer prevention, improved vision, and skin health.",
+    tags: ["☀️ Full Sun", "🧪 Neutral pH Soil"]
   },
   chili_pepper: {
     category: "Fruiting Vegetables",
@@ -38,7 +40,8 @@ const cropData = {
     foes: ["Tomato", "Sage"],
     details: "Cucumbers grow well with beans and peas. Avoid tomatoes and sage.",
     img: "assets/img/cucumber.jpg",
-    benefits: "They can promote hydration, support heart health, and may help manage blood sugar and weight."
+    benefits: "They can promote hydration, support heart health, and may help manage blood sugar and weight.",
+    tags: ["☀️ Full Sun", "🧪 Neutral pH Soil"]
   },
   zucchini: {
     category: "Fruiting Vegetables",
@@ -498,13 +501,14 @@ function highlightCompanions(mainCropKey) {
         const cat = cropData[crop].category;
         const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
         const badge = `<span class='category-badge'>${cat}</span>`;
-        showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details);
+        const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
+        showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details + `<div class="crop-tags">${tags}</div>`);
       } else {
         showMessage("Not Found", "Crop not found in database.");
       }
     }
 
-      function showBenefits() {
+    function showBenefits() {
       clearResults();
       const crop = getInputCrop();
       saveToHistory(crop);
@@ -512,7 +516,8 @@ function highlightCompanions(mainCropKey) {
         const cat = cropData[crop].category;
         const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
         const badge = `<span class='category-badge'>${cat}</span>`;
-        showMessage("🌱 Crop Benefits", img + badge + " " + cropData[crop].benefits);
+        const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
+        showMessage("🌱 Crop Benefits", img + badge + " " + cropData[crop].benefits + `<div class="crop-tags">${tags}</div>`);
       } else {
         showMessage("Not Found", "Crop not found in database.");
       }
