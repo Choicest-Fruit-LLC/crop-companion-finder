@@ -691,3 +691,9 @@ function loadNotesForCrop(crop) {
   const notes = localStorage.getItem('notes_' + crop) || '';
   document.getElementById('user-notes').value = notes;
 }
+const notes = document.getElementById('user-notes');
+notes.addEventListener('input', () => {
+  notes.style.height = 'auto';
+  notes.style.height = notes.scrollHeight + 'px';
+});
+
