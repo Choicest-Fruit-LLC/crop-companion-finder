@@ -14,7 +14,7 @@ const cropData = {
     companions: ["Basil", "Onion", "Carrot"],
     foes: ["Fennel"],
     details: "Bell peppers benefit from basil and onions. Avoid fennel.",
-    img: "assets/img/different types of peper.png",
+    img: "assets/img/bellpepper.webp",
     benefits: "These nutrients can contribute to heart health, cancer prevention, improved vision, and skin health.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Well-Drained Soil"]
   },
@@ -23,7 +23,7 @@ const cropData = {
     companions: ["Basil", "Onion"],
     foes: ["Fennel"],
     details: "Chili peppers grow well with basil and onions.",
-    img: "assets/img/chili_pepper.jpg",
+    img: "assets/img/chilipepper.webp",
     benefits: "Improved heart health, enhanced metabolism, and potential cancer-fighting properties.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Well-Drained Soil"]
   },
@@ -32,7 +32,7 @@ const cropData = {
     companions: ["Beans", "Peas", "Marigold"],
     foes: ["Fennel"],
     details: "Eggplant benefits from beans and marigold.",
-    img: "assets/img/eggplant.jpg",
+    img: "assets/img/eggplant.webp",
     benefits: "It's packed with fiber, vitamins, and antioxidants, which can contribute to heart health, improved digestion, and potentially even brain health.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Well-Drained Soil"]
   },
@@ -50,7 +50,7 @@ const cropData = {
     companions: ["Borage", "Nasturtium", "Corn"],
     foes: ["Potato"],
     details: "Zucchini benefits from borage and nasturtium.",
-    img: "assets/img/zucchini.jpg",
+    img: "assets/img/zucchini.webp",
     benefits: "It supports eye health, aids digestion, and may contribute to weight management",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Well-Drained Soil"]
   },
@@ -68,7 +68,7 @@ const cropData = {
     companions: ["Peppers", "Melon"],
     foes: [],
     details: "Okra grows well with peppers and melon.",
-    img: "assets/img/okra.jpg",
+    img: "assets/img/okra.webp",
     benefits: "Rich in vitamins A and C, okra supports skin health and may aid in digestion.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Well-Drained Soil"]
   },
@@ -96,7 +96,7 @@ const cropData = {
     companions: ["Peas", "Beans"],
     foes: [],
     details: "Millet benefits from peas and beans.",
-    img: "assets/img/millet.jpg",
+    img: "assets/img/millets.jpg",
     benefits: "Improved digestion, potential diabetes management, weight management support, and reduced risk of heart disease",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Sandy or Well-Drained Soil"]
   },
@@ -115,7 +115,7 @@ const cropData = {
     companions: ["Carrot", "Lettuce", "Peas"],
     foes: [],
     details: "Radishes grow well with carrots and lettuce.",
-    img: "assets/img/radish.jpg",
+    img: "assets/img/radish.webp",
     benefits: "Low in calories and a good source of fiber, which aids digestion and promotes feelings of fullness",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Sandy, Well-Drained Soil"]
   },
@@ -124,7 +124,7 @@ const cropData = {
     companions: ["Onion", "Lettuce"],
     foes: [],
     details: "Beetroot benefits from onions and lettuce.",
-    img: "assets/img/beetroot.jpg",
+    img: "assets/img/Beetroot.webp",
     benefits: "Improved blood flow, lower blood pressure, and enhanced athletic performance",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Loamy, Well-Drained Soil"]
   },
@@ -133,7 +133,7 @@ const cropData = {
     companions: ["Peas", "Onion"],
     foes: [],
     details: "Turnips grow well with peas and onions.",
-    img: "assets/img/turnip.jpg",
+    img: "assets/img/turnip.webp",
     benefits: "A good source of vitamins C and K, folate, and potassium, and they also contain fiber and antioxidants.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Loamy, Moist Soil"]
   },
@@ -151,7 +151,7 @@ const cropData = {
     companions: ["Beans", "Marigold"],
     foes: [],
     details: "Sweet potatoes grow well with beans and marigold.",
-    img: "assets/img/sweet_potato.jpg",
+    img: "assets/img/sweet_potato.JPG",
     benefits: "A good source of vitamin C, vitamin B6, and potassium, which support heart and digestive health",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Sandy, Well-Drained Soil"]
   },
@@ -169,7 +169,7 @@ const cropData = {
     companions: ["Carrot", "Lettuce", "Strawberry"],
     foes: ["Peas"],
     details: "Garlic benefits carrots and lettuce. Avoid peas.",
-    img: "assets/img/garlic.jpg",
+    img: "assets/img/garlic.webp",
     benefits: "Garlic, particularly aged garlic extract, can help lower blood pressure in individuals with hypertension.",
     tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Loose, Well-Drained Soil"]
   },
@@ -188,7 +188,7 @@ const cropData = {
     companions: ["Carrot", "Radish", "Turnip"],
     foes: ["Onion", "Garlic"],
     details: "Peas benefit carrots and radishes.",
-    img: "assets/img/peas.jpg",
+    img: "assets/img/peas.webp",
     benefits: "A good source of plant-based protein and fiber, which aid in digestion and promote feelings of fullness.",
     tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Well-Drained Soil"]
   },
@@ -197,7 +197,7 @@ const cropData = {
     companions: ["Corn", "Squash"],
     foes: [],
     details: "Soybeans grow well with corn and squash.",
-    img: "assets/img/soybeans.jpg",
+    img: "assets/img/soybeans.webp",
     benefits: "A good source of protein, fiber, and several vitamins and minerals, including iron, folate, and potassium.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Well-Drained Soil"]
   },
@@ -216,7 +216,7 @@ const cropData = {
     companions: ["Tomato", "Peppers"],
     foes: ["Rue"],
     details: "Basil enhances the flavor of tomatoes.",
-    img: "assets/img/basil.png",
+    img: "assets/img/basil.jpeg",
     benefits: "Incorporating both soy and basil into your diet can potentially offer a range of health benefits, as both ingredients are recognized for their nutritional value and beneficial compounds.",
     tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Well-Drained Soil"]
   },
@@ -225,7 +225,7 @@ const cropData = {
     companions: ["Cabbage", "Tomato"],
     foes: [],
     details: "Mint helps deter pests for cabbage and tomato.",
-    img: "assets/img/mint.png",
+    img: "assets/img/Mint.webp",
     benefits: "Aids digestion, freshens breath, and may help reduce stress and headaches.",
     tags: ["⛅ Partial Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Moist Soil"]
   },
@@ -234,7 +234,7 @@ const cropData = {
     companions: ["Tomato", "Carrot"],
     foes: [],
     details: "Parsley benefits tomatoes and carrots.",
-    img: "assets/img/parsley.png",
+    img: "assets/img/parsley.jpg",
     benefits: "Supports digestion, boosts the immune system, improves heart health, and may protect against certain cancers.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Moist, Well-Drained Soil"]
   },
@@ -243,7 +243,7 @@ const cropData = {
     companions: ["Tomato", "Spinach"],
     foes: [],
     details: "Cilantro grows well with tomatoes and spinach.",
-    img: "assets/img/cilantro.png",
+    img: "assets/img/Cilantro.jpeg",
     benefits: "Cilantro, also known as coriander leaves, offers several potential health benefits, supported by traditional use and some scientific studies.",
     tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Well-Drained Soil"]
   },
@@ -261,7 +261,7 @@ const cropData = {
     companions: ["Cabbage", "Strawberry"],
     foes: [],
     details: "Thyme benefits cabbage and strawberries.",
-    img: "assets/img/thyme.jpg",
+    img: "assets/img/Thyme.jpeg",
     benefits: "Can help boost immunity, relieve coughs and sore throats, and reduce inflammation.",
     tags: ["☀️ Full Sun", "🧪 Slightly Alkaline Soil", "🌱 Sandy, Well-Drained Soil"]
   },
@@ -288,7 +288,7 @@ const cropData = {
     companions: ["Carrot", "Tomato"],
     foes: [],
     details: "Chives benefit carrots and tomatoes.",
-    img: "assets/img/chives.jpg",
+    img: "assets/img/Chives.jpeg",
     benefits: "A good source of vitamins C, K, and A, as well as antioxidants, which can help boost the immune system, improve bone health, and protect against cellular damage from free radicals.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Moist, Well-Drained Soil"]
   },
@@ -298,7 +298,7 @@ const cropData = {
     companions: ["Spinach", "Lettuce", "Onion"],
     foes: [],
     details: "Strawberries grow well with spinach and lettuce.",
-    img: "assets/img/strawberry.jpg",
+    img: "assets/img/strawberry.jpeg",
     benefits: "A great source of vitamins, antioxidants, and fiber, contributing to heart health, immune support, and digestive wellness.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Moist, Well-Drained Soil"]
   },
@@ -307,7 +307,7 @@ const cropData = {
     companions: ["Corn", "Okra"],
     foes: [],
     details: "Melons benefit from corn and okra.",
-    img: "assets/img/melon.jpg",
+    img: "assets/img/melon.jpeg",
     benefits: "Excellent sources of vitamins A and C, which support immune function, skin health, and eye health.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Sandy, Well-Drained Soil"]
   },
@@ -325,7 +325,7 @@ const cropData = {
     companions: ["Garlic", "Chives"],
     foes: [],
     details: "Raspberries benefit from garlic and chives.",
-    img: "assets/img/raspberry.jpg",
+    img: "assets/img/raspberry.jpeg",
     benefits: "Raspberries also contain vitamin C, an antioxidant ideal for immune health.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Loamy, Well-Drained Soil"]
   },
@@ -344,7 +344,7 @@ const cropData = {
     companions: ["Tomato", "Squash", "Sweet Potato"],
     foes: [],
     details: "Marigolds help repel nematodes and other pests.",
-    img: "assets/img/different types and colors of marigold.png",
+    img: "assets/img/marigold.png",
     benefits: "May help with wound healing, reduce inflammation, and even offer some sun protection for the skin.",
     tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Well-Drained Soil"]
   },
@@ -353,7 +353,7 @@ const cropData = {
     companions: ["Squash", "Watermelon", "Zucchini"],
     foes: [],
     details: "Nasturtium deters pests and benefits squash and watermelon.",
-    img: "assets/img/nasturtium.jpg",
+    img: "assets/img/Nasturtium.jpeg",
     benefits: "Provides pest control, edible flowers and leaves, and potential medicinal properties.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Well-Drained Soil"]
   },
@@ -362,7 +362,7 @@ const cropData = {
     companions: ["Corn", "Cucumber"],
     foes: [],
     details: "Sunflowers attract pollinators and benefit corn and cucumber.",
-    img: "assets/img/sunflower.jpg",
+    img: "assets/img/Sunflower.jpeg",
     benefits: "May promote heart health, boost the immune system, and potentially help with weight management.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Loamy, Well-Drained Soil"]
   },
@@ -466,7 +466,8 @@ function highlightCompanions(mainCropKey) {
       // Animated card list
       let listHtml = `<ul class="result-card-list">`;
       array.forEach((item, idx) => {
-        const crop = cropData[item.toLowerCase()];
+        const key = normalizeCropKey(item); // <-- always normalize
+        const crop = cropData[key];
         const img = (showImages && crop && crop.img)
           ? `<img src='${crop.img}' class='crop-image' alt='${item}' style='margin-bottom:8px;'/>`
           : `<span style="font-size:2em;">🌱</span>`;
