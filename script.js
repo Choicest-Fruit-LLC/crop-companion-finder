@@ -468,16 +468,16 @@ function highlightCompanions(mainCropKey) {
       showDetails();
     }
 
-    function findCompanions() {
-      clearResults();
-      const crop = getInputCrop();
-      saveToHistory(crop);
-      if (cropData[crop]) {
-        displayResultCard("✅ Companion Crops", cropData[crop].companions, true, crop);
-      } else {
-        showMessage("Not Found", "Crop not found in database.");
-      }
-    }
+function findCompanions() {
+  clearResults();
+  const crop = getInputCrop();
+  saveToHistory(crop);
+  if (cropData[crop]) {
+    displayResultCard("✅ Companion Crops", cropData[crop].companions, true, crop);
+  } else {
+    showMessage("Not Found", "Crop not found in database.");
+  }
+}
 
     function findFoes() {
       clearResults();
@@ -530,9 +530,247 @@ function highlightCompanions(mainCropKey) {
       }
     }
 
-    window.addEventListener("DOMContentLoaded", updateHistoryDisplay);
+    // Save notes for the current crop
+    document.getElementById('save-notes-btn').onclick = function() {
+      const crop = getCurrentCropKey();
+      if (crop && cropData[crop]) {
+        localStorage.setItem('notes_' + crop, document.getElementById('user-notes').value);
+        alert('Notes saved!');
+      }
+    };
 
-    // --- Daily Gardening Tip ---
+    // Load from localStorage
+    let cropHistory = JSON.parse(localStorage.getItem('cropHistory')) || [];
+    let favoriteCrops = JSON.parse(localStorage.getItem('favoriteCrops')) || [];
+
+    // Function to add crop to history
+    function addToHistory(crop) {
+      if (!cropHistory.includes(crop)) {
+        cropHistory.unshift(crop);
+        if (cropHistory.length > 10) cropHistory.pop(); // Keep last 10
+        localStorage.setItem('cropHistory', JSON.stringify(cropHistory));
+        renderHistory();
+      }
+    }
+
+    // Function to add/remove favorite
+    function toggleFavorite(crop) {
+      if (favoriteCrops.includes(crop)) {
+        favoriteCrops = favoriteCrops.filter(c => c !== crop);
+      } else {
+        favoriteCrops.push(crop);
+      }
+      localStorage.setItem('favoriteCrops', JSON.stringify(favoriteCrops));
+      renderFavorites();
+    }
+
+    // Render functions
+    function renderHistory() {
+      const ul = document.getElementById('crop-history');
+      ul.innerHTML = '';
+      cropHistory.forEach(crop => {
+        const li = document.createElement('li');
+        li.textContent = crop;
+        const favBtn = document.createElement('button');
+        favBtn.textContent = favoriteCrops.includes(crop) ? '★' : '☆';
+        favBtn.onclick = () => toggleFavorite(crop);
+        li.appendChild(favBtn);
+        ul.appendChild(li);
+      });
+    }
+
+    function renderFavorites() {
+      const ul = document.getElementById('favorite-crops');
+      ul.innerHTML = '';
+      favoriteCrops.forEach(crop => {
+        const li = document.createElement('li');
+        li.textContent = crop;
+        ul.appendChild(li);
+      });
+    }
+
+    function populateCropDatalist() {
+      const datalist = document.getElementById('cropList');
+      datalist.innerHTML = '';
+      Object.keys(cropData).forEach(crop => {
+        const option = document.createElement('option');
+        option.value = crop.charAt(0).toUpperCase() + crop.slice(1);
+        datalist.appendChild(option);
+      });
+    }
+
+    function toggleActionButtons() {
+      const crop = document.getElementById("cropInput").value.trim();
+      document.getElementById("findCompanionsBtn").disabled = !crop;
+      document.getElementById("findFoesBtn").disabled = !crop;
+      document.getElementById("showDetailsBtn").disabled = !crop;
+    }
+
+    function showError(message) {
+      const resultsDiv = document.getElementById("results");
+      // Suggest valid crops
+      const suggestions = Object.keys(cropData)
+        .map(crop => crop.charAt(0).toUpperCase() + crop.slice(1))
+        .join(', ');
+      resultsDiv.innerHTML = `<div class='result-section' style="color:red;">
+        <strong>${message}</strong><br>
+        <small>Try: ${suggestions}</small>
+      </div>`;
+    }
+
+    function updateFilterVisibility() {
+      const filterCompanions = document.getElementById('filterCompanions').checked;
+      const filterPollinators = document.getElementById('filterPollinators').checked;
+      const cropBrowser = document.getElementById('cropBrowser');
+      if (!filterCompanions && !filterPollinators) {
+        cropBrowser.classList.add('hide-filters');
+        document.getElementById('cropList').innerHTML = "";
+      } else {
+        cropBrowser.classList.remove('hide-filters');
+      }
+    }
+
+    // Add a simple pollinator benefit flag to cropData for demonstration
+// (You can expand this as needed)
+const pollinatorCrops = [
+  "marigold", "squash", "sunflower", "tomato", "borage", "nasturtium", "melon", "watermelon"
+];
+
+// List of categories
+const cropCategories = [
+  "Fruiting Vegetables",
+  "Grains & Tall Plants",
+  "Root Vegetables",
+  "Legumes",
+  "Herbs",
+  "Fruits",
+  "Companion Flowers",
+  "Ula"
+];
+
+// Dynamically render category checkboxes (unchecked by default)
+function renderCategoryFilters() {
+  const filterDiv = document.getElementById('categoryFilters');
+  filterDiv.innerHTML = cropCategories.map(cat =>
+    `<label><input type="checkbox" class="category-filter" value="${cat}" /> ${cat}</label>`
+  ).join('');
+}
+
+// Attach listeners for category checkboxes
+function attachCategoryListeners() {
+  document.querySelectorAll('.category-filter').forEach(cb => {
+    cb.addEventListener('change', renderCropList);
+  });
+}
+
+// Update renderCropList to include category filtering
+function renderCropList() {
+  const cropListDiv = document.getElementById('cropList');
+  const cropBrowser = document.getElementById('cropBrowser');
+  const checkedCategories = Array.from(document.querySelectorAll('.category-filter:checked')).map(cb => cb.value);
+  const showCompanions = document.getElementById('filterCompanions').checked;
+  const showPollinators = document.getElementById('filterPollinators').checked;
+
+  let crops = Object.keys(cropData);
+
+  // If no filters are selected, hide list
+  if (checkedCategories.length === 0 && !showCompanions && !showPollinators) {
+    cropBrowser.classList.add('hide-list');
+    cropListDiv.innerHTML = "";
+    return;
+  } else {
+    cropBrowser.classList.remove('hide-list');
+  }
+
+  // Filter by category if any selected
+  if (checkedCategories.length > 0) {
+    crops = crops.filter(crop => checkedCategories.includes(cropData[crop].category));
+  }
+
+  // If companions or pollinators are checked, further filter the crops
+  if (showCompanions) {
+    crops = crops.filter(crop => cropData[crop].companions && cropData[crop].companions.length > 2);
+  }
+  if (showPollinators) {
+    crops = crops.filter(crop => pollinatorCrops.includes(crop));
+  }
+
+  if (crops.length === 0) {
+    cropListDiv.innerHTML = "<em>No crops match your filters.</em>";
+    return;
+  }
+
+  cropListDiv.innerHTML = `<ul class="styled-crop-list">${crops.map(crop =>
+    `<li class="styled-crop-item">
+      <span class="styled-crop-name">${crop.charAt(0).toUpperCase() + crop.slice(1).replace(/_/g, ' ')}</span>
+      <span class="styled-crop-desc">${cropData[crop].details}</span>
+      <span class="styled-crop-category">${cropData[crop].category}</span>
+    </li>`
+  ).join('')}</ul>`;
+}
+
+// Attach listeners for all filters
+document.getElementById('filterCompanions').addEventListener('change', renderCropList);
+document.getElementById('filterPollinators').addEventListener('change', renderCropList);
+// On page load, render category filters and crop list
+window.addEventListener('DOMContentLoaded', () => {
+  renderCategoryFilters();
+  attachCategoryListeners();
+  renderCropList();
+});
+
+    // Call these after a search
+    // addToHistory(searchedCrop);
+
+    // On page load
+    window.onload = function() {
+      renderHistory();
+      populateCropDatalist();
+      document.getElementById("cropInput").focus();
+      loadNotesForCrop();
+    };
+
+    document.getElementById("cropInput").addEventListener("input", function() {
+      if (!this.value.trim()) {
+        document.getElementById("results").innerHTML = "";
+        document.getElementById('notes-section').style.display = 'none';
+      }
+    });
+
+    document.getElementById("cropInput").addEventListener("input", toggleActionButtons);
+    document.getElementById('cropInput').addEventListener('input', loadNotesForCrop);
+
+    // Theme switching logic
+const themeToggle = document.getElementById('themeToggle');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const savedTheme = localStorage.getItem('theme');
+const root = document.documentElement;
+
+function setTheme(dark) {
+  if (dark) {
+    document.documentElement.classList.add('dark-theme');
+    document.body.classList.add('dark-theme');
+    themeToggle.textContent = '☀️ Switch to Light Mode';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.documentElement.classList.remove('dark-theme');
+    document.body.classList.remove('dark-theme');
+    themeToggle.textContent = '🌙 Switch to Dark Mode';
+    localStorage.setItem('theme', 'light');
+  }
+}
+
+themeToggle.addEventListener('click', () => {
+  setTheme(!document.body.classList.contains('dark-theme'));
+});
+
+// On load: set theme from localStorage or system preference
+if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+  setTheme(true);
+} else {
+  setTheme(false);
+}
+// --- Daily Gardening Tip ---
 const gardeningTips = [
   "Water your plants early in the morning to reduce evaporation.",
   "Rotate your crops each season to prevent soil depletion.",
@@ -587,5 +825,16 @@ window.addEventListener("DOMContentLoaded", function() {
   const startBtn = document.getElementById("start-btn");
   if (startBtn) {
     startBtn.onclick = hideIntroModal;
+  }
+
+  const saveNotesBtn = document.getElementById('save-notes-btn');
+  if (saveNotesBtn) {
+    saveNotesBtn.onclick = function() {
+      const crop = getCurrentCropKey();
+      if (crop && cropData[crop]) {
+        localStorage.setItem('notes_' + crop, document.getElementById('user-notes').value);
+        alert('Notes saved!');
+      }
+    };
   }
 });
