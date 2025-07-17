@@ -5,56 +5,64 @@ const cropData = {
     companions: ["Basil", "Marigold", "Carrot", "Onion", "Collard Greens"],
     foes: ["Corn", "Potato", "Cucumber"],
     details: "Tomatoes grow well with basil, marigold, and carrots. Avoid planting near corn and potatoes.",
-    img: "assets/img/tomato.jpg"
+    img: "assets/img/tomato.jpg",
+    benefits: ""
   },
   bell_pepper: {
     category: "Fruiting Vegetables",
     companions: ["Basil", "Onion", "Carrot"],
     foes: ["Fennel"],
     details: "Bell peppers benefit from basil and onions. Avoid fennel.",
-    img: "assets/img/different types of peper.png"
+    img: "assets/img/different types of peper.png",
+    benefits: ""
   },
   chili_pepper: {
     category: "Fruiting Vegetables",
     companions: ["Basil", "Onion"],
     foes: ["Fennel"],
     details: "Chili peppers grow well with basil and onions.",
-    img: "assets/img/chili_pepper.jpg"
+    img: "assets/img/chili_pepper.jpg",
+    benefits: ""
   },
   eggplant: {
     category: "Fruiting Vegetables",
     companions: ["Beans", "Peas", "Marigold"],
     foes: ["Fennel"],
     details: "Eggplant benefits from beans and marigold.",
-    img: "assets/img/eggplant.jpg"
+    img: "assets/img/eggplant.jpg",
+    benefits: ""
   },
   cucumber: {
     category: "Fruiting Vegetables",
     companions: ["Beans", "Peas", "Radish", "Sunflower"],
     foes: ["Tomato", "Sage"],
     details: "Cucumbers grow well with beans and peas. Avoid tomatoes and sage.",
-    img: "assets/img/cucumber.jpg"
+    img: "assets/img/cucumber.jpg",
+    benefits: ""
   },
   zucchini: {
     category: "Fruiting Vegetables",
     companions: ["Borage", "Nasturtium", "Corn"],
     foes: ["Potato"],
     details: "Zucchini benefits from borage and nasturtium.",
-    img: "assets/img/zucchini.jpg"
+    img: "assets/img/zucchini.jpg",
+    benefits: ""
   },
   squash: {
     category: "Fruiting Vegetables",
     companions: ["Corn", "Beans", "Nasturtium"],
     foes: [],
     details: "Squash grows well with corn and beans.",
-    img: "assets/img/squash.png"
+    img: "assets/img/squash.png",
+    benefits: ""
   },
   okra: {
     category: "Fruiting Vegetables",
     companions: ["Peppers", "Melon"],
     foes: [],
     details: "Okra grows well with peppers and melon.",
-    img: "assets/img/okra.jpg"
+    img: "assets/img/okra.jpg",
+    benefits: ""
   },
   // Grains & Tall Plants
   corn: {
@@ -62,21 +70,24 @@ const cropData = {
     companions: ["Beans", "Squash", "Sunflower"],
     foes: ["Tomato"],
     details: "Corn grows well with beans and squash.",
-    img: "assets/img/corn.png"
+    img: "assets/img/corn.png",
+    benefits: ""
   },
   sorghum: {
     category: "Grains & Tall Plants",
     companions: ["Peas", "Beans"],
     foes: [],
     details: "Sorghum benefits from peas and beans.",
-    img: "assets/img/sorghum.jpg"
+    img: "assets/img/sorghum.jpg",
+    benefits: ""
   },
   millet: {
     category: "Grains & Tall Plants",
     companions: ["Peas", "Beans"],
     foes: [],
     details: "Millet benefits from peas and beans.",
-    img: "assets/img/millet.jpg"
+    img: "assets/img/millet.jpg",
+    benefits: ""
   },
   // Root Vegetables
   carrot: {
@@ -84,56 +95,64 @@ const cropData = {
     companions: ["Lettuce", "Onion", "Tomato", "Peas"],
     foes: ["Dill"],
     details: "Carrots benefit from onions and peas.",
-    img: "assets/img/carrot.png"
+    img: "assets/img/carrot.png",
+    benefits: ""
   },
   radish: {
     category: "Root Vegetables",
     companions: ["Carrot", "Lettuce", "Peas"],
     foes: [],
     details: "Radishes grow well with carrots and lettuce.",
-    img: "assets/img/radish.jpg"
+    img: "assets/img/radish.jpg",
+    benefits: ""
   },
   beetroot: {
     category: "Root Vegetables",
     companions: ["Onion", "Lettuce"],
     foes: [],
     details: "Beetroot benefits from onions and lettuce.",
-    img: "assets/img/beetroot.jpg"
+    img: "assets/img/beetroot.jpg",
+    benefits: ""
   },
   turnip: {
     category: "Root Vegetables",
     companions: ["Peas", "Onion"],
     foes: [],
     details: "Turnips grow well with peas and onions.",
-    img: "assets/img/turnip.jpg"
+    img: "assets/img/turnip.jpg",
+    benefits: ""
   },
   potato: {
     category: "Root Vegetables",
     companions: ["Beans", "Corn"],
     foes: ["Tomato", "Cucumber"],
     details: "Potatoes benefit from beans and corn. Avoid tomatoes and cucumbers.",
-    img: "assets/img/potato.png"
+    img: "assets/img/potato.png",
+    benefits: ""
   },
   sweet_potato: {
     category: "Root Vegetables",
     companions: ["Beans", "Marigold"],
     foes: [],
     details: "Sweet potatoes grow well with beans and marigold.",
-    img: "assets/img/sweet_potato.jpg"
+    img: "assets/img/sweet_potato.jpg",
+    benefits: ""
   },
   onion: {
     category: "Root Vegetables",
     companions: ["Carrot", "Lettuce", "Strawberry"],
     foes: ["Peas"],
     details: "Onions deter pests for carrots. Avoid peas.",
-    img: "assets/img/onion.png"
+    img: "assets/img/onion.png",
+    benefits: ""
   },
   garlic: {
     category: "Root Vegetables",
     companions: ["Carrot", "Lettuce", "Strawberry"],
     foes: ["Peas"],
     details: "Garlic benefits carrots and lettuce. Avoid peas.",
-    img: "assets/img/garlic.jpg"
+    img: "assets/img/garlic.jpg",
+    benefits: ""
   },
   // Legumes
   green_beans: {
@@ -141,28 +160,32 @@ const cropData = {
     companions: ["Corn", "Squash", "Carrot"],
     foes: ["Onion", "Garlic"],
     details: "Green beans grow well with corn and squash.",
-    img: "assets/img/green_beans.jpg"
+    img: "assets/img/green_beans.jpg",
+    benefits: ""
   },
   peas: {
     category: "Legumes",
     companions: ["Carrot", "Radish", "Turnip"],
     foes: ["Onion", "Garlic"],
     details: "Peas benefit carrots and radishes.",
-    img: "assets/img/peas.jpg"
+    img: "assets/img/peas.jpg",
+    benefits: ""
   },
   soybeans: {
     category: "Legumes",
     companions: ["Corn", "Squash"],
     foes: [],
     details: "Soybeans grow well with corn and squash.",
-    img: "assets/img/soybeans.jpg"
+    img: "assets/img/soybeans.jpg",
+    benefits: ""
   },
   lentils: {
     category: "Legumes",
     companions: ["Carrot", "Radish"],
     foes: [],
     details: "Lentils benefit carrots and radishes.",
-    img: "assets/img/lentils.jpg"
+    img: "assets/img/lentils.jpg",
+    benefits: ""
   },
   // Herbs
   basil: {
@@ -170,63 +193,72 @@ const cropData = {
     companions: ["Tomato", "Peppers"],
     foes: ["Rue"],
     details: "Basil enhances the flavor of tomatoes.",
-    img: "assets/img/basil.png"
+    img: "assets/img/basil.png",
+    benefits: ""
   },
   mint: {
     category: "Herbs",
     companions: ["Cabbage", "Tomato"],
     foes: [],
     details: "Mint helps deter pests for cabbage and tomato.",
-    img: "assets/img/mint.png"
+    img: "assets/img/mint.png",
+    benefits: ""
   },
   parsley: {
     category: "Herbs",
     companions: ["Tomato", "Carrot"],
     foes: [],
     details: "Parsley benefits tomatoes and carrots.",
-    img: "assets/img/parsley.png"
+    img: "assets/img/parsley.png",
+    benefits: ""
   },
   cilantro: {
     category: "Herbs",
     companions: ["Tomato", "Spinach"],
     foes: [],
     details: "Cilantro grows well with tomatoes and spinach.",
-    img: "assets/img/cilantro.png"
+    img: "assets/img/cilantro.png",
+    benefits: ""
   },
   dill: {
     category: "Herbs",
     companions: ["Cabbage", "Lettuce"],
     foes: ["Carrot"],
     details: "Dill can stunt carrot growth.",
-    img: "assets/img/dill.png"
+    img: "assets/img/dill.png",
+    benefits: ""
   },
   thyme: {
     category: "Herbs",
     companions: ["Cabbage", "Strawberry"],
     foes: [],
     details: "Thyme benefits cabbage and strawberries.",
-    img: "assets/img/thyme.jpg"
+    img: "assets/img/thyme.jpg",
+    benefits: ""
   },
   oregano: {
     category: "Herbs",
     companions: ["Cabbage", "Tomato"],
     foes: [],
     details: "Oregano helps cabbage and tomato.",
-    img: "assets/img/oregano.jpg"
+    img: "assets/img/oregano.jpg",
+    benefits: ""
   },
   sage: {
     category: "Herbs",
     companions: ["Cabbage", "Carrot"],
     foes: ["Cucumber"],
     details: "Sage benefits cabbage and carrots.",
-    img: "assets/img/sage.jpg"
+    img: "assets/img/sage.jpg",
+    benefits: ""
   },
   chives: {
     category: "Herbs",
     companions: ["Carrot", "Tomato"],
     foes: [],
     details: "Chives benefit carrots and tomatoes.",
-    img: "assets/img/chives.jpg"
+    img: "assets/img/chives.jpg",
+    benefits: ""
   },
   // Fruits (Small-Scale)
   strawberry: {
@@ -234,35 +266,40 @@ const cropData = {
     companions: ["Spinach", "Lettuce", "Onion"],
     foes: [],
     details: "Strawberries grow well with spinach and lettuce.",
-    img: "assets/img/strawberry.jpg"
+    img: "assets/img/strawberry.jpg",
+    benefits: ""
   },
   melon: {
     category: "Fruits",
     companions: ["Corn", "Okra"],
     foes: [],
     details: "Melons benefit from corn and okra.",
-    img: "assets/img/melon.jpg"
+    img: "assets/img/melon.jpg",
+    benefits: ""
   },
   watermelon: {
     category: "Fruits",
     companions: ["Corn", "Nasturtium"],
     foes: [],
     details: "Watermelon grows well with corn and nasturtium.",
-    img: "assets/img/watermelon.jpg"
+    img: "assets/img/watermelon.jpg",
+    benefits: ""
   },
   raspberry: {
     category: "Fruits",
     companions: ["Garlic", "Chives"],
     foes: [],
     details: "Raspberries benefit from garlic and chives.",
-    img: "assets/img/raspberry.jpg"
+    img: "assets/img/raspberry.jpg",
+    benefits: ""
   },
   blueberry: {
     category: "Fruits",
     companions: ["Thyme", "Borage"],
     foes: [],
     details: "Blueberries grow well with thyme and borage (acidic soil needed).",
-    img: "assets/img/blueberry.jpg"
+    img: "assets/img/blueberry.jpg",
+    benefits: ""
   },
   // Companion Flowers
   marigold: {
@@ -270,28 +307,32 @@ const cropData = {
     companions: ["Tomato", "Squash", "Sweet Potato"],
     foes: [],
     details: "Marigolds help repel nematodes and other pests.",
-    img: "assets/img/different types and colors of marigold.png"
+    img: "assets/img/different types and colors of marigold.png",
+    benefits: ""
   },
   nasturtium: {
     category: "Companion Flowers",
     companions: ["Squash", "Watermelon", "Zucchini"],
     foes: [],
     details: "Nasturtium deters pests and benefits squash and watermelon.",
-    img: "assets/img/nasturtium.jpg"
+    img: "assets/img/nasturtium.jpg",
+    benefits: ""
   },
   sunflower: {
     category: "Companion Flowers",
     companions: ["Corn", "Cucumber"],
     foes: [],
     details: "Sunflowers attract pollinators and benefit corn and cucumber.",
-    img: "assets/img/sunflower.jpg"
+    img: "assets/img/sunflower.jpg",
+    benefits: ""
   },
   borage: {
     category: "Companion Flowers",
     companions: ["Tomato", "Strawberry", "Zucchini", "Blueberry"],
     foes: [],
     details: "Borage attracts pollinators and benefits tomatoes and strawberries.",
-    img: "assets/img/borage.jpg"
+    img: "assets/img/borage.jpg",
+    benefits: ""
   },
   // Collard Greens (added as requested)
   collard_greens: {
@@ -299,7 +340,8 @@ const cropData = {
     companions: ["Tomato", "Onion", "Mint"],
     foes: ["Strawberry"],
     details: "Collard greens grow well with tomato, onion, and mint.",
-    img: "assets/img/collard_greens.jpg"
+    img: "assets/img/collard_greens.jpg",
+    benefits: ""
   }
 
     };
@@ -404,9 +446,23 @@ function findCompanions() {
       saveToHistory(crop);
       if (cropData[crop]) {
         const cat = cropData[crop].category;
-        const img = `<img src='${cropData[crop].image}' class='crop-image'/>`;
+        const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
         const badge = `<span class='category-badge'>${cat}</span>`;
         showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details);
+      } else {
+        showMessage("Not Found", "Crop not found in database.");
+      }
+    }
+
+      function showBenefits() {
+      clearResults();
+      const crop = getInputCrop();
+      saveToHistory(crop);
+      if (cropData[crop]) {
+        const cat = cropData[crop].category;
+        const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
+        const badge = `<span class='category-badge'>${cat}</span>`;
+        showMessage("🌱 Crop Benefits", img + badge + " " + cropData[crop].benefits);
       } else {
         showMessage("Not Found", "Crop not found in database.");
       }
