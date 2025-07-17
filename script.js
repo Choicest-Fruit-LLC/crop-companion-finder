@@ -683,75 +683,34 @@ window.addEventListener("DOMContentLoaded", function() {
       }
     };
   }
+
 });
 
 function loadNotesForCrop(crop) {
   if (!crop) return;
   const notes = localStorage.getItem('notes_' + crop) || '';
   document.getElementById('user-notes').value = notes;
-}const notes = document.getElementById('user-notes');
+}
+const notes = document.getElementById('user-notes');
 notes.addEventListener('input', () => {
   notes.style.height = 'auto';
   notes.style.height = notes.scrollHeight + 'px';
 });
-function displayResultCard(title, items, isCompanion, crop) {
-  const card = document.createElement("div");
-  card.classList.add("result-card");
 
-  const heading = document.createElement("h3");
-  heading.textContent = title;
+const crops = [
+  "Tomato",
+  "Corn",
+  "Carrot",
+  "Basil",
+  "Marigold",
+  "Potato",
+  "Onion",
+  "Peas",
+  "Cabbage",
+  "Spinach"
+];
 
-  const list = document.createElement("ul");
-  items.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = item;
-    list.appendChild(li);
-  });
-
-  // ⭐ Favorite button
-  const favBtn = document.createElement("button");
-  favBtn.className = "fav-btn";
-  favBtn.textContent = "⭐";
-  favBtn.title = "Add to Favorites";
-  favBtn.onclick = () => toggleFavorite(crop);
-
-  card.append(heading, list, favBtn);
-  resultsContainer.appendChild(card);
+function generateCrop() {
+  const index = Math.floor(Math.random() * crops.length);
+  document.getElementById("result").textContent = crops[index];
 }
-function toggleFavorite(crop) {
-  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
-  if (favorites.includes(crop)) {
-    favorites = favorites.filter(c => c !== crop);
-  } else {
-    favorites.push(crop);
-  }
-
-  localStorage.setItem("favorites", JSON.stringify(favorites));
-  renderFavorites();
-}
-
-function renderFavorites() {
-  const favSection = document.getElementById("favorites-list");
-  favSection.innerHTML = ""; // Clear previous
-
-  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
-  if (favorites.length === 0) {
-    favSection.innerHTML = "<p>No favorites yet.</p>";
-    return;
-  }
-
-  favorites.forEach(crop => {
-    const favItem = document.createElement("div");
-    favItem.className = "fav-item";
-    favItem.innerHTML = `
-      <strong>${crop}</strong>
-      <button onclick="toggleFavorite('${crop}')">❌</button>
-    `;
-    favSection.appendChild(favItem);
-  });
-}
-
-// Call on page load
-document.addEventListener("DOMContentLoaded", renderFavorites);
