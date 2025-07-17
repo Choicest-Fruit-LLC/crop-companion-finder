@@ -698,3 +698,20 @@ notes.addEventListener('input', () => {
   notes.style.height = notes.scrollHeight + 'px';
 });
 
+const crops = [
+  "Tomato",
+  "Corn",
+  "Carrot",
+  "Basil",
+  "Marigold",
+  "Potato",
+  "Onion",
+  "Peas",
+  "Cabbage",
+  "Spinach"
+];
+
+function generateCrop() {
+  const index = Math.floor(Math.random() * crops.length);
+  document.getElementById("result").textContent = crops[index];
+}
