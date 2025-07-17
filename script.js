@@ -471,59 +471,92 @@ function highlightCompanions(mainCropKey) {
       showDetails();
     }
 
-    function findCompanions() {
-      clearResults();
-      const crop = getInputCrop();
-      saveToHistory(crop);
-      if (cropData[crop]) {
-        displayResultCard("✅ Companion Crops", cropData[crop].companions, true, crop);
-      } else {
-        showMessage("Not Found", "Crop not found in database.");
-      }
+    function showSpinner() {
+      document.getElementById("loading-spinner").style.display = "flex";
     }
+function hideSpinner() {
+  document.getElementById("loading-spinner").style.display = "none";
+}
+function showSuccess() {
+  const el = document.getElementById("success-animation");
+  el.style.display = "flex";
+  setTimeout(() => { el.style.display = "none"; }, 1200);
+}
 
-    function findFoes() {
-      clearResults();
-      const crop = getInputCrop();
-      saveToHistory(crop);
-      if (cropData[crop]) {
-        displayResultCard("⚠️ Foe Crops", cropData[crop].foes, true, crop);
-      } else {
-        showMessage("Not Found", "Crop not found in database.");
-      }
+// Example usage: wrap main actions
+function findCompanions() {
+  clearResults();
+  showSpinner();
+  setTimeout(() => {
+    hideSpinner();
+    showSuccess();
+    const crop = getInputCrop();
+    saveToHistory(crop);
+    if (cropData[crop]) {
+      displayResultCard("✅ Companion Crops", cropData[crop].companions, true, crop);
+    } else {
+      showMessage("Not Found", "Crop not found in database.");
     }
+  }, 700); // simulate loading
+}
 
-    function showDetails() {
-      clearResults();
-      const crop = getInputCrop();
-      saveToHistory(crop);
-      if (cropData[crop]) {
-        const cat = cropData[crop].category;
-        const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
-        const badge = `<span class='category-badge'>${cat}</span>`;
-        const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
-        showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details + `<div class="crop-tags">${tags}</div>`);
-      } else {
-        showMessage("Not Found", "Crop not found in database.");
-      }
+function findFoes() {
+  clearResults();
+  showSpinner();
+  setTimeout(() => {
+    hideSpinner();
+    showSuccess();
+    const crop = getInputCrop();
+    saveToHistory(crop);
+    if (cropData[crop]) {
+      displayResultCard("⚠️ Foe Crops", cropData[crop].foes, true, crop);
+    } else {
+      showMessage("Not Found", "Crop not found in database.");
     }
+  }, 700);
+}
 
-    function showBenefits() {
-      clearResults();
-      const crop = getInputCrop();
-      saveToHistory(crop);
-      if (cropData[crop]) {
-        const cat = cropData[crop].category;
-        const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
-        const badge = `<span class='category-badge'>${cat}</span>`;
-        const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
-        showMessage("🌱 Crop Benefits", img + badge + " " + cropData[crop].benefits + `<div class="crop-tags">${tags}</div>`);
-      } else {
-        showMessage("Not Found", "Crop not found in database.");
-      }
+function showDetails() {
+  clearResults();
+  showSpinner();
+  setTimeout(() => {
+    hideSpinner();
+    showSuccess();
+    const crop = getInputCrop();
+    saveToHistory(crop);
+    if (cropData[crop]) {
+      const cat = cropData[crop].category;
+      const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
+      const badge = `<span class='category-badge'>${cat}</span>`;
+      const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
+      showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details + `<div class="crop-tags">${tags}</div>`);
+    } else {
+      showMessage("Not Found", "Crop not found in database.");
     }
+  }, 700);
+}
 
-    function filterByCategory() {
+function showBenefits() {
+  clearResults();
+  showSpinner();
+  setTimeout(() => {
+    hideSpinner();
+    showSuccess();
+    const crop = getInputCrop();
+    saveToHistory(crop);
+    if (cropData[crop]) {
+      const cat = cropData[crop].category;
+      const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
+      const badge = `<span class='category-badge'>${cat}</span>`;
+      const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
+      showMessage("🌱 Crop Benefits", img + badge + " " + cropData[crop].benefits + `<div class="crop-tags">${tags}</div>`);
+    } else {
+      showMessage("Not Found", "Crop not found in database.");
+    }
+  }, 700);
+}
+
+function filterByCategory() {
       const selected = document.getElementById("categorySelect").value;
       cropList.innerHTML = "";
       for (let crop in cropData) {
