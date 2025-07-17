@@ -93,9 +93,21 @@
     }
 
     .crop-image {
-      width: 50px;
-      border-radius: 8px;
-      margin-right: 10px;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      background: #f1fdf6;
+      border: 2px solid #d8f3dc;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    [data-theme="dark"] .crop-image {
+      background: #263238;
+      border: 2px solid #40916c;
     }
 
     .category-badge {
