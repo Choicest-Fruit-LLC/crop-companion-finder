@@ -346,24 +346,51 @@ const cropData = {
 
     };
 
-    const cropInput = document.getElementById("cropInput");
-    const cropList = document.getElementById("cropList");
-    for (let crop in cropData) {
-      const opt = document.createElement("option");
-      opt.value = crop.charAt(0).toUpperCase() + crop.slice(1);
-      cropList.appendChild(opt);
-    }
+    // --- Smart Search with Autocomplete & Highlight Companions ---
 
-    cropInput.addEventListener("input", function () {
-      const input = this.value.toLowerCase().trim();
-      const suggestions = Object.keys(cropData).filter(crop => crop.includes(input));
-      cropList.innerHTML = "";
-      suggestions.forEach(crop => {
-        const option = document.createElement("option");
-        option.value = crop.charAt(0).toUpperCase() + crop.slice(1);
-        cropList.appendChild(option);
-      });
-    });
+const cropInput = document.getElementById("cropInput");
+const cropList = document.getElementById("cropList");
+
+// Helper: Normalize crop key for lookup
+function normalizeCropKey(input) {
+  return input.toLowerCase().replace(/\s+/g, "_").trim();
+}
+
+// Autocomplete suggestions as user types
+cropInput.addEventListener("input", function () {
+  const input = normalizeCropKey(this.value);
+  const suggestions = Object.keys(cropData).filter(crop =>
+    crop.includes(input)
+  );
+  cropList.innerHTML = "";
+  suggestions.forEach(crop => {
+    const option = document.createElement("option");
+    // Show crop name with spaces, not underscores
+    option.value = crop.replace(/_/g, " ").replace(/\b\w/g, l => l.toUpperCase());
+    cropList.appendChild(option);
+  });
+
+  // Highlight companions in real-time
+  highlightCompanions(input);
+});
+
+// Highlight companions in the UI as user types
+function highlightCompanions(mainCropKey) {
+  clearResults();
+  if (!mainCropKey || !cropData[mainCropKey]) return;
+  const companions = cropData[mainCropKey].companions || [];
+  if (companions.length === 0) return;
+
+  const html = companions.map(item => {
+    const crop = cropData[normalizeCropKey(item)];
+    const img = crop && crop.img ? `<img src='${crop.img}' class='crop-image'/>` : "";
+    return `<li style="background:#d8f3dc;border-radius:8px;margin-bottom:8px;padding:8px;">
+      ${img}<strong>${item}</strong>
+    </li>`;
+  }).join('');
+  document.getElementById("results").innerHTML =
+    `<div class='result-card'><strong>Matching Companions</strong><ul>${html}</ul></div>`;
+}
 
     function toggleDarkMode() {
       const html = document.documentElement;
