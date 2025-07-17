@@ -325,7 +325,7 @@ function getCurrentCropKey() {
       const crop = getInputCrop();
       if (cropData[crop]) {
         displayResults("Companion Crops", cropData[crop].companions);
-        addToHistory(crop);
+        addToHistory(crop); // <-- Save to history
         loadNotesForCrop();
       } else {
         showError("Crop not found in database.");
@@ -649,7 +649,6 @@ window.addEventListener('DOMContentLoaded', () => {
     // On page load
     window.onload = function() {
       renderHistory();
-      renderFavorites();
       populateCropDatalist();
       document.getElementById("cropInput").focus();
       loadNotesForCrop();
