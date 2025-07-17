@@ -360,3 +360,42 @@
     }
 
     /* --- End crop card styles --- */
+
+    .history-section, .favorites-section {
+      margin-top: 20px;
+      background-color: #f8fafc;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .history-section h3, .favorites-section h3 {
+      margin-top: 0;
+      color: #1b4332;
+    }
+
+    #crop-history button {
+      margin-left: 10px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    textarea#user-notes {
+      width: 95%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    .crop-result button {
+      background: none;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      margin-left: 10px;
+    }

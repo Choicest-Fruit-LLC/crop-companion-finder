@@ -481,6 +481,16 @@ function highlightCompanions(mainCropKey) {
         showMessage("Not Found", "Crop not found in database.");
       }
     }
+    function findCompanions() {
+      clearResults();
+      const crop = getInputCrop();
+      saveToHistory(crop);
+      if (cropData[crop]) {
+        displayResultCard("✅ Companion Crops", cropData[crop].companions, true, crop);
+      } else {
+        showMessage("Not Found", "Crop not found in database.");
+      }
+    }
 
     function findFoes() {
       clearResults();
@@ -592,5 +602,16 @@ window.addEventListener("DOMContentLoaded", function() {
   const startBtn = document.getElementById("start-btn");
   if (startBtn) {
     startBtn.onclick = hideIntroModal;
+  }
+
+  const saveNotesBtn = document.getElementById('save-notes-btn');
+  if (saveNotesBtn) {
+    saveNotesBtn.onclick = function() {
+      const crop = getCurrentCropKey();
+      if (crop && cropData[crop]) {
+        localStorage.setItem('notes_' + crop, document.getElementById('user-notes').value);
+        alert('Notes saved!');
+      }
+    };
   }
 });
