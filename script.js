@@ -581,9 +581,6 @@ function findFoes() {
         showMessage("Not Found", "Crop not found in database.");
       }
     }
-  }, 700);
-}
-
 
 function showBenefits() {
   clearResults();
