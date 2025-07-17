@@ -65,6 +65,48 @@
       background: #2d6a4f;
       color: white;
       border: none;
+      border-radius: 10px;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Button hover animation */
+    button:hover, button:focus {
+      background: #40916c;
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 6px 18px rgba(44, 62, 80, 0.18);
+    }
+
+    /* Button click animation */
+    button:active {
+      transform: scale(0.97);
+      background: #1b4332;
+    }
+
+    /* Ripple effect on click */
+    button::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s ease, height 0.4s ease, opacity 0.4s;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    button:active::after {
+      width: 120px;
+      height: 120px;
+      opacity: 1;
+      transition: 0s;
     }
 
     .dark-toggle {
