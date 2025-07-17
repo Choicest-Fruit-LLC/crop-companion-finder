@@ -340,7 +340,8 @@ const cropData = {
       const resultDiv = document.getElementById("results");
       const list = array.map(item => {
         const crop = cropData[item.toLowerCase()];
-        const img = crop ? `<img src='${crop.image}' class='crop-image'/>` : "";
+        // FIX: use crop.img instead of crop.image
+        const img = (showImages && crop && crop.img) ? `<img src='${crop.img}' class='crop-image'/>` : "";
         const score = cropData[main]?.companions?.includes(item) ? "⭐️⭐️⭐️⭐️⭐️" : "⭐️⭐️⭐️";
         return `<li>${img} ${item} (${score})</li>`;
       }).join('');
