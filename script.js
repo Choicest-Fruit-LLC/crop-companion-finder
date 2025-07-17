@@ -6,7 +6,7 @@ const cropData = {
     foes: ["Corn", "Potato", "Cucumber"],
     details: "Tomatoes grow well with basil, marigold, and carrots. Avoid planting near corn and potatoes.",
     img: "assets/img/tomato.jpg",
-    benefits: ""
+    benefits: "These nutrients can contribute to heart health, cancer prevention, improved vision, and skin health."
   },
   bell_pepper: {
     category: "Fruiting Vegetables",
@@ -14,7 +14,7 @@ const cropData = {
     foes: ["Fennel"],
     details: "Bell peppers benefit from basil and onions. Avoid fennel.",
     img: "assets/img/different types of peper.png",
-    benefits: ""
+    benefits: "These nutrients can contribute to heart health, cancer prevention, improved vision, and skin health."
   },
   chili_pepper: {
     category: "Fruiting Vegetables",
@@ -22,7 +22,7 @@ const cropData = {
     foes: ["Fennel"],
     details: "Chili peppers grow well with basil and onions.",
     img: "assets/img/chili_pepper.jpg",
-    benefits: ""
+    benefits: "Improved heart health, enhanced metabolism, and potential cancer-fighting properties."
   },
   eggplant: {
     category: "Fruiting Vegetables",
@@ -30,7 +30,7 @@ const cropData = {
     foes: ["Fennel"],
     details: "Eggplant benefits from beans and marigold.",
     img: "assets/img/eggplant.jpg",
-    benefits: ""
+    benefits: "It's packed with fiber, vitamins, and antioxidants, which can contribute to heart health, improved digestion, and potentially even brain health."
   },
   cucumber: {
     category: "Fruiting Vegetables",
@@ -38,7 +38,7 @@ const cropData = {
     foes: ["Tomato", "Sage"],
     details: "Cucumbers grow well with beans and peas. Avoid tomatoes and sage.",
     img: "assets/img/cucumber.jpg",
-    benefits: ""
+    benefits: "They can promote hydration, support heart health, and may help manage blood sugar and weight."
   },
   zucchini: {
     category: "Fruiting Vegetables",
@@ -46,7 +46,7 @@ const cropData = {
     foes: ["Potato"],
     details: "Zucchini benefits from borage and nasturtium.",
     img: "assets/img/zucchini.jpg",
-    benefits: ""
+    benefits: "It supports eye health, aids digestion, and may contribute to weight management"
   },
   squash: {
     category: "Fruiting Vegetables",
@@ -54,7 +54,7 @@ const cropData = {
     foes: [],
     details: "Squash grows well with corn and beans.",
     img: "assets/img/squash.png",
-    benefits: ""
+    benefits: "It supports eye health, aids digestion, and may contribute to weight management."
   },
   okra: {
     category: "Fruiting Vegetables",
@@ -62,7 +62,7 @@ const cropData = {
     foes: [],
     details: "Okra grows well with peppers and melon.",
     img: "assets/img/okra.jpg",
-    benefits: ""
+    benefits: "Rich in vitamins A and C, okra supports skin health and may aid in digestion."
   },
   // Grains & Tall Plants
   corn: {
@@ -71,7 +71,7 @@ const cropData = {
     foes: ["Tomato"],
     details: "Corn grows well with beans and squash.",
     img: "assets/img/corn.png",
-    benefits: ""
+    benefits: "Has beneficial antioxidants, fiber, vitamins and minerals."
   },
   sorghum: {
     category: "Grains & Tall Plants",
@@ -79,7 +79,7 @@ const cropData = {
     foes: [],
     details: "Sorghum benefits from peas and beans.",
     img: "assets/img/sorghum.jpg",
-    benefits: ""
+    benefits: "A a good source of fiber, antioxidants, and essential minerals like iron, magnesium, and potassium"
   },
   millet: {
     category: "Grains & Tall Plants",
@@ -87,7 +87,7 @@ const cropData = {
     foes: [],
     details: "Millet benefits from peas and beans.",
     img: "assets/img/millet.jpg",
-    benefits: ""
+    benefits: "Improved digestion, potential diabetes management, weight management support, and reduced risk of heart disease"
   },
   // Root Vegetables
   carrot: {
@@ -96,7 +96,7 @@ const cropData = {
     foes: ["Dill"],
     details: "Carrots benefit from onions and peas.",
     img: "assets/img/carrot.png",
-    benefits: ""
+    benefits: "Supporting healthy vision and boosting the immune system to aiding digestion and potentially reducing the risk of certain cancers"
   },
   radish: {
     category: "Root Vegetables",
@@ -104,7 +104,7 @@ const cropData = {
     foes: [],
     details: "Radishes grow well with carrots and lettuce.",
     img: "assets/img/radish.jpg",
-    benefits: ""
+    benefits: "Low in calories and a good source of fiber, which aids digestion and promotes feelings of fullness"
   },
   beetroot: {
     category: "Root Vegetables",
@@ -112,7 +112,7 @@ const cropData = {
     foes: [],
     details: "Beetroot benefits from onions and lettuce.",
     img: "assets/img/beetroot.jpg",
-    benefits: ""
+    benefits: "Improved blood flow, lower blood pressure, and enhanced athletic performance"
   },
   turnip: {
     category: "Root Vegetables",
@@ -120,7 +120,7 @@ const cropData = {
     foes: [],
     details: "Turnips grow well with peas and onions.",
     img: "assets/img/turnip.jpg",
-    benefits: ""
+    benefits: "A good source of vitamins C and K, folate, and potassium, and they also contain fiber and antioxidants."
   },
   potato: {
     category: "Root Vegetables",
@@ -128,7 +128,7 @@ const cropData = {
     foes: ["Tomato", "Cucumber"],
     details: "Potatoes benefit from beans and corn. Avoid tomatoes and cucumbers.",
     img: "assets/img/potato.png",
-    benefits: ""
+    benefits: "A good source of vitamin C, vitamin B6, and potassium, which support heart and digestive health."
   },
   sweet_potato: {
     category: "Root Vegetables",
@@ -136,7 +136,7 @@ const cropData = {
     foes: [],
     details: "Sweet potatoes grow well with beans and marigold.",
     img: "assets/img/sweet_potato.jpg",
-    benefits: ""
+    benefits: "A good source of vitamin C, vitamin B6, and potassium, which support heart and digestive health"
   },
   onion: {
     category: "Root Vegetables",
@@ -144,7 +144,7 @@ const cropData = {
     foes: ["Peas"],
     details: "Onions deter pests for carrots. Avoid peas.",
     img: "assets/img/onion.png",
-    benefits: ""
+    benefits: "Rich in vitamins and minerals, onions support heart health and may help regulate blood sugar levels."
   },
   garlic: {
     category: "Root Vegetables",
@@ -152,7 +152,7 @@ const cropData = {
     foes: ["Peas"],
     details: "Garlic benefits carrots and lettuce. Avoid peas.",
     img: "assets/img/garlic.jpg",
-    benefits: ""
+    benefits: "Garlic, particularly aged garlic extract, can help lower blood pressure in individuals with hypertension."
   },
   // Legumes
   green_beans: {
@@ -161,7 +161,7 @@ const cropData = {
     foes: ["Onion", "Garlic"],
     details: "Green beans grow well with corn and squash.",
     img: "assets/img/green_beans.jpg",
-    benefits: ""
+    benefits: "A good source of vitamins A, C, and K, as well as folate and fiber."
   },
   peas: {
     category: "Legumes",
@@ -169,7 +169,7 @@ const cropData = {
     foes: ["Onion", "Garlic"],
     details: "Peas benefit carrots and radishes.",
     img: "assets/img/peas.jpg",
-    benefits: ""
+    benefits: "A good source of plant-based protein and fiber, which aid in digestion and promote feelings of fullness."
   },
   soybeans: {
     category: "Legumes",
@@ -177,7 +177,7 @@ const cropData = {
     foes: [],
     details: "Soybeans grow well with corn and squash.",
     img: "assets/img/soybeans.jpg",
-    benefits: ""
+    benefits: "A good source of protein, fiber, and several vitamins and minerals, including iron, folate, and potassium."
   },
   lentils: {
     category: "Legumes",
@@ -185,7 +185,7 @@ const cropData = {
     foes: [],
     details: "Lentils benefit carrots and radishes.",
     img: "assets/img/lentils.jpg",
-    benefits: ""
+    benefits: "A great source of plant-based protein and can help manage cholesterol and potentially reduce menopause symptoms."
   },
   // Herbs
   basil: {
@@ -194,7 +194,7 @@ const cropData = {
     foes: ["Rue"],
     details: "Basil enhances the flavor of tomatoes.",
     img: "assets/img/basil.png",
-    benefits: ""
+    benefits: "Incorporating both soy and basil into your diet can potentially offer a range of health benefits, as both ingredients are recognized for their nutritional value and beneficial compounds."
   },
   mint: {
     category: "Herbs",
@@ -202,7 +202,7 @@ const cropData = {
     foes: [],
     details: "Mint helps deter pests for cabbage and tomato.",
     img: "assets/img/mint.png",
-    benefits: ""
+    benefits: "Aids digestion, freshens breath, and may help reduce stress and headaches."
   },
   parsley: {
     category: "Herbs",
@@ -210,7 +210,7 @@ const cropData = {
     foes: [],
     details: "Parsley benefits tomatoes and carrots.",
     img: "assets/img/parsley.png",
-    benefits: ""
+    benefits: "Supports digestion, boosts the immune system, improves heart health, and may protect against certain cancers."
   },
   cilantro: {
     category: "Herbs",
@@ -218,7 +218,7 @@ const cropData = {
     foes: [],
     details: "Cilantro grows well with tomatoes and spinach.",
     img: "assets/img/cilantro.png",
-    benefits: ""
+    benefits: "Cilantro, also known as coriander leaves, offers several potential health benefits, supported by traditional use and some scientific studies."
   },
   dill: {
     category: "Herbs",
@@ -226,7 +226,7 @@ const cropData = {
     foes: ["Carrot"],
     details: "Dill can stunt carrot growth.",
     img: "assets/img/dill.png",
-    benefits: ""
+    benefits: "May help reduce LDL cholesterol levels."
   },
   thyme: {
     category: "Herbs",
@@ -234,7 +234,7 @@ const cropData = {
     foes: [],
     details: "Thyme benefits cabbage and strawberries.",
     img: "assets/img/thyme.jpg",
-    benefits: ""
+    benefits: "Can help boost immunity, relieve coughs and sore throats, and reduce inflammation."
   },
   oregano: {
     category: "Herbs",
@@ -242,7 +242,7 @@ const cropData = {
     foes: [],
     details: "Oregano helps cabbage and tomato.",
     img: "assets/img/oregano.jpg",
-    benefits: ""
+    benefits: "May help fight bacteria, reduce inflammation, and potentially lower cholesterol."
   },
   sage: {
     category: "Herbs",
@@ -250,7 +250,7 @@ const cropData = {
     foes: ["Cucumber"],
     details: "Sage benefits cabbage and carrots.",
     img: "assets/img/sage.jpg",
-    benefits: ""
+    benefits: "May support cognitive enhancement, diabetes management, cholesterol balance, and relief from menopausal symptoms."
   },
   chives: {
     category: "Herbs",
@@ -258,7 +258,7 @@ const cropData = {
     foes: [],
     details: "Chives benefit carrots and tomatoes.",
     img: "assets/img/chives.jpg",
-    benefits: ""
+    benefits: "A good source of vitamins C, K, and A, as well as antioxidants, which can help boost the immune system, improve bone health, and protect against cellular damage from free radicals."
   },
   // Fruits (Small-Scale)
   strawberry: {
@@ -267,7 +267,7 @@ const cropData = {
     foes: [],
     details: "Strawberries grow well with spinach and lettuce.",
     img: "assets/img/strawberry.jpg",
-    benefits: ""
+    benefits: "A great source of vitamins, antioxidants, and fiber, contributing to heart health, immune support, and digestive wellness."
   },
   melon: {
     category: "Fruits",
@@ -275,7 +275,7 @@ const cropData = {
     foes: [],
     details: "Melons benefit from corn and okra.",
     img: "assets/img/melon.jpg",
-    benefits: ""
+    benefits: "Excellent sources of vitamins A and C, which support immune function, skin health, and eye health."
   },
   watermelon: {
     category: "Fruits",
@@ -283,7 +283,7 @@ const cropData = {
     foes: [],
     details: "Watermelon grows well with corn and nasturtium.",
     img: "assets/img/watermelon.jpg",
-    benefits: ""
+    benefits: "May support improved heart health, better skin and eye health, and potentially even reduce the risk of certain cancers."
   },
   raspberry: {
     category: "Fruits",
@@ -291,7 +291,7 @@ const cropData = {
     foes: [],
     details: "Raspberries benefit from garlic and chives.",
     img: "assets/img/raspberry.jpg",
-    benefits: ""
+    benefits: "Raspberries also contain vitamin C, an antioxidant ideal for immune health."
   },
   blueberry: {
     category: "Fruits",
@@ -299,7 +299,7 @@ const cropData = {
     foes: [],
     details: "Blueberries grow well with thyme and borage (acidic soil needed).",
     img: "assets/img/blueberry.jpg",
-    benefits: ""
+    benefits: "May support heart health, improve brain function, aid digestion, and potentially protect against certain cancers and chronic diseases."
   },
   // Companion Flowers
   marigold: {
@@ -308,7 +308,7 @@ const cropData = {
     foes: [],
     details: "Marigolds help repel nematodes and other pests.",
     img: "assets/img/different types and colors of marigold.png",
-    benefits: ""
+    benefits: "May help with wound healing, reduce inflammation, and even offer some sun protection for the skin."
   },
   nasturtium: {
     category: "Companion Flowers",
@@ -316,7 +316,7 @@ const cropData = {
     foes: [],
     details: "Nasturtium deters pests and benefits squash and watermelon.",
     img: "assets/img/nasturtium.jpg",
-    benefits: ""
+    benefits: "Provides pest control, edible flowers and leaves, and potential medicinal properties."
   },
   sunflower: {
     category: "Companion Flowers",
@@ -324,7 +324,7 @@ const cropData = {
     foes: [],
     details: "Sunflowers attract pollinators and benefit corn and cucumber.",
     img: "assets/img/sunflower.jpg",
-    benefits: ""
+    benefits: "May promote heart health, boost the immune system, and potentially help with weight management."
   },
   borage: {
     category: "Companion Flowers",
@@ -332,7 +332,7 @@ const cropData = {
     foes: [],
     details: "Borage attracts pollinators and benefits tomatoes and strawberries.",
     img: "assets/img/borage.jpg",
-    benefits: ""
+    benefits: "Borage, particularly its seed oil, is rich in gamma-linolenic acid (GLA), an omega-6 fatty acid known for its anti-inflammatory properties. GLA helps reduce inflammation by decreasing the production of inflammatory proteins and promoting the production of anti-inflammatory prostaglandins."
   },
   // Collard Greens (added as requested)
   collard_greens: {
@@ -341,7 +341,7 @@ const cropData = {
     foes: ["Strawberry"],
     details: "Collard greens grow well with tomato, onion, and mint.",
     img: "assets/img/collard_greens.jpg",
-    benefits: ""
+    benefits: "May support improved vision, bone health, digestion, and may help protect against chronic diseases like cancer and heart disease."
   }
 
     };
@@ -405,4 +405,187 @@ function highlightCompanions(mainCropKey) {
       document.getElementById("results").innerHTML = "";
     }
 
-    
+    function displayResultCard(title, array, showImages = false, main = "") {
+      const resultDiv = document.getElementById("results");
+      if (!array || !array.length) {
+        resultDiv.innerHTML += `<div class='result-card'><strong>${title}</strong><p>No crops found.</p></div>`;
+        return;
+      }
+      // Animated card list
+      let listHtml = `<ul class="result-card-list">`;
+      array.forEach((item, idx) => {
+        const crop = cropData[item.toLowerCase()];
+        const img = (showImages && crop && crop.img)
+          ? `<img src='${crop.img}' class='crop-image' alt='${item}' style='margin-bottom:8px;'/>`
+          : `<span style="font-size:2em;">🌱</span>`;
+        const score = cropData[main]?.companions?.includes(item) ? "⭐️⭐️⭐️⭐️⭐️" : "⭐️⭐️⭐️";
+        const details = crop?.details || "";
+        listHtml += `
+          <li class="crop-card" style="--delay:${idx * 0.08}s;">
+            <div class="crop-card-inner">
+              <div class="crop-card-front">
+                ${img}
+                <div style="font-weight:bold;margin-top:6px;">${item}</div>
+                <div style="font-size:0.9em;">${score}</div>
+              </div>
+              <div class="crop-card-back">
+                <div style="font-weight:bold;">${item}</div>
+                <div style="margin-top:6px;">${details}</div>
+              </div>
+            </div>
+          </li>
+        `;
+      });
+      listHtml += `</ul>`;
+      resultDiv.innerHTML += `<div class='result-card'><strong>${title}</strong>${listHtml}</div>`;
+    }
+
+    function showMessage(title, msg) {
+      const div = document.getElementById("results");
+      div.innerHTML += `<div class='result-card'><strong>${title}</strong><p>${msg}</p></div>`;
+    }
+
+    function saveToHistory(crop) {
+      if (!crop) return;
+      let history = JSON.parse(localStorage.getItem("cropHistory")) || [];
+      history = history.filter(item => item !== crop);
+      history.unshift(crop);
+      if (history.length > 5) history = history.slice(0, 5);
+      localStorage.setItem("cropHistory", JSON.stringify(history));
+      updateHistoryDisplay();
+    }
+
+    function updateHistoryDisplay() {
+      const history = JSON.parse(localStorage.getItem("cropHistory")) || [];
+      const div = document.getElementById("results");
+      if (!history.length) return;
+      const html = history.map(item => `<li onclick='prefillCrop("${item}")'>${item}</li>`).join('');
+      div.innerHTML += `<div class='result-card'><strong>🕘 Recent Searches</strong><ul>${html}</ul></div>`;
+    }
+
+    function prefillCrop(name) {
+      cropInput.value = name;
+      showDetails();
+    }
+
+    function findCompanions() {
+      clearResults();
+      const crop = getInputCrop();
+      saveToHistory(crop);
+      if (cropData[crop]) {
+        displayResultCard("✅ Companion Crops", cropData[crop].companions, true, crop);
+      } else {
+        showMessage("Not Found", "Crop not found in database.");
+      }
+    }
+
+    function findFoes() {
+      clearResults();
+      const crop = getInputCrop();
+      saveToHistory(crop);
+      if (cropData[crop]) {
+        displayResultCard("⚠️ Foe Crops", cropData[crop].foes, true, crop);
+      } else {
+        showMessage("Not Found", "Crop not found in database.");
+      }
+    }
+
+    function showDetails() {
+      clearResults();
+      const crop = getInputCrop();
+      saveToHistory(crop);
+      if (cropData[crop]) {
+        const cat = cropData[crop].category;
+        const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
+        const badge = `<span class='category-badge'>${cat}</span>`;
+        showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details);
+      } else {
+        showMessage("Not Found", "Crop not found in database.");
+      }
+    }
+
+      function showBenefits() {
+      clearResults();
+      const crop = getInputCrop();
+      saveToHistory(crop);
+      if (cropData[crop]) {
+        const cat = cropData[crop].category;
+        const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
+        const badge = `<span class='category-badge'>${cat}</span>`;
+        showMessage("🌱 Crop Benefits", img + badge + " " + cropData[crop].benefits);
+      } else {
+        showMessage("Not Found", "Crop not found in database.");
+      }
+    }
+
+    function filterByCategory() {
+      const selected = document.getElementById("categorySelect").value;
+      cropList.innerHTML = "";
+      for (let crop in cropData) {
+        if (!selected || cropData[crop].category === selected) {
+          const opt = document.createElement("option");
+          opt.value = crop.charAt(0).toUpperCase() + crop.slice(1);
+          cropList.appendChild(opt);
+        }
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", updateHistoryDisplay);
+
+    // --- Daily Gardening Tip ---
+const gardeningTips = [
+  "Water your plants early in the morning to reduce evaporation.",
+  "Rotate your crops each season to prevent soil depletion.",
+  "Mulch your garden beds to retain moisture and suppress weeds.",
+  "Encourage pollinators by planting flowers like marigold and borage.",
+  "Remove weeds regularly to give your crops more nutrients.",
+  "Compost kitchen scraps to enrich your garden soil.",
+  "Check the underside of leaves for pests each week.",
+  "Use companion planting to naturally deter pests.",
+  "Harvest vegetables regularly to encourage more production.",
+  "Test your soil pH for optimal plant health."
+];
+
+function showDailyTip() {
+  const tipDiv = document.getElementById("daily-tip");
+  // Use the current date as a seed for the tip of the day
+  const today = new Date();
+  const seed = today.getFullYear() * 1000 + today.getMonth() * 50 + today.getDate();
+  const tipIndex = seed % gardeningTips.length;
+  tipDiv.textContent = "🌱 Tip of the Day: " + gardeningTips[tipIndex];
+}
+
+window.addEventListener("DOMContentLoaded", showDailyTip);
+
+document.getElementById("start-btn").addEventListener("click", function() {
+  document.getElementById("intro-modal").style.display = "none";
+  document.querySelector(".app-container").style.display = "block";
+  document.querySelector(".dark-toggle").style.display = "inline-block";
+  document.querySelector(".app-footer").style.display = "block";
+});
+
+function showIntroModal() {
+  const modal = document.getElementById("intro-modal");
+  const app = document.querySelector(".app-container");
+  if (modal && app) {
+    modal.style.display = "flex";
+    app.classList.add("app-blur");
+  }
+}
+
+function hideIntroModal() {
+  const modal = document.getElementById("intro-modal");
+  const app = document.querySelector(".app-container");
+  if (modal && app) {
+    modal.style.display = "none";
+    app.classList.remove("app-blur");
+  }
+}
+
+window.addEventListener("DOMContentLoaded", function() {
+  showIntroModal();
+  const startBtn = document.getElementById("start-btn");
+  if (startBtn) {
+    startBtn.onclick = hideIntroModal;
+  }
+});
