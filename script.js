@@ -380,14 +380,37 @@ const cropData = {
 
     function displayResultCard(title, array, showImages = false, main = "") {
       const resultDiv = document.getElementById("results");
-      const list = array.map(item => {
+      if (!array || !array.length) {
+        resultDiv.innerHTML += `<div class='result-card'><strong>${title}</strong><p>No crops found.</p></div>`;
+        return;
+      }
+      // Animated card list
+      let listHtml = `<ul class="result-card-list">`;
+      array.forEach((item, idx) => {
         const crop = cropData[item.toLowerCase()];
-        // FIX: use crop.img instead of crop.image
-        const img = (showImages && crop && crop.img) ? `<img src='${crop.img}' class='crop-image'/>` : "";
+        const img = (showImages && crop && crop.img)
+          ? `<img src='${crop.img}' class='crop-image' alt='${item}' style='margin-bottom:8px;'/>`
+          : `<span style="font-size:2em;">🌱</span>`;
         const score = cropData[main]?.companions?.includes(item) ? "⭐️⭐️⭐️⭐️⭐️" : "⭐️⭐️⭐️";
-        return `<li>${img} ${item} (${score})</li>`;
-      }).join('');
-      resultDiv.innerHTML += `<div class='result-card'><strong>${title}</strong><ul>${list}</ul></div>`;
+        const details = crop?.details || "";
+        listHtml += `
+          <li class="crop-card" style="--delay:${idx * 0.08}s;">
+            <div class="crop-card-inner">
+              <div class="crop-card-front">
+                ${img}
+                <div style="font-weight:bold;margin-top:6px;">${item}</div>
+                <div style="font-size:0.9em;">${score}</div>
+              </div>
+              <div class="crop-card-back">
+                <div style="font-weight:bold;">${item}</div>
+                <div style="margin-top:6px;">${details}</div>
+              </div>
+            </div>
+          </li>
+        `;
+      });
+      listHtml += `</ul>`;
+      resultDiv.innerHTML += `<div class='result-card'><strong>${title}</strong>${listHtml}</div>`;
     }
 
     function showMessage(title, msg) {
