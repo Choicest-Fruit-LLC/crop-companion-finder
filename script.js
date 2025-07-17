@@ -713,5 +713,8 @@ const crops = [
 
 function generateCrop() {
   const index = Math.floor(Math.random() * crops.length);
-  document.getElementById("result").textContent = crops[index];
+  const cropName = crops[index];
+  document.getElementById("result").textContent = cropName;
+  document.getElementById("cropInput").value = cropName; // Autofill search bar
+  cropInput.dispatchEvent(new Event("input")); // Trigger autocomplete and highlight
 }
