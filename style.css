@@ -341,4 +341,22 @@
       color: #b7efc5;
     }
 
+    .crop-tags {
+      margin-top: 8px;
+    }
+    .crop-tag {
+      display: inline-block;
+      background: #ffe066;
+      color: #1b4332;
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 0.95em;
+      margin: 2px 4px 2px 0;
+      font-weight: 500;
+    }
+    [data-theme="dark"] .crop-tag {
+      background: #ffd60a;
+      color: #263238;
+    }
+
     /* --- End crop card styles --- */
