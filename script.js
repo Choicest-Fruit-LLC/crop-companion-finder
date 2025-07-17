@@ -405,118 +405,99 @@ function highlightCompanions(mainCropKey) {
       document.getElementById("results").innerHTML = "";
     }
 
-    function displayResultCard(title, array, showImages = false, main = "") {
-      const resultDiv = document.getElementById("results");
-      if (!array || !array.length) {
-        resultDiv.innerHTML += `<div class='result-card'><strong>${title}</strong><p>No crops found.</p></div>`;
-        return;
-      }
-      // Animated card list
-      let listHtml = `<ul class="result-card-list">`;
-      array.forEach((item, idx) => {
-        const crop = cropData[item.toLowerCase()];
-        const img = (showImages && crop && crop.img)
-          ? `<img src='${crop.img}' class='crop-image' alt='${item}' style='margin-bottom:8px;'/>`
-          : `<span style="font-size:2em;">🌱</span>`;
-        const score = cropData[main]?.companions?.includes(item) ? "⭐️⭐️⭐️⭐️⭐️" : "⭐️⭐️⭐️";
-        const details = crop?.details || "";
-        listHtml += `
-          <li class="crop-card" style="--delay:${idx * 0.08}s;">
-            <div class="crop-card-inner">
-              <div class="crop-card-front">
-                ${img}
-                <div style="font-weight:bold;margin-top:6px;">${item}</div>
-                <div style="font-size:0.9em;">${score}</div>
-              </div>
-              <div class="crop-card-back">
-                <div style="font-weight:bold;">${item}</div>
-                <div style="margin-top:6px;">${details}</div>
-              </div>
-            </div>
-          </li>
-        `;
-      });
-      listHtml += `</ul>`;
-      resultDiv.innerHTML += `<div class='result-card'><strong>${title}</strong>${listHtml}</div>`;
-    }
+    // Utility: Get a random gardening tip
+function getRandomTip() {
+  const tips = [
+    "🌿 Did you know? Marigolds can deter nematodes in the soil.",
+    "🌱 Rotate your crops each year to prevent soil-borne diseases.",
+    "🌻 Sunflowers attract pollinators to your garden.",
+    "🥕 Carrots love loose, sandy soil for best growth.",
+    "🪴 Mulching helps retain soil moisture and suppress weeds.",
+    "🍅 Basil planted near tomatoes can improve their flavor.",
+    "🌾 Beans fix nitrogen in the soil, benefiting neighboring plants.",
+    "🌼 Companion planting can naturally reduce pests and boost yields.",
+    "🌧️ Water early in the morning to reduce evaporation.",
+    "🌿 Healthy soil is the foundation of a thriving garden."
+  ];
+  return tips[Math.floor(Math.random() * tips.length)];
+}
 
-    function showMessage(title, msg) {
-      const div = document.getElementById("results");
-      div.innerHTML += `<div class='result-card'><strong>${title}</strong><p>${msg}</p></div>`;
-    }
+// Collapsible card HTML generator
+function collapsibleCard(title, content, open = false) {
+  return `
+    <details class="result-card" ${open ? "open" : ""}>
+      <summary style="font-weight:bold;cursor:pointer;">${title}</summary>
+      <div style="margin-top:10px;">${content}</div>
+    </details>
+  `;
+}
 
-    function saveToHistory(crop) {
-      if (!crop) return;
-      let history = JSON.parse(localStorage.getItem("cropHistory")) || [];
-      history = history.filter(item => item !== crop);
-      history.unshift(crop);
-      if (history.length > 5) history = history.slice(0, 5);
-      localStorage.setItem("cropHistory", JSON.stringify(history));
-      updateHistoryDisplay();
-    }
+// Update showMessage to use collapsible cards
+function showMessage(title, msg) {
+  const div = document.getElementById("results");
+  div.innerHTML += collapsibleCard(title, msg, true);
+}
 
-    function updateHistoryDisplay() {
-      const history = JSON.parse(localStorage.getItem("cropHistory")) || [];
-      const div = document.getElementById("results");
-      if (!history.length) return;
-      const html = history.map(item => `<li onclick='prefillCrop("${item}")'>${item}</li>`).join('');
-      div.innerHTML += `<div class='result-card'><strong>🕘 Recent Searches</strong><ul>${html}</ul></div>`;
-    }
+// Update displayResultCard to use collapsible cards
+function displayResultCard(title, array, showImages = false, main = "") {
+  const resultDiv = document.getElementById("results");
+  if (!array || !array.length) {
+    resultDiv.innerHTML += collapsibleCard(title, "<p>No crops found.</p>", true);
+    return;
+  }
+  let listHtml = `<ul class="result-card-list">`;
+  array.forEach((item, idx) => {
+    const crop = cropData[item.toLowerCase()];
+    const img = (showImages && crop && crop.img)
+      ? `<img src='${crop.img}' class='crop-image' alt='${item}' style='margin-bottom:8px;'/>`
+      : `<span style="font-size:2em;">🌱</span>`;
+    const score = cropData[main]?.companions?.includes(item) ? "⭐️⭐️⭐️⭐️⭐️" : "⭐️⭐️⭐️";
+    const details = crop?.details || "";
+    listHtml += `
+      <li class="crop-card" style="--delay:${idx * 0.08}s;">
+        ${collapsibleCard(
+          `<span style="display:flex;align-items:center;">${img}<span style="margin-left:8px;">${item}</span></span>`,
+          `<div style="margin-top:6px;">${details}</div><div style="font-size:0.9em;">${score}</div>`
+        )}
+      </li>
+    `;
+  });
+  listHtml += `</ul>`;
+  resultDiv.innerHTML += collapsibleCard(title, listHtml, true);
+  // Add random tip at the bottom
+  resultDiv.innerHTML += `<div class="gardening-tip" style="margin-top:18px;font-style:italic;color:#40916c;">${getRandomTip()}</div>`;
+}
 
-    function prefillCrop(name) {
-      cropInput.value = name;
-      showDetails();
-    }
+// Update showDetails and showBenefits to use collapsible cards
+function showDetails() {
+  clearResults();
+  const crop = getInputCrop();
+  saveToHistory(crop);
+  if (cropData[crop]) {
+    const cat = cropData[crop].category;
+    const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
+    const badge = `<span class='category-badge'>${cat}</span>`;
+    showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details);
+    document.getElementById("results").innerHTML += `<div class="gardening-tip" style="margin-top:18px;font-style:italic;color:#40916c;">${getRandomTip()}</div>`;
+  } else {
+    showMessage("Not Found", "Crop not found in database.");
+  }
+}
 
-    function findCompanions() {
-      clearResults();
-      const crop = getInputCrop();
-      saveToHistory(crop);
-      if (cropData[crop]) {
-        displayResultCard("✅ Companion Crops", cropData[crop].companions, true, crop);
-      } else {
-        showMessage("Not Found", "Crop not found in database.");
-      }
-    }
-
-    function findFoes() {
-      clearResults();
-      const crop = getInputCrop();
-      saveToHistory(crop);
-      if (cropData[crop]) {
-        displayResultCard("⚠️ Foe Crops", cropData[crop].foes, true, crop);
-      } else {
-        showMessage("Not Found", "Crop not found in database.");
-      }
-    }
-
-    function showDetails() {
-      clearResults();
-      const crop = getInputCrop();
-      saveToHistory(crop);
-      if (cropData[crop]) {
-        const cat = cropData[crop].category;
-        const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
-        const badge = `<span class='category-badge'>${cat}</span>`;
-        showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details);
-      } else {
-        showMessage("Not Found", "Crop not found in database.");
-      }
-    }
-
-      function showBenefits() {
-      clearResults();
-      const crop = getInputCrop();
-      saveToHistory(crop);
-      if (cropData[crop]) {
-        const cat = cropData[crop].category;
-        const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
-        const badge = `<span class='category-badge'>${cat}</span>`;
-        showMessage("🌱 Crop Benefits", img + badge + " " + cropData[crop].benefits);
-      } else {
-        showMessage("Not Found", "Crop not found in database.");
-      }
-    }
+function showBenefits() {
+  clearResults();
+  const crop = getInputCrop();
+  saveToHistory(crop);
+  if (cropData[crop]) {
+    const cat = cropData[crop].category;
+    const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
+    const badge = `<span class='category-badge'>${cat}</span>`;
+    showMessage("🌱 Crop Benefits", img + badge + " " + cropData[crop].benefits);
+    document.getElementById("results").innerHTML += `<div class="gardening-tip" style="margin-top:18px;font-style:italic;color:#40916c;">${getRandomTip()}</div>`;
+  } else {
+    showMessage("Not Found", "Crop not found in database.");
+  }
+}
 
     function filterByCategory() {
       const selected = document.getElementById("categorySelect").value;
