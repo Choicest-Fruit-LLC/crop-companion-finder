@@ -1,0 +1,21 @@
+{
+  "name": "Crop Companion Finder",
+  "short_name": "CropCompanion",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#e8f5e9",
+  "theme_color": "#2d6a4f",
+  "description": "Discover companion and foe crops for your garden. Works offline!",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

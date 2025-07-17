@@ -6,7 +6,8 @@ const cropData = {
     foes: ["Corn", "Potato", "Cucumber"],
     details: "Tomatoes grow well with basil, marigold, and carrots. Avoid planting near corn and potatoes.",
     img: "assets/img/tomato.jpg",
-    benefits: "These nutrients can contribute to heart health, cancer prevention, improved vision, and skin health."
+    benefits: "These nutrients can contribute to heart health, cancer prevention, improved vision, and skin health.",
+    tags: ["☀️ Full Sun", "🧪 Neutral pH Soil"]
   },
   bell_pepper: {
     category: "Fruiting Vegetables",
@@ -14,7 +15,8 @@ const cropData = {
     foes: ["Fennel"],
     details: "Bell peppers benefit from basil and onions. Avoid fennel.",
     img: "assets/img/different types of peper.png",
-    benefits: "These nutrients can contribute to heart health, cancer prevention, improved vision, and skin health."
+    benefits: "These nutrients can contribute to heart health, cancer prevention, improved vision, and skin health.",
+    tags: ["☀️ Full Sun", "🧪 Neutral pH Soil"]
   },
   chili_pepper: {
     category: "Fruiting Vegetables",
@@ -38,7 +40,8 @@ const cropData = {
     foes: ["Tomato", "Sage"],
     details: "Cucumbers grow well with beans and peas. Avoid tomatoes and sage.",
     img: "assets/img/cucumber.jpg",
-    benefits: "They can promote hydration, support heart health, and may help manage blood sugar and weight."
+    benefits: "They can promote hydration, support heart health, and may help manage blood sugar and weight.",
+    tags: ["☀️ Full Sun", "🧪 Neutral pH Soil"]
   },
   zucchini: {
     category: "Fruiting Vegetables",
@@ -478,6 +481,16 @@ function highlightCompanions(mainCropKey) {
         showMessage("Not Found", "Crop not found in database.");
       }
     }
+    function findCompanions() {
+      clearResults();
+      const crop = getInputCrop();
+      saveToHistory(crop);
+      if (cropData[crop]) {
+        displayResultCard("✅ Companion Crops", cropData[crop].companions, true, crop);
+      } else {
+        showMessage("Not Found", "Crop not found in database.");
+      }
+    }
 
     function findFoes() {
       clearResults();
@@ -498,13 +511,14 @@ function highlightCompanions(mainCropKey) {
         const cat = cropData[crop].category;
         const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
         const badge = `<span class='category-badge'>${cat}</span>`;
-        showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details);
+        const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
+        showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details + `<div class="crop-tags">${tags}</div>`);
       } else {
         showMessage("Not Found", "Crop not found in database.");
       }
     }
 
-      function showBenefits() {
+    function showBenefits() {
       clearResults();
       const crop = getInputCrop();
       saveToHistory(crop);
@@ -512,7 +526,8 @@ function highlightCompanions(mainCropKey) {
         const cat = cropData[crop].category;
         const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
         const badge = `<span class='category-badge'>${cat}</span>`;
-        showMessage("🌱 Crop Benefits", img + badge + " " + cropData[crop].benefits);
+        const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
+        showMessage("🌱 Crop Benefits", img + badge + " " + cropData[crop].benefits + `<div class="crop-tags">${tags}</div>`);
       } else {
         showMessage("Not Found", "Crop not found in database.");
       }
@@ -588,98 +603,15 @@ window.addEventListener("DOMContentLoaded", function() {
   if (startBtn) {
     startBtn.onclick = hideIntroModal;
   }
+
+  const saveNotesBtn = document.getElementById('save-notes-btn');
+  if (saveNotesBtn) {
+    saveNotesBtn.onclick = function() {
+      const crop = getCurrentCropKey();
+      if (crop && cropData[crop]) {
+        localStorage.setItem('notes_' + crop, document.getElementById('user-notes').value);
+        alert('Notes saved!');
+      }
+    };
+  }
 });
-
-// Load from localStorage
-let cropHistory = JSON.parse(localStorage.getItem('cropHistory')) || [];
-
-// Load favorites from localStorage
-let favoriteCrops = JSON.parse(localStorage.getItem('favoriteCrops')) || [];
-
-// Function to add crop to history
-function addToHistory(crop) {
-  if (!cropHistory.includes(crop)) {
-    cropHistory.unshift(crop);
-    if (cropHistory.length > 10) cropHistory.pop(); // Keep last 10
-    localStorage.setItem('cropHistory', JSON.stringify(cropHistory));
-    renderHistory();
-  }
-}
-
-// Toggle favorite status
-function toggleFavorite(crop) {
-  if (favoriteCrops.includes(crop)) {
-    favoriteCrops = favoriteCrops.filter(c => c !== crop);
-  } else {
-    favoriteCrops.push(crop);
-  }
-  localStorage.setItem('favoriteCrops', JSON.stringify(favoriteCrops));
-  renderFavorites();
-}
-
-// Render functions
-function renderHistory() {
-  const ul = document.getElementById('crop-history');
-  ul.innerHTML = '';
-  cropHistory.forEach(crop => {
-    const li = document.createElement('li');
-    li.textContent = crop;
-    const favBtn = document.createElement('button');
-    favBtn.textContent = favoriteCrops.includes(crop) ? '★' : '☆';
-    favBtn.onclick = () => toggleFavorite(crop);
-    li.appendChild(favBtn);
-    ul.appendChild(li);
-  });
-}
-
-function renderFavorites() {
-  const ul = document.getElementById('favorite-crops');
-  if (!ul) return;
-  ul.innerHTML = '';
-  favoriteCrops.forEach(crop => {
-    const li = document.createElement('li');
-    li.textContent = crop.charAt(0).toUpperCase() + crop.slice(1);
-    ul.appendChild(li);
-  });
-}
-
-// New renderResults function
-function renderResults(crop) {
-  const resultsDiv = document.getElementById('results');
-  resultsDiv.innerHTML = '';
-
-  if (!cropData[crop]) return;
-
-  const cropInfo = cropData[crop];
-  const container = document.createElement('div');
-  container.className = 'crop-result';
-
-  // Crop name and favorite button
-  const title = document.createElement('h2');
-  title.textContent = crop.charAt(0).toUpperCase() + crop.slice(1);
-
-  // --- Favorite button ---
-  const favBtn = document.createElement('button');
-  favBtn.innerHTML = favoriteCrops.includes(crop) ? '★' : '☆';
-  favBtn.title = 'Favorite this crop';
-  favBtn.onclick = function() {
-    toggleFavorite(crop);
-    renderResults(crop); // update star
-    renderFavorites();   // update favorites list
-  };
-  title.appendChild(favBtn);
-  container.appendChild(title);
-
-  // ...add other crop info...
-
-  resultsDiv.appendChild(container);
-}
-
-// Call these after a search
-// addToHistory(searchedCrop);
-
-// On page load
-renderHistory();
-renderFavorites();
-window.addEventListener('DOMContentLoaded', renderFavorites);
-

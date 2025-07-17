@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crop Companion Finder</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2d6a4f">
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("service-worker.js");
+      }
+    </script>
 </head>
 <body>
   <div id="intro-modal" class="modal-overlay">
@@ -78,7 +85,9 @@
     </ul>
   </footer>
 
-  <script src="./script.js"></script>
+ 
   
+   <script src="./script.js"></script>
   </body>
+
 </html>
