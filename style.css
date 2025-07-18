@@ -548,7 +548,7 @@ button:hover {
   padding: 1rem 2rem;
   border-radius: 12px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  min-width: 100px;
+  min-width: 200px;
   text-align: center;
 }
 [data-theme="dark"] #result {
@@ -694,36 +694,4 @@ button:hover {
 [data-theme="dark"] #favorite-main-btn:focus {
   background: #ffe066;
   color: #1b4332;
-}
-
-.favorites-wrapper {
-  margin: 1rem 0;
-}
-
-.dropdown-btn {
-  background-color: #2d6a4f;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  width: 100%;
-  text-align: left;
-  font-size: 1.1rem;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.dropdown-content {
-  padding: 10px;
-  background: #f1f1f1;
-  border: 1px solid #ccc;
-  border-top: none;
-  display: none;
-}
-
-.dropdown-content.visible {
-  display: block;
-}
-
-.hidden {
-  display: none;
 }
