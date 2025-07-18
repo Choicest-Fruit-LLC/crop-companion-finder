@@ -201,6 +201,136 @@ const cropData = {
     benefits: "A good source of protein, fiber, and several vitamins and minerals, including iron, folate, and potassium.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Well-Drained Soil"]
   },
+  azuki_beans: {
+  category: "Legumes",
+  companions: ["Corn", "Cucumber", "Strawberries"],
+  foes: ["Garlic", "Onions"],
+  details: "Azuki beans thrive in warm climates with full sun and fertile, well-drained soil.",
+  img: "assets/img/azuki_beans.webp",
+  benefits: "Rich in protein, fiber, and beneficial plant compounds; supports heart health and digestion.",
+  tags: ["☀️ Full Sun", "🧪 Neutral to Slightly Acidic Soil", "🌱 Well-Drained Soil"]
+},
+
+black_beans: {
+  category: "Legumes",
+  companions: ["Carrots", "Cucumbers", "Corn"],
+  foes: ["Onions", "Garlic"],
+  details: "Black beans prefer warm weather and fertile, loamy soil with good drainage.",
+  img: "assets/img/black_beans.webp",
+  benefits: "High in protein, fiber, iron, and antioxidants.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Well-Drained Soil"]
+},
+
+black_eyed_peas: {
+  category: "Legumes",
+  companions: ["Corn", "Strawberries", "Cucumbers"],
+  foes: ["Garlic", "Onions"],
+  details: "Black-eyed peas need warm temperatures and grow best in sandy, well-drained soil.",
+  img: "assets/img/black_eyed_peas.webp",
+  benefits: "Excellent source of folate, fiber, and protein.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Sandy, Well-Drained Soil"]
+},
+
+borlotti_bean: {
+  category: "Legumes",
+  companions: ["Carrots", "Celery", "Corn"],
+  foes: ["Onions", "Fennel"],
+  details: "Borlotti beans prefer full sun and moist, well-drained loamy soil.",
+  img: "assets/img/borlotti_bean.webp",
+  benefits: "Packed with fiber, protein, and complex carbohydrates.",
+  tags: ["☀️ Full Sun", "🧪 Neutral Soil", "🌱 Well-Drained Loamy Soil"]
+},
+
+broad_beans: {
+  category: "Legumes",
+  companions: ["Spinach", "Potatoes", "Lettuce"],
+  foes: ["Fennel"],
+  details: "Broad beans grow well in cool weather and heavy, rich soil.",
+  img: "assets/img/broad_beans.webp",
+  benefits: "Rich in fiber, folate, and iron.",
+  tags: ["⛅ Partial Sun", "🧪 Neutral to Slightly Alkaline Soil", "🌱 Heavy, Rich Soil"]
+},
+
+chickpeas: {
+  category: "Legumes",
+  companions: ["Cucumbers", "Corn", "Potatoes"],
+  foes: ["Onions", "Garlic"],
+  details: "Chickpeas need warm, dry climates and sandy, well-drained soil.",
+  img: "assets/img/chickpeas.webp",
+  benefits: "High in protein, fiber, and essential nutrients like manganese and folate.",
+  tags: ["☀️ Full Sun", "🧪 Neutral to Slightly Alkaline Soil", "🌱 Sandy, Well-Drained Soil"]
+},
+
+kidney_beans: {
+  category: "Legumes",
+  companions: ["Corn", "Cucumbers", "Carrots"],
+  foes: ["Onions", "Garlic"],
+  details: "Kidney beans thrive in warm climates and loose, well-draining soil.",
+  img: "assets/img/kidney_beans.webp",
+  benefits: "Great source of protein, iron, and dietary fiber.",
+  tags: ["☀️ Full Sun", "🧪 Neutral Soil", "🌱 Loose, Well-Drained Soil"]
+},
+
+lima_beans: {
+  category: "Legumes",
+  companions: ["Corn", "Cucumbers", "Potatoes"],
+  foes: ["Onions"],
+  details: "Lima beans grow best in warm temperatures and fertile, well-drained loamy soil.",
+  img: "assets/img/lima_beans.webp",
+  benefits: "Rich in iron, manganese, and dietary fiber.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Well-Drained Loamy Soil"]
+},
+
+mung_beans: {
+  category: "Legumes",
+  companions: ["Corn", "Cucumbers", "Squash"],
+  foes: ["Onions", "Garlic"],
+  details: "Mung beans prefer hot climates with well-drained sandy or loamy soil.",
+  img: "assets/img/mung_beans.webp",
+  benefits: "Excellent source of plant-based protein and antioxidants.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Sandy or Loamy Well-Drained Soil"]
+},
+
+peanuts: {
+  category: "Legumes",
+  companions: ["Corn", "Sunflowers", "Cucumbers"],
+  foes: ["Onions"],
+  details: "Peanuts require long warm seasons and sandy, loose soil to develop underground pods.",
+  img: "assets/img/peanuts.webp",
+  benefits: "High in healthy fats, protein, and B vitamins.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Loose, Sandy Soil"]
+},
+
+pinto_beans: {
+  category: "Legumes",
+  companions: ["Corn", "Cucumbers", "Carrots"],
+  foes: ["Onions", "Garlic"],
+  details: "Pinto beans grow best in warm climates with well-drained, slightly acidic soil.",
+  img: "assets/img/pinto_beans.webp",
+  benefits: "Good source of protein, fiber, and folate.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Well-Drained Soil"]
+},
+
+snap_peas: {
+  category: "Legumes",
+  companions: ["Carrots", "Radishes", "Lettuce"],
+  foes: ["Onions", "Garlic"],
+  details: "Snap peas prefer cool weather and moist, fertile soil.",
+  img: "assets/img/snap_peas.webp",
+  benefits: "Rich in vitamins A, C, and K as well as fiber.",
+  tags: ["⛅ Partial Sun", "🧪 Neutral to Slightly Acidic Soil", "🌱 Moist, Fertile Soil"]
+},
+
+succotash: {
+  category: "Legumes",
+  companions: ["Corn", "Squash"],
+  foes: ["Onions"],
+  details: "Succotash is a dish typically made from lima beans and corn; both grow well together in warm climates with rich, loamy soil.",
+  img: "assets/img/succotash.webp",
+  benefits: "Nutritionally balanced blend of protein, fiber, and essential nutrients from both legumes and corn.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Rich, Well-Drained Loamy Soil"]
+},
+
   lentils: {
     category: "Legumes",
     companions: ["Carrot", "Radish"],
@@ -602,7 +732,6 @@ function findFoes() {
         const badge = `<span class='category-badge'>${cat}</span>`;
         const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
         showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details + `<div class="crop-tags">${tags}</div>`);
-        showFavoriteStar(crop);
       } else {
         showMessage("Not Found", "Crop not found in database.");
       }
@@ -841,7 +970,6 @@ function showBenefits() {
       const badge = `<span class='category-badge'>${cat}</span>`;
       const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
       showMessage("🌱 Crop Benefits", img + badge + " " + cropData[crop].benefits + `<div class="crop-tags">${tags}</div>`);
-      showFavoriteStar(crop);
     } else {
       showMessage("Not Found", "Crop not found in database.");
     }
@@ -875,7 +1003,7 @@ function findFoes() {
     saveToHistory(crop);
     if (cropData[crop]) {
       displayResultCard("⚠️ Foe Crops", cropData[crop].foes, true, crop);
-      showFavoriteStar(crop);
+    
     } else {
       showMessage("Not Found", "Crop not found in database.");
     }
