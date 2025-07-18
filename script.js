@@ -184,6 +184,75 @@ swiss_chard: {
     benefits: "It supports eye health, aids digestion, and may contribute to weight management.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Well-Drained Soil"]
   },
+  broccoli: {
+  category: "Fruiting Vegetables",
+  companions: ["Beets", "Celery", "Onions"],
+  foes: ["Tomatoes", "Strawberries"],
+  details: "Broccoli is a cool-season crop that grows best in fertile, well-drained soil and full sun. It produces large flower heads harvested before blooming.",
+  img: "assets/img/broccoli.jpg",
+  benefits: "Broccoli supports heart health, digestion, bone strength, and may reduce the risk of certain cancers due to its high vitamin and antioxidant content.",
+  tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+broccoflower: {
+  category: "Fruiting Vegetables",
+  companions: ["Beets", "Onions", "Celery"],
+  foes: ["Strawberries", "Tomatoes"],
+  details: "Broccoflower is a hybrid between broccoli and cauliflower, sharing similar growing needs and flavor characteristics.",
+  img: "assets/img/broccoflower.jpg",
+  benefits: "Rich in vitamin C, fiber, and antioxidants that support the immune system, aid digestion, and promote bone health.",
+  tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+brussels_sprouts: {
+  category: "Fruiting Vegetables",
+  companions: ["Dill", "Garlic", "Onions"],
+  foes: ["Strawberries", "Tomatoes"],
+  details: "Brussels sprouts grow on tall stalks and produce small, cabbage-like buds. They prefer cool temperatures and fertile, firm soil.",
+  img: "assets/img/brussels_sprouts.jpg",
+  benefits: "Rich in vitamin K, C, and fiber, they support immune health, digestion, and reduce inflammation.",
+  tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+cabbage: {
+  category: "Fruiting Vegetables",
+  companions: ["Garlic", "Onions", "Dill"],
+  foes: ["Tomatoes", "Strawberries"],
+  details: "Cabbage is a hardy leafy vegetable that forms tight heads and thrives in cool climates with well-drained, fertile soil.",
+  img: "assets/img/cabbage.jpg",
+  benefits: "Supports digestion, heart health, and weight management; high in fiber, vitamin C, and antioxidants.",
+  tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+cauliflower: {
+  category: "Fruiting Vegetables",
+  companions: ["Celery", "Beets", "Onions"],
+  foes: ["Strawberries", "Tomatoes"],
+  details: "Cauliflower is a cool-weather crop grown for its dense, edible white head made of undeveloped flower buds.",
+  img: "assets/img/cauliflower.jpg",
+  benefits: "Rich in vitamin C and fiber; supports digestion, bone health, and immune function.",
+  tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+kohlrabi: {
+  category: "Fruiting Vegetables",
+  companions: ["Beets", "Bush Beans", "Celery"],
+  foes: ["Tomatoes", "Pole Beans"],
+  details: "Kohlrabi is a bulbous stem vegetable that grows above ground and can be eaten raw or cooked. It thrives in cool weather.",
+  img: "assets/img/kohlrabi.jpg",
+  benefits: "High in fiber and vitamin C; supports immunity, digestion, and bone strength.",
+  tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+tomatillo: {
+  category: "Fruiting Vegetables",
+  companions: ["Marigolds", "Carrots", "Cilantro"],
+  foes: ["Potatoes", "Fennel"],
+  details: "Tomatillos are small, green, tangy fruits encased in papery husks. They are heat-loving and require cross-pollination for good yields.",
+  img: "assets/img/tomatillo.jpg",
+  benefits: "Rich in vitamin C, potassium, and antioxidants; supports immune health and metabolism.",
+  tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Moist, Well-Drained Soil"]
+},
   okra: {
     category: "Fruiting Vegetables",
     companions: ["Peppers", "Melon"],
