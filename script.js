@@ -745,6 +745,7 @@ function generateCrop() {
   cropInput.dispatchEvent(new Event("input")); // Trigger autocomplete and highlight
 }
 
+
 // --- Favorites Logic ---
 
 // Add or remove a crop from favorites
@@ -924,4 +925,21 @@ cropInput.addEventListener('input', updateMainFavoriteBtn);
 
 // On load, update the button
 window.addEventListener("DOMContentLoaded", updateMainFavoriteBtn);
+
+
+async function generatePDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  const text = document.getElementById('user-notes').value.trim();
+  if (!text) {
+    alert("Please enter some notes first.");
+    return;
+  }
+
+  const lines = doc.splitTextToSize(text, 180);
+  doc.text(lines, 10, 20);
+
+  doc.save("My_Notes.pdf");
+}
 

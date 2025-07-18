@@ -1,42 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Crop Companion Finder</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2d6a4f">
-    <link rel="icon" href="assets/img/CropCompanion_Favi.png" type="image/x-icon">
-    <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("service-worker.js");
-      }
-    </script>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#2d6a4f" />
+  <link rel="icon" href="assets/img/CropCompanion_Favi.png" type="image/x-icon" />
+  
+  <!-- ✅ jsPDF Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- ✅ Service Worker -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
 </head>
 <body>
+  <!-- ✅ Intro Modal -->
   <div id="intro-modal" class="modal-overlay">
     <div class="modal-content">
       <h2>Welcome to Crop Companion Finder</h2>
-      <p>
-        Crop Companion Finder is a simple, mobile-friendly web app designed to help gardeners, students, and eco-tech enthusiasts explore plant companion relationships.
-      </p>
+      <p>Crop Companion Finder is a simple, mobile-friendly web app designed to help gardeners, students, and eco-tech enthusiasts explore plant companion relationships.</p>
       <ul>
         <li>Enter a main crop (e.g., Tomato)</li>
         <li>Discover companion crops</li>
         <li>Identify foe crops</li>
         <li>View benefits and details of each crop</li>
       </ul>
-      <p>
-        Perfect for planning gardens or learning sustainable planting patterns, all data is stored locally and works offline.
-      </p>
+      <p>Perfect for planning gardens or learning sustainable planting patterns, all data is stored locally and works offline.</p>
       <button id="start-btn">Start Using</button>
     </div>
   </div>
+
+  <!-- ✅ Dark Mode Toggle -->
   <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
+
+  <!-- ✅ Main App Container -->
   <div class="app-container">
     <h1>🌿 Crop Companion Finder</h1>
+
     <div id="daily-tip" class="daily-tip"></div>
+
     <label>Filter by Category:</label>
     <select id="categorySelect" onchange="filterByCategory()">
       <option value="">All Categories</option>
@@ -50,7 +58,7 @@
       <option>Companion Flowers</option>
     </select>
 
-    <input type="text" id="cropInput" placeholder="Enter Crop Name" list="cropList">
+    <input type="text" id="cropInput" placeholder="Enter Crop Name" list="cropList" />
     <datalist id="cropList"></datalist>
 
     <button onclick="findCompanions()">Find Companion Crops</button>
@@ -60,9 +68,11 @@
 
     <div class="results" id="results"></div>
 
-    
-<label for="user-notes" class="notes-label">📝 Your Garden Notes</label>
-<textarea id="user-notes" placeholder="Write observations, plans, or reminders here..."></textarea>
+    <!-- ✅ Notes Section -->
+    <label for="user-notes" class="notes-label">📝 Your Garden Notes</label>
+    <textarea id="user-notes" placeholder="Write observations, plans, or reminders here..."></textarea>
+    <button onclick="generatePDF()">Generate & Download PDF</button>
+
 
 <!-- Favorite Button Section -->
 <div class="favorite-main-action">
@@ -79,35 +89,17 @@
   <div id="recent-searches-list" class="recent-searches-list"></div>
 </div>
 
-<section id="favorites">
-  <h2>🌟 Favorites</h2>
-  <div id="favorites-list"></div>
-</section>
 
+
+  <!-- ✅ Spinner & Success Animation -->
   <div id="loading-spinner" class="spinner-overlay" style="display:none;">
     <div class="spinner"></div>
   </div>
   <div id="success-animation" class="success-overlay" style="display:none;">
     <div class="success-checkmark">✔️</div>
   </div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Random Crop Generator</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-  <h1>🌾 Random Crop Generator</h1>
-  <button onclick="generateCrop()">🎲 Generate Crop</button>
-  <div id="result">No crop yet</div>
-
-  <script src="script.js"></script>
-</body>
-</html>
-
+  <!-- ✅ Footer -->
   <footer class="app-footer">
     <strong>Contributors:</strong>
     <ul>
@@ -116,13 +108,28 @@
       <li>Shogufta</li>
       <li>Nathan</li>
       <li>Aaron</li>
-      <!-- Add more names as needed -->
     </ul>
   </footer>
 
- 
-  
-   <script src="./script.js"></script>
-  </body>
+  <!-- ✅ Main Script -->
+  <script src="./script.js"></script>
 
+  <!-- ✅ PDF Generator Function -->
+  <script>
+    async function generatePDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      const text = document.getElementById('user-notes').value.trim();
+      if (!text) {
+        alert("Please write some notes before generating the PDF.");
+        return;
+      }
+
+      const lines = doc.splitTextToSize(text, 180);
+      doc.text(lines, 10, 20);
+      doc.save("My_Garden_Notes.pdf");
+    }
+  </script>
+</body>
 </html>
