@@ -1,4 +1,125 @@
 const cropData = {
+  // Leafy Greens
+  arugula: {
+  category: "Leafy Greens",
+  companions: ["Carrot", "Celery", "Lettuce"],
+  foes: ["Brassicas", "Eggplant"],
+  details: "Arugula grows best in cool weather and prefers moist, well-drained soil with full sun or partial shade.",
+  img: "assets/img/arugula.jpg",
+  benefits: "Arugula is rich in vitamin K and nitrates, which may help regulate blood pressure and support bone health.",
+  tags: ["⛅ Partial Sun", "🧪 Neutral pH Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+beet_greens: {
+  category: "Leafy Greens",
+  companions: ["Broccoli", "Brussels Sprouts", "Onions"],
+  foes: ["Pole Beans"],
+  details: "Beet greens are the leafy tops of beets and can be harvested while the roots are still growing.",
+  img: "assets/img/beet_greens.jpg",
+  benefits: "A good source of vitamins A, C, and K, as well as iron and fiber.",
+  tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+bok_choy: {
+  category: "Leafy Greens",
+  companions: ["Beets", "Carrots", "Celery"],
+  foes: ["Strawberries", "Tomatoes"],
+  details: "Bok choy, or pak choi, prefers cool weather and grows best in fertile, moist, well-drained soil.",
+  img: "assets/img/bok_choy.jpg",
+  benefits: "Rich in calcium, magnesium, and vitamin K, which support bone strength and immune function.",
+  tags: ["⛅ Partial Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Moist, Fertile Soil"]
+},
+
+chard: {
+  category: "Leafy Greens",
+  companions: ["Cauliflower", "Onions", "Garlic"],
+  foes: ["Pole Beans"],
+  details: "Swiss chard is a fast-growing leafy vegetable that thrives in full sun and rich, well-drained soil.",
+  img: "assets/img/chard.jpg",
+  benefits: "Contains antioxidants like vitamins A and C, as well as fiber and iron to support immune and blood health.",
+  tags: ["☀️ Full Sun", "🧪 Neutral Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+collard_greens: {
+  category: "Leafy Greens",
+  companions: ["Onions", "Garlic", "Leeks"],
+  foes: ["Strawberries"],
+  details: "Collard greens grow best in cooler seasons and require fertile, well-drained soil with plenty of sun.",
+  img: "assets/img/collard_greens.jpg",
+  benefits: "High in vitamins K, A, and C, plus antioxidants and fiber for heart and digestive health.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Rich, Well-Drained Soil"]
+},
+
+endive: {
+  category: "Leafy Greens",
+  companions: ["Carrots", "Parsley", "Onions"],
+  foes: ["Potatoes"],
+  details: "Endive is a cool-season crop in the chicory family, best grown in moist, rich soil with ample sunlight.",
+  img: "assets/img/endive.jpg",
+  benefits: "A good source of fiber, folate, and vitamin K; supports digestion and bone health.",
+  tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Moist, Fertile Soil"]
+},
+
+frisee: {
+  category: "Leafy Greens",
+  companions: ["Basil", "Garlic", "Dill"],
+  foes: ["Fennel"],
+  details: "Frisée is a curly endive that prefers cooler weather and well-drained, moderately rich soil.",
+  img: "assets/img/frisee.jpg",
+  benefits: "Provides fiber, vitamins A and K, and promotes healthy digestion and liver function.",
+  tags: ["⛅ Partial Sun", "🧪 Neutral Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+kale: {
+  category: "Leafy Greens",
+  companions: ["Peas", "Radish", "Dill"],
+  foes: ["Strawberries"],
+  details: "Kale is a hardy crop that thrives in cool climates and moist, fertile soil.",
+  img: "assets/img/kale.jpg",
+  benefits: "High in vitamins A, C, and K, antioxidants, and fiber, supporting immunity and bone health.",
+  tags: ["☀️ Full Sun", "🧪 Neutral to Slightly Acidic Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+lettuce: {
+  category: "Leafy Greens",
+  companions: ["Beetroot", "Basil", "Onions"],
+  foes: ["Parsley"],
+  details: "Lettuce grows best in cool weather and loose, fertile soil with consistent moisture.",
+  img: "assets/img/lettuce.jpg",
+  benefits: "Rich in water, fiber, and vitamin A; great for hydration and skin health.",
+  tags: ["⛅ Partial Sun", "🧪 Neutral pH Soil", "🌱 Moist, Loose Soil"]
+},
+
+mustard_greens: {
+  category: "Leafy Greens",
+  companions: ["Onions", "Garlic", "Celery"],
+  foes: ["Strawberries"],
+  details: "Mustard greens grow rapidly in cool weather and prefer rich, moist soil.",
+  img: "assets/img/mustard_greens.jpg",
+  benefits: "Rich in vitamins A, C, and K; may help reduce inflammation and support detoxification.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+spinach: {
+  category: "Leafy Greens",
+  companions: ["Lettuce", "Kale", "Radishes"],
+  foes: ["Potatoes"],
+  details: "Spinach grows well in cool weather with moist, nitrogen-rich soil and some protection from intense sun.",
+  img: "assets/img/spinach.jpg",
+  benefits: "Loaded with iron, calcium, and folate, spinach supports blood, bone, and eye health.",
+  tags: ["⛅ Partial Sun", "🧪 Slightly Acidic Soil", "🌱 Moist, Fertile Soil"]
+},
+
+swiss_chard: {
+  category: "Leafy Greens",
+  companions: ["Lettuce", "Beans", "Radishes"],
+  foes: ["Pole Beans"],
+  details: "Swiss chard prefers cool weather but tolerates heat; grows in rich, moist soil with full sun.",
+  img: "assets/img/swiss_chard.jpg",
+  benefits: "Provides vitamins A, C, and K, and minerals like magnesium and potassium for cardiovascular health.",
+  tags: ["☀️ Full Sun", "🧪 Neutral Soil", "🌱 Rich, Well-Drained Soil"]
+},
+
     // Fruiting Vegetables
   tomato: {
     category: "Fruiting Vegetables",
@@ -1070,7 +1191,6 @@ function showDetails() {
     const badge = `<span class='category-badge'>${cat}</span>`;
     const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
     showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details + `<div class="crop-tags">${tags}</div>`);
-    showFavoriteStar(crop);
   } else {
     showMessage("Not Found", "Crop not found in database.");
   }
