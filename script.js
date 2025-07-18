@@ -450,6 +450,126 @@ succotash: {
     benefits: "May support improved heart health, better skin and eye health, and potentially even reduce the risk of certain cancers.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Sandy, Well-Drained Soil"]
   },
+  apple: {
+  category: "Fruits",
+  companions: ["Chives", "Garlic", "Chamomile"],
+  foes: ["Walnut", "Grass"],
+  details: "Apples thrive in temperate climates with well-drained, loamy soil and full sun exposure.",
+  img: "assets/img/apple.webp",
+  benefits: "High in fiber, vitamin C, and antioxidants; supports heart and gut health.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Well-Drained Loamy Soil"]
+},
+
+citrus: {
+  category: "Fruits",
+  companions: ["Basil", "Marigold", "Dill"],
+  foes: ["Apricots", "Walnuts"],
+  details: "Citrus trees need warm climates, full sun, and sandy, well-drained soil.",
+  img: "assets/img/citrus.webp",
+  benefits: "Excellent source of vitamin C, potassium, and flavonoids.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Sandy, Well-Drained Soil"]
+},
+
+figs: {
+  category: "Fruits",
+  companions: ["Lavender", "Comfrey", "Marigold"],
+  foes: ["Root Crops"],
+  details: "Figs grow best in warm climates with full sun and moderately fertile, well-drained soil.",
+  img: "assets/img/figs.webp",
+  benefits: "Rich in fiber, antioxidants, and natural sugars.",
+  tags: ["☀️ Full Sun", "🧪 Neutral to Slightly Alkaline Soil", "🌱 Well-Drained Soil"]
+},
+
+mulberries: {
+  category: "Fruits",
+  companions: ["Chives", "Garlic", "Marigold"],
+  foes: ["Black Walnut"],
+  details: "Mulberries prefer full sun and moist, fertile soil with good drainage.",
+  img: "assets/img/mulberries.webp",
+  benefits: "High in vitamin C, iron, and antioxidants; supports immune health.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Moist, Fertile Soil"]
+},
+
+nectarines: {
+  category: "Fruits",
+  companions: ["Chives", "Garlic", "Dill"],
+  foes: ["Tomatoes", "Potatoes"],
+  details: "Nectarines grow well in warm climates with full sun and well-drained sandy or loamy soil.",
+  img: "assets/img/nectarines.webp",
+  benefits: "Rich in vitamins A and C, antioxidants, and fiber.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Well-Drained Sandy or Loamy Soil"]
+},
+
+orange: {
+  category: "Fruits",
+  companions: ["Basil", "Nasturtium", "Dill"],
+  foes: ["Apricots", "Walnuts"],
+  details: "Orange trees thrive in warm temperatures and require sandy, well-drained soil with full sunlight.",
+  img: "assets/img/orange.webp",
+  benefits: "Excellent source of vitamin C, potassium, and fiber.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Sandy, Well-Drained Soil"]
+},
+
+peach: {
+  category: "Fruits",
+  companions: ["Chives", "Garlic", "Marigold"],
+  foes: ["Tomatoes", "Potatoes"],
+  details: "Peach trees do best in full sun and sandy loam soil with good drainage.",
+  img: "assets/img/peach.webp",
+  benefits: "Rich in vitamins A and C, fiber, and antioxidants.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Well-Drained Sandy Loam Soil"]
+},
+
+pear: {
+  category: "Fruits",
+  companions: ["Chives", "Nasturtium", "Marigold"],
+  foes: ["Walnuts", "Tomatoes"],
+  details: "Pears prefer cool to temperate climates with well-drained loamy soil and full sun.",
+  img: "assets/img/pear.webp",
+  benefits: "Good source of dietary fiber, vitamin C, and copper.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Well-Drained Loamy Soil"]
+},
+
+persimmons: {
+  category: "Fruits",
+  companions: ["Mint", "Garlic", "Lemon Balm"],
+  foes: ["Black Walnut"],
+  details: "Persimmons need full sun and well-drained loamy soil, thriving in warmer temperate zones.",
+  img: "assets/img/persimmons.webp",
+  benefits: "Rich in vitamins A and C, fiber, and antioxidants.",
+  tags: ["☀️ Full Sun", "🧪 Neutral to Slightly Acidic Soil", "🌱 Well-Drained Loamy Soil"]
+},
+
+plum: {
+  category: "Fruits",
+  companions: ["Chives", "Garlic", "Chamomile"],
+  foes: ["Tomatoes", "Potatoes"],
+  details: "Plum trees do well in full sun and sandy, well-drained soil.",
+  img: "assets/img/plum.webp",
+  benefits: "Good source of vitamin C, fiber, and antioxidants.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Well-Drained Sandy Soil"]
+},
+
+plantain: {
+  category: "Fruits",
+  companions: ["Legumes", "Sweet Potatoes", "Yarrow"],
+  foes: ["Strong Shade Trees"],
+  details: "Plantains thrive in hot, humid climates with rich, moist, and well-drained soil.",
+  img: "assets/img/plantain.webp",
+  benefits: "High in carbohydrates, vitamin A, and potassium; ideal for energy and digestive health.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Rich, Moist, Well-Drained Soil"]
+},
+
+pomegranates: {
+  category: "Fruits",
+  companions: ["Lavender", "Basil", "Yarrow"],
+  foes: ["Excessive Shade Plants"],
+  details: "Pomegranates need hot, dry climates with full sun and well-drained soil.",
+  img: "assets/img/pomegranates.webp",
+  benefits: "Rich in antioxidants, vitamin C, and polyphenols; supports heart and immune health.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Well-Drained Soil"]
+},
+
   raspberry: {
     category: "Fruits",
     companions: ["Garlic", "Chives"],
@@ -986,7 +1106,6 @@ function findCompanions() {
     saveToHistory(crop);
     if (cropData[crop]) {
       displayResultCard("✅ Companion Crops", cropData[crop].companions, true, crop);
-      showFavoriteStar(crop);
     } else {
       showMessage("Not Found", "Crop not found in database.");
     }
