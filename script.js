@@ -602,6 +602,7 @@ function findFoes() {
         const badge = `<span class='category-badge'>${cat}</span>`;
         const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
         showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details + `<div class="crop-tags">${tags}</div>`);
+        showFavoriteStar(crop);
       } else {
         showMessage("Not Found", "Crop not found in database.");
       }
@@ -621,6 +622,7 @@ function showBenefits() {
       const badge = `<span class='category-badge'>${cat}</span>`;
       const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
       showMessage("🌱 Crop Benefits", img + badge + " " + cropData[crop].benefits + `<div class="crop-tags">${tags}</div>`);
+      showFavoriteStar(crop);
     } else {
       showMessage("Not Found", "Crop not found in database.");
     }
@@ -743,6 +745,188 @@ function generateCrop() {
   cropInput.dispatchEvent(new Event("input")); // Trigger autocomplete and highlight
 }
 
+
+// --- Favorites Logic ---
+
+// Add or remove a crop from favorites
+function toggleFavorite(crop) {
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const idx = favorites.indexOf(crop);
+  if (idx === -1) {
+    favorites.push(crop);
+  } else {
+    favorites.splice(idx, 1);
+  }
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  updateFavoritesDisplay();
+}
+
+// Show favorites section
+function updateFavoritesDisplay() {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const favDiv = document.getElementById("favorites-list");
+  if (!favDiv) return;
+  if (!favorites.length) {
+    favDiv.innerHTML = "<div style='color:#888;'>No favorites yet.</div>";
+    return;
+  }
+  favDiv.innerHTML = favorites.map(crop => {
+    const key = normalizeCropKey(crop);
+    const cropObj = cropData[key];
+    const img = cropObj && cropObj.img ? `<img src='${cropObj.img}' class='crop-image' style='width:32px;height:32px;margin-right:8px;'/>` : "";
+    return `<div class="fav-item">
+      ${img}<span>${crop.replace(/_/g, " ").replace(/\b\w/g, l => l.toUpperCase())}</span>
+      <button class="fav-btn" title="Remove from favorites" onclick="toggleFavorite('${crop}')">★</button>
+    </div>`;
+  }).join('');
+}
+
+// Show star button after crop is searched
+function showFavoriteStar(crop) {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const isFav = favorites.includes(crop);
+  // Find the last result-card (where crop details are shown)
+  const cards = document.querySelectorAll('.result-card');
+  if (!cards.length) return;
+  const lastCard = cards[cards.length - 1];
+  // Remove any existing star
+  const oldStar = lastCard.querySelector('.fav-btn');
+  if (oldStar) oldStar.remove();
+  // Add star button next to crop name/title
+  const strong = lastCard.querySelector('strong');
+  if (strong) {
+    const starBtn = document.createElement('button');
+    starBtn.className = 'fav-btn';
+    starBtn.innerHTML = isFav ? "★" : "☆";
+    starBtn.title = isFav ? "Remove from favorites" : "Add to favorites";
+    starBtn.onclick = function(e) {
+      e.stopPropagation();
+      toggleFavorite(crop);
+      // Update star appearance
+      starBtn.innerHTML = isFav ? "☆" : "★";
+      starBtn.title = isFav ? "Add to favorites" : "Remove from favorites";
+    };
+    strong.appendChild(starBtn);
+  }
+}
+
+// Update showDetails, showBenefits, findCompanions, findFoes to show star after search
+function showDetails() {
+  clearResults();
+  const crop = getInputCrop();
+  saveToHistory(crop);
+  if (cropData[crop]) {
+    const cat = cropData[crop].category;
+    const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
+    const badge = `<span class='category-badge'>${cat}</span>`;
+    const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
+    showMessage("🌟 Crop Details", img + badge + " " + cropData[crop].details + `<div class="crop-tags">${tags}</div>`);
+    showFavoriteStar(crop);
+  } else {
+    showMessage("Not Found", "Crop not found in database.");
+  }
+}
+
+function showBenefits() {
+  clearResults();
+  showSpinner();
+  setTimeout(() => {
+    hideSpinner();
+    showSuccess();
+    const crop = getInputCrop();
+    saveToHistory(crop);
+    if (cropData[crop]) {
+      const cat = cropData[crop].category;
+      const img = `<img src='${cropData[crop].img}' class='crop-image'/>`;
+      const badge = `<span class='category-badge'>${cat}</span>`;
+      const tags = cropData[crop].tags ? cropData[crop].tags.map(tag => `<span class="crop-tag">${tag}</span>`).join(' ') : "";
+      showMessage("🌱 Crop Benefits", img + badge + " " + cropData[crop].benefits + `<div class="crop-tags">${tags}</div>`);
+      showFavoriteStar(crop);
+    } else {
+      showMessage("Not Found", "Crop not found in database.");
+    }
+  }, 700);
+}
+
+function findCompanions() {
+  clearResults();
+  showSpinner();
+  setTimeout(() => {
+    hideSpinner();
+    showSuccess();
+    const crop = getInputCrop();
+    saveToHistory(crop);
+    if (cropData[crop]) {
+      displayResultCard("✅ Companion Crops", cropData[crop].companions, true, crop);
+      showFavoriteStar(crop);
+    } else {
+      showMessage("Not Found", "Crop not found in database.");
+    }
+  }, 700);
+}
+
+function findFoes() {
+  clearResults();
+  showSpinner();
+  setTimeout(() => {
+    hideSpinner();
+    showSuccess();
+    const crop = getInputCrop();
+    saveToHistory(crop);
+    if (cropData[crop]) {
+      displayResultCard("⚠️ Foe Crops", cropData[crop].foes, true, crop);
+      showFavoriteStar(crop);
+    } else {
+      showMessage("Not Found", "Crop not found in database.");
+    }
+  }, 700);
+}
+
+// --- Main Favorite Button Logic --- //
+
+function updateMainFavoriteBtn() {
+  const btn = document.getElementById('favorite-main-btn');
+  const star = document.getElementById('favorite-main-star');
+  const label = document.getElementById('favorite-main-label');
+  const rawCrop = cropInput.value;
+  const crop = normalizeCropKey(rawCrop);
+  if (!btn || !star || !label || !cropData[crop]) {
+    btn.style.display = "none";
+    return;
+  }
+  btn.style.display = "inline-flex";
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const isFav = favorites.includes(crop);
+  star.textContent = isFav ? "★" : "☆";
+  label.textContent = isFav ? "Remove from Favorites" : "Add to Favorites";
+  btn.title = isFav ? "Remove from favorites" : "Add to favorites";
+}
+
+document.getElementById('favorite-main-btn').addEventListener('click', function() {
+  const rawCrop = cropInput.value;
+  const crop = normalizeCropKey(rawCrop);
+  if (cropData[crop]) {
+    toggleFavorite(crop);
+    updateMainFavoriteBtn();
+  }
+});
+
+// Update favorite button whenever crop input changes or after search
+cropInput.addEventListener('input', updateMainFavoriteBtn);
+["findCompanions", "findFoes", "showDetails", "showBenefits"].forEach(fn => {
+  const orig = window[fn];
+  if (typeof orig === "function") {
+    window[fn] = function(...args) {
+      orig.apply(this, args);
+      updateMainFavoriteBtn();
+    };
+  }
+});
+
+// On load, update the button
+window.addEventListener("DOMContentLoaded", updateMainFavoriteBtn);
+
+
 async function generatePDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
@@ -758,3 +942,4 @@ async function generatePDF() {
 
   doc.save("My_Notes.pdf");
 }
+
