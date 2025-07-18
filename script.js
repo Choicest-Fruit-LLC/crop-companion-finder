@@ -508,13 +508,37 @@ function highlightCompanions(mainCropKey) {
       updateHistoryDisplay();
     }
 
-    function updateHistoryDisplay() {
-      const history = JSON.parse(localStorage.getItem("cropHistory")) || [];
-      const div = document.getElementById("results");
-      if (!history.length) return;
-      const html = history.map(item => `<li onclick='prefillCrop("${item}")'>${item}</li>`).join('');
-      div.innerHTML += `<div class='result-card'><strong>🕘 Recent Searches</strong><ul>${html}</ul></div>`;
-    }
+    // Collapsible Recent Searches
+function updateHistoryDisplay() {
+  const history = JSON.parse(localStorage.getItem("cropHistory")) || [];
+  const listDiv = document.getElementById("recent-searches-list");
+  if (!listDiv) return;
+  if (!history.length) {
+    listDiv.innerHTML = "<div style='color:#888;'>No recent searches.</div>";
+    return;
+  }
+  const html = "<ul>" + history.map(item =>
+    `<li onclick='prefillCrop("${item}")'>${item.replace(/_/g, " ").replace(/\b\w/g, l => l.toUpperCase())}</li>`
+  ).join('') + "</ul>";
+  listDiv.innerHTML = html;
+}
+
+// Toggle open/close
+document.addEventListener("DOMContentLoaded", function() {
+  const toggleBtn = document.getElementById("toggle-recent-btn");
+  const arrow = document.getElementById("recent-arrow");
+  const listDiv = document.getElementById("recent-searches-list");
+  if (toggleBtn && listDiv && arrow) {
+    toggleBtn.onclick = function() {
+      listDiv.classList.toggle("open");
+      arrow.textContent = listDiv.classList.contains("open") ? "▲" : "▼";
+    };
+    // Optionally open by default
+    // listDiv.classList.add("open");
+    // arrow.textContent = "▲";
+  }
+  updateHistoryDisplay();
+});
 
     function prefillCrop(name) {
       cropInput.value = name;
