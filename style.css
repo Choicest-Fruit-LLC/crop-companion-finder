@@ -696,3 +696,34 @@ button:hover {
   color: #1b4332;
 }
 
+.favorites-wrapper {
+  margin: 1rem 0;
+}
+
+.dropdown-btn {
+  background-color: #2d6a4f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.dropdown-content {
+  padding: 10px;
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+  border-top: none;
+  display: none;
+}
+
+.dropdown-content.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}

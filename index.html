@@ -73,6 +73,14 @@
     <textarea id="user-notes" placeholder="Write observations, plans, or reminders here..."></textarea>
     <button onclick="generatePDF()">Generate & Download PDF</button>
 
+ <!-- ✅ Recent Searches Section -->
+<div id="recent-searches-section" class="recent-searches-section">
+  <button id="toggle-recent-btn" class="recent-toggle-btn" type="button">
+    🕘 Recent Searches <span id="recent-arrow">▼</span>
+  </button>
+  <div id="recent-searches-list" class="recent-searches-list"></div>
+</div>
+
 
 <!-- Favorite Button Section -->
 <div class="favorite-main-action">
@@ -82,13 +90,15 @@
   </button>
 </div>
 
-<div id="recent-searches-section" class="recent-searches-section">
-  <button id="toggle-recent-btn" class="recent-toggle-btn" type="button">
-    🕘 Recent Searches <span id="recent-arrow">▼</span>
-  </button>
-  <div id="recent-searches-list" class="recent-searches-list"></div>
-</div>
 
+ <div class="favorites-wrapper">
+  <button id="toggle-favorites-btn" class="favorite-toggle-btn" type="button">
+    ⭐ Favorites<span id="favorites-arrow">▼</span>
+  </button>
+  <div id="favorites-list" class="favorites-list">
+    <!-- Favorite crops will be added here -->
+  </div>
+</div>
 
 
   <!-- ✅ Spinner & Success Animation -->
@@ -97,6 +107,8 @@
   </div>
   <div id="success-animation" class="success-overlay" style="display:none;">
     <div class="success-checkmark">✔️</div>
+
+
   </div>
   
   <!-- ✅ Random Crop Generator -->

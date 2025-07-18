@@ -808,7 +808,33 @@ function showFavoriteStar(crop) {
     };
     strong.appendChild(starBtn);
   }
+
+}document.getElementById("toggle-favorites").addEventListener("click", () => {
+  const favSection = document.getElementById("favorites-section");
+  favSection.classList.toggle("visible");
+});
+function addToFavorites(cropKey) {
+  const crop = cropData[cropKey];
+  const name = crop.names[currentLang] || crop.names.en;
+
+  const favSection = document.getElementById("favorites-section");
+  const existing = favSection.querySelector(`[data-key="${cropKey}"]`);
+  if (existing) return; // avoid duplicates
+
+  const card = document.createElement("div");
+  card.className = "favorite-card";
+  card.dataset.key = cropKey;
+  card.innerHTML = `
+    <strong>${name}</strong>
+  `;
+
+  favSection.appendChild(card);
+  star.addEventListener("click", () => {
+  addToFavorites(cropKey);
+});
+
 }
+// Show favorites section on load
 
 // Update showDetails, showBenefits, findCompanions, findFoes to show star after search
 function showDetails() {
