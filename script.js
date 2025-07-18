@@ -281,6 +281,36 @@ tomatillo: {
     benefits: "A a good source of fiber, antioxidants, and essential minerals like iron, magnesium, and potassium",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Well-Drained Soil"]
   },
+  rice: {
+  category: "Grains & Tall Plants",
+  companions: ["Azolla", "Legumes", "Water Spinach"],
+  foes: ["Wheat", "Barley", "Sorghum"],
+  details: "Rice is a water-loving grain crop traditionally grown in flooded fields, requiring warm temperatures and long growing seasons.",
+  img: "assets/img/rice.jpg",
+  benefits: "A staple food rich in carbohydrates, rice provides energy and small amounts of protein, B vitamins, and minerals like magnesium and selenium.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral pH", "💧 Flooded or Constant Moisture"]
+},
+
+sweetcorn: {
+  category: "Grains & Tall Plants",
+  companions: ["Beans", "Cucumbers", "Melons", "Squash"],
+  foes: ["Tomatoes"],
+  details: "Sweetcorn is a warm-season crop with tall stalks and sweet kernels. It grows best in rich, well-drained soil and full sun.",
+  img: "assets/img/sweetcorn.jpg",
+  benefits: "Rich in fiber, antioxidants, and B vitamins; sweetcorn supports digestion, heart health, and helps reduce risk of certain chronic diseases.",
+  tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Rich, Well-Drained Soil"]
+},
+
+sunflower_seed: {
+  category: "Grains & Tall Plants",
+  companions: ["Corn", "Tomatoes", "Cucumbers", "Peppers"],
+  foes: ["Potatoes", "Beans"],
+  details: "Sunflowers are tall, heat-loving plants known for their large blooms and nutrient-dense seeds. They can act as natural trellises or windbreaks.",
+  img: "assets/img/sunflower.jpg",
+  benefits: "Sunflower seeds are a good source of healthy fats, vitamin E, selenium, and magnesium, which support heart and immune health.",
+  tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Well-Drained Soil"]
+},
+
   millet: {
     category: "Grains & Tall Plants",
     companions: ["Peas", "Beans"],
