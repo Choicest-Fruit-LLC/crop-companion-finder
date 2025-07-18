@@ -384,6 +384,55 @@ sunflower_seed: {
     benefits: "Rich in vitamins and minerals, onions support heart health and may help regulate blood sugar levels.",
     tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Loose, Well-Drained Soil"]
   },
+  celeriac: {
+  category: "Root Vegetables",
+  companions: ["Spinach", "Beans", "Cabbage"],
+  foes: ["Corn"],
+  details: "Celeriac is a root vegetable in the parsley family, grown for its large, knobby, and earthy-flavored root. It requires consistent moisture and cool weather to develop properly.",
+  img: "assets/img/Celeriac.jpg",
+  benefits: "Rich in vitamin K, phosphorus, and fiber, celeriac supports bone health, heart health, and digestion.",
+  tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+daikon: {
+  category: "Root Vegetables",
+  companions: ["Peas", "Oregano", "Carrots"],
+  foes: ["Potatoes"],
+  details: "Daikon, or Japanese radish, is a large, mild-flavored winter radish popular in Asian cuisines. It grows best in cool weather with loose, deeply cultivated soil.",
+  img: "assets/img/Daikon.jpg",
+  benefits: "Daikon supports digestion, acts as a natural decongestant and diuretic, and may provide anti-cancer properties due to its glucosinolates.",
+  tags: ["☀️ Full Sun", "🧪 Slightly Acidic to Neutral Soil", "🌱 Loose, Well-Drained Soil"]
+},
+
+horseradish: {
+  category: "Root Vegetables",
+  companions: ["Potatoes", "Apple Trees", "Rhubarb"],
+  foes: ["Beans"],
+  details: "Horseradish is a hardy perennial grown for its pungent root, often grated fresh for condiments. It can become invasive if not managed.",
+  img: "assets/img/Horseradish.jpg",
+  benefits: "Horseradish contains glucosinolates that may support the immune system, aid digestion, and offer antimicrobial and anticancer effects.",
+  tags: ["☀️ Full Sun", "🧪 Neutral to Slightly Alkaline Soil", "🌱 Moist, Well-Drained Soil"]
+},
+
+parsnip: {
+  category: "Root Vegetables",
+  companions: ["Onions", "Garlic", "Leeks"],
+  foes: ["Carrots"],
+  details: "Parsnips are cream-colored root vegetables that develop a sweet flavor after a frost. They grow best in deep, loose soil.",
+  img: "assets/img/Parsnip.jpg",
+  benefits: "Parsnips provide fiber, potassium, vitamins C and K, and folate, supporting immunity, blood pressure regulation, and heart health.",
+  tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Deep, Loose, Well-Drained Soil"]
+},
+
+rutabaga: {
+  category: "Root Vegetables",
+  companions: ["Peas", "Beets", "Turnips", "Beans"],
+  foes: ["Cabbage"],
+  details: "Rutabagas are root vegetables similar to turnips, with a sweeter flavor and yellow flesh. They require a long, cool growing season.",
+  img: "assets/img/Rutabaga.jpg",
+  benefits: "Rutabagas are high in fiber, vitamin C, potassium, and antioxidants, which support immune function and cellular health.",
+  tags: ["☀️ Full Sun", "🧪 Neutral to Slightly Acidic Soil", "🌱 Moist, Well-Drained Soil"]
+},
   garlic: {
     category: "Root Vegetables",
     companions: ["Carrot", "Lettuce", "Strawberry"],
