@@ -713,12 +713,24 @@ const crops = [
 
 function generateCrop() {
   const index = Math.floor(Math.random() * crops.length);
-  const result = document.getElementById("result");
+  const cropName = crops[index];
+  document.getElementById("result").textContent = cropName;
+  document.getElementById("cropInput").value = cropName; // Autofill search bar
+  cropInput.dispatchEvent(new Event("input")); // Trigger autocomplete and highlight
+}
 
-  result.textContent = crops[index];
+async function generatePDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
 
-  // Reset animation
-  result.classList.remove("fade-slide");
-  void result.offsetWidth; // Trigger reflow
-  result.classList.add("fade-slide");
+  const text = document.getElementById('user-notes').value.trim();
+  if (!text) {
+    alert("Please enter some notes first.");
+    return;
+  }
+
+  const lines = doc.splitTextToSize(text, 180);
+  doc.text(lines, 10, 20);
+
+  doc.save("My_Notes.pdf");
 }

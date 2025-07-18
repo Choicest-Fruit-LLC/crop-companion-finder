@@ -529,3 +529,43 @@ button:hover {
     transform: translateY(0);
   }
 }
+body {
+  font-family: sans-serif;
+  padding: 2rem;
+  background-color: #f4f4f5;
+}
+
+.note-section {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #2a8030;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #2a8030;
+}
