@@ -461,14 +461,50 @@ textarea#user-notes:focus {
   border: 1px solid #cfd8dc;
   border-radius: 8px;
   margin-bottom: 6px;
+  gap: 10px;              /* Add spacing between name and button */
+}
+
+.fav-item span {
+  flex: 1 1 auto;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
 }
 
 .fav-btn {
-  background: transparent;
+  display: inline-block;  /* Inline so it sits next to the name, not on top */
+  background: none;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.5em;
+  color: #ffd700;
   cursor: pointer;
+  margin-left: 8px;
+  outline: none;
+  padding: 0 4px;
+  border-radius: 10px;
+  transition: background 0.18s, color 0.18s;
+  box-shadow: none;
+  vertical-align: middle;
 }
+
+[data-theme="dark"] .fav-btn {
+  color: #ffe066;
+  background: none;
+}
+
+[data-theme="dark"] .fav-btn:hover,
+[data-theme="dark"] .fav-btn:focus {
+  color: #ffd60a;
+  background: #33331a;
+  box-shadow: 0 0 0 2px #ffd60a;
+}
+
+[data-theme="dark"] .fav-btn:active {
+  background: #ffd60a;
+  color: #263238;
+  box-shadow: 0 0 0 2px #ffe066;
+}
+
 [data-theme="dark"] #favorites {
   background-color: #263238;
   color: #e0f2f1;
@@ -518,4 +554,145 @@ button:hover {
 [data-theme="dark"] #result {
   background-color: #263238;
   color: #e0f2f1;
-  border-color: #40916c;}
+  border-color: #40916c;
+        box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.03);
+    }
+
+    /* Add to style.css */
+
+.recent-searches-section {
+  margin: 1.5rem 0 1rem 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+.recent-toggle-btn {
+  background: #e0e0e0;
+  color: #1b4332;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.08em;
+  font-weight: 600;
+  padding: 8px 18px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.recent-toggle-btn:hover, .recent-toggle-btn:focus {
+  background: #ffd60a;
+  color: #263238;
+}
+
+#recent-arrow {
+  margin-left: auto;
+  font-size: 1.1em;
+  transition: transform 0.2s;
+}
+
+.recent-searches-list {
+  display: none;
+  background: #f8fbe9;
+  border: 1px solid #c5e1a5;
+  border-radius: 0 0 10px 10px;
+  padding: 0.5em 1em 0.5em 1em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+.recent-searches-list.open {
+  display: block;
+}
+
+.recent-searches-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recent-searches-list li {
+  padding: 6px 0;
+  cursor: pointer;
+  color: #2d6a4f;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.15s;
+}
+
+.recent-searches-list li:last-child {
+  border-bottom: none;
+}
+
+.recent-searches-list li:hover {
+  background: #d8f3dc;
+  color: #1b4332;
+  border-radius: 6px;
+}
+
+[data-theme="dark"] .recent-searches-list {
+  background: #263238;
+  border-color: #40916c;
+  color: #e0f2f1;
+}
+[data-theme="dark"] .recent-toggle-btn {
+  background: #263238;
+  color: #ffd60a;
+}
+
+/* Favorite Main Button Styling */
+.favorite-main-action {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 1.2rem 0 1.2rem 0;
+}
+
+#favorite-main-btn {
+  background: #ffe066;
+  color: #1b4332;
+  border: 1.5px solid #ffd700;
+  border-radius: 10px;
+  font-size: 1.13em;
+  font-weight: 600;
+  padding: 10px 26px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  box-shadow: 0 2px 8px rgba(255, 224, 102, 0.08);
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#favorite-main-btn:hover, #favorite-main-btn:focus {
+  background: #ffd60a;
+  color: #263238;
+  box-shadow: 0 4px 16px rgba(255, 214, 10, 0.15);
+}
+
+#favorite-main-star {
+  font-size: 1.4em;
+  vertical-align: middle;
+  transition: color 0.2s;
+}
+
+#favorite-main-label {
+  font-size: 1em;
+  font-weight: 500;
+}
+
+[data-theme="dark"] #favorite-main-btn {
+  background: #ffd60a;
+  color: #263238;
+  border-color: #ffe066;
+}
+
+[data-theme="dark"] #favorite-main-btn:hover, 
+[data-theme="dark"] #favorite-main-btn:focus {
+  background: #ffe066;
+  color: #1b4332;
+}
+
