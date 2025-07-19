@@ -23,7 +23,7 @@ beet_greens: {
 bok_choy: {
   category: "Leafy Greens",
   companions: ["Beets", "Carrots", "Celery"],
-  foes: ["Strawberries", "Tomatoes"],
+  foes: ["Strawberry", "Tomatoes"],
   details: "Bok choy, or pak choi, prefers cool weather and grows best in fertile, moist, well-drained soil.",
   img: "assets/img/bok choy.png",
   benefits: "Rich in calcium, magnesium, and vitamin K, which support bone strength and immune function.",
@@ -43,7 +43,7 @@ chard: {
 collard_greens: {
   category: "Leafy Greens",
   companions: ["Onions", "Garlic", "Leeks"],
-  foes: ["Strawberries"],
+  foes: ["Strawberry"],
   details: "Collard greens grow best in cooler seasons and require fertile, well-drained soil with plenty of sun.",
   img: "assets/img/collard greens.png",
   benefits: "High in vitamins K, A, and C, plus antioxidants and fiber for heart and digestive health.",
@@ -73,7 +73,7 @@ frisee: {
 kale: {
   category: "Leafy Greens",
   companions: ["Peas", "Radish", "Dill"],
-  foes: ["Strawberries"],
+  foes: ["Strawberry"],
   details: "Kale is a hardy crop that thrives in cool climates and moist, fertile soil.",
   img: "assets/img/kale.png",
   benefits: "High in vitamins A, C, and K, antioxidants, and fiber, supporting immunity and bone health.",
@@ -93,7 +93,7 @@ lettuce: {
 mustard_greens: {
   category: "Leafy Greens",
   companions: ["Onions", "Garlic", "Celery"],
-  foes: ["Strawberries"],
+  foes: ["Strawberry"],
   details: "Mustard greens grow rapidly in cool weather and prefer rich, moist soil.",
   img: "assets/img/mustard greens.png",
   benefits: "Rich in vitamins A, C, and K; may help reduce inflammation and support detoxification.",
@@ -187,7 +187,7 @@ swiss_chard: {
   broccoli: {
   category: "Fruiting Vegetables",
   companions: ["Beets", "Celery", "Onions"],
-  foes: ["Tomatoes", "Strawberries"],
+  foes: ["Tomatoes", "Strawberry"],
   details: "Broccoli is a cool-season crop that grows best in fertile, well-drained soil and full sun. It produces large flower heads harvested before blooming.",
   img: "assets/img/broccoli.png",
   benefits: "Broccoli supports heart health, digestion, bone strength, and may reduce the risk of certain cancers due to its high vitamin and antioxidant content.",
@@ -197,7 +197,7 @@ swiss_chard: {
 broccoflower: {
   category: "Fruiting Vegetables",
   companions: ["Beets", "Onions", "Celery"],
-  foes: ["Strawberries", "Tomatoes"],
+  foes: ["Strawberry", "Tomatoes"],
   details: "Broccoflower is a hybrid between broccoli and cauliflower, sharing similar growing needs and flavor characteristics.",
   img: "assets/img/broccoflower.png",
   benefits: "Rich in vitamin C, fiber, and antioxidants that support the immune system, aid digestion, and promote bone health.",
@@ -207,7 +207,7 @@ broccoflower: {
 brussels_sprouts: {
   category: "Fruiting Vegetables",
   companions: ["Dill", "Garlic", "Onions"],
-  foes: ["Strawberries", "Tomatoes"],
+  foes: ["Strawberry", "Tomatoes"],
   details: "Brussels sprouts grow on tall stalks and produce small, cabbage-like buds. They prefer cool temperatures and fertile, firm soil.",
   img: "assets/img/brussels sprouts.png",
   benefits: "Rich in vitamin K, C, and fiber, they support immune health, digestion, and reduce inflammation.",
@@ -217,7 +217,7 @@ brussels_sprouts: {
 cabbage: {
   category: "Fruiting Vegetables",
   companions: ["Garlic", "Onions", "Dill"],
-  foes: ["Tomatoes", "Strawberries"],
+  foes: ["Tomatoes", "Strawberry"],
   details: "Cabbage is a hardy leafy vegetable that forms tight heads and thrives in cool climates with well-drained, fertile soil.",
   img: "assets/img/cabbage.png",
   benefits: "Supports digestion, heart health, and weight management; high in fiber, vitamin C, and antioxidants.",
@@ -227,7 +227,7 @@ cabbage: {
 cauliflower: {
   category: "Fruiting Vegetables",
   companions: ["Celery", "Beets", "Onions"],
-  foes: ["Strawberries", "Tomatoes"],
+  foes: ["Strawberry", "Tomatoes"],
   details: "Cauliflower is a cool-weather crop grown for its dense, edible white head made of undeveloped flower buds.",
   img: "assets/img/cauliflower.png",
   benefits: "Rich in vitamin C and fiber; supports digestion, bone health, and immune function.",
@@ -462,7 +462,7 @@ rutabaga: {
   },
   azuki_beans: {
   category: "Legumes",
-  companions: ["Corn", "Cucumber", "Strawberries"],
+  companions: ["Corn", "Cucumber", "Strawberry"],
   foes: ["Garlic", "Onions"],
   details: "Azuki beans thrive in warm climates with full sun and fertile, well-drained soil.",
   img: "assets/img/azuki beans.png",
@@ -482,10 +482,10 @@ black_beans: {
 
 black_eyed_peas: {
   category: "Legumes",
-  companions: ["Corn", "Strawberries", "Cucumbers"],
+  companions: ["Corn", "Strawberry", "Cucumbers"],
   foes: ["Garlic", "Onions"],
   details: "Black-eyed peas need warm temperatures and grow best in sandy, well-drained soil.",
-  img: "assets/img/black_eyed_peas.png",
+  img: "assets/img/black-eyed peas.png",
   benefits: "Excellent source of folate, fiber, and protein.",
   tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Sandy, Well-Drained Soil"]
 },
@@ -649,7 +649,7 @@ succotash: {
     category: "Herbs",
     companions: ["Cabbage", "Strawberry"],
     foes: [],
-    details: "Thyme benefits cabbage and strawberries.",
+    details: "Thyme benefits cabbage and strawberry.",
     img: "assets/img/Thyme.png",
     benefits: "Can help boost immunity, relieve coughs and sore throats, and reduce inflammation.",
     tags: ["☀️ Full Sun", "🧪 Slightly Alkaline Soil", "🌱 Sandy, Well-Drained Soil"]
@@ -686,7 +686,7 @@ succotash: {
     category: "Fruits",
     companions: ["Spinach", "Lettuce", "Onion"],
     foes: [],
-    details: "Strawberries grow well with spinach and lettuce.",
+    details: "Strawberry grow well with spinach and lettuce.",
     img: "assets/img/strawberry.png",
     benefits: "A great source of vitamins, antioxidants, and fiber, contributing to heart health, immune support, and digestive wellness.",
     tags: ["☀️ Full Sun", "🧪 Slightly Acidic Soil", "🌱 Moist, Well-Drained Soil"]
@@ -879,7 +879,7 @@ pomegranates: {
     category: "Companion Flowers",
     companions: ["Tomato", "Strawberry", "Zucchini", "Blueberry"],
     foes: [],
-    details: "Borage attracts pollinators and benefits tomatoes and strawberries.",
+    details: "Borage attracts pollinators and benefits tomatoes and strawberry.",
     img: "assets/img/borage.png",
     benefits: "Borage, particularly its seed oil, is rich in gamma-linolenic acid (GLA), an omega-6 fatty acid known for its anti-inflammatory properties. GLA helps reduce inflammation by decreasing the production of inflammatory proteins and promoting the production of anti-inflammatory prostaglandins.",
     tags: ["☀️ Full Sun", "🧪 Neutral pH Soil", "🌱 Moist, Well-Drained Soil"]
