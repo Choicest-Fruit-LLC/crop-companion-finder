@@ -696,12 +696,10 @@ button:hover {
   color: #1b4332;
 }
 
-.favorites-list {
-  display: none;
-  margin-top: 10px;
-}
-.favorites-list.open {
-  display: block;
+.favorites-section {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 12px;
 }
 
 .favorites-toggle-btn {
@@ -711,4 +709,70 @@ button:hover {
   font-size: 1.1em;
   cursor: pointer;
   padding: 6px 0;
+  color: #263238;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ✅ center horizontally */
+  width: 100%;             /* ✅ fill container width */
+  text-align: center;
+}
+
+#fav-arrow {
+  margin-left: 8px;
+  font-size: 0.9em;
+  transition: transform 0.2s;
+}
+
+.favorites-list {
+  display: none;
+  margin-top: 10px;
+}
+.favorites-list.open {
+  display: block;
+}
+
+.fav-item {
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px dashed #ddd;
+  font-size: 1em;
+  color: #263238;
+}
+
+.fav-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  color: #ffb703;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.fav-btn:hover {
+  color: #ffa200;
+}
+
+[data-theme="dark"] .favorites-section {
+  border-top: 1px solid #444;
+}
+
+[data-theme="dark"] .favorites-toggle-btn {
+  color: #060606;
+}
+
+[data-theme="dark"] .fav-item {
+  color: #0e0c0c;
+  border-bottom: 1px dashed #555;
+}
+
+[data-theme="dark"] .fav-btn {
+  color: #ffd60a;
+}
+[data-theme="dark"] .fav-btn:hover {
+  color: #ffe066;
+}
+
+.favorites-list.open + #fav-arrow {
+  transform: rotate(180deg);
 }
