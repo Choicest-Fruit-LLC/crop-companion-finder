@@ -1430,7 +1430,24 @@ cropInput.addEventListener('input', updateMainFavoriteBtn);
 });
 
 // On load, update the button
-window.addEventListener("DOMContentLoaded", updateMainFavoriteBtn);
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleFavBtn = document.getElementById("toggle-fav-btn");
+  const favArrow = document.getElementById("fav-arrow");
+  const favListDiv = document.getElementById("favorites-list");
+
+  if (toggleFavBtn && favArrow && favListDiv) {
+    toggleFavBtn.onclick = function () {
+      favListDiv.classList.toggle("open");
+      favArrow.textContent = favListDiv.classList.contains("open") ? "▲" : "▼";
+    };
+
+    // Optional: open by default
+    favListDiv.classList.add("open");
+    favArrow.textContent = "▲";
+  }
+
+  updateFavoritesDisplay(); // Ensure display on load
+});
 
 
 async function generatePDF() {

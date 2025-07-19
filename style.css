@@ -696,3 +696,19 @@ button:hover {
   color: #1b4332;
 }
 
+.favorites-list {
+  display: none;
+  margin-top: 10px;
+}
+.favorites-list.open {
+  display: block;
+}
+
+.favorites-toggle-btn {
+  background: none;
+  border: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  padding: 6px 0;
+}
