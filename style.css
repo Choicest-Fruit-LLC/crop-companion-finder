@@ -782,3 +782,26 @@ button:hover {
 .favorites-list.open + #fav-arrow {
   transform: rotate(180deg);
 }
+
+@media screen and (max-width: 768px) {
+  label[for="user-notes"] {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  textarea#user-notes {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+  }
+
+  #cropInput {
+    width: 100% !important; /* override the 300px max-width */
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 1rem;
+  }
+}
