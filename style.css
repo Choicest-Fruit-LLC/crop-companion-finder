@@ -696,3 +696,29 @@ button:hover {
   color: #1b4332;
 }
 
+.favorites-section {
+  margin: 2rem 0 1rem 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+.favorites-list-container {
+  display: none;
+  background: #f8fbe9;
+  border: 1px solid #c5e1a5;
+  border-radius: 0 0 10px 10px;
+  padding: 0.5em 1em 0.5em 1em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+.favorites-list-container.open {
+  display: block;
+}
+
+[data-theme="dark"] .favorites-list-container {
+  background: #263238;
+  border-color: #40916c;
+  color: #e0f2f1;
+}
+
