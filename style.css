@@ -241,6 +241,12 @@
       font-size: 1rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
+
+    .app-footer a{
+      color: #2d6a4f;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
     [data-theme="dark"] .app-footer {
       background: #263238;
       color: #e0f2f1;
